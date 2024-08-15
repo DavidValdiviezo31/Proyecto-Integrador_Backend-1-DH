@@ -1,0 +1,17 @@
+[ INFO ] 2024-08-15 14:01:29,430 [ main ] |---| com.odontologia.project.ProjectApplication:50 - Starting ProjectApplication using Java 22.0.2 with PID 21896 (D:\David\Digital House TechDev\B5\Backend 1\project\target\classes started by david in D:\David\Digital House TechDev\B5\Backend 1\project)
+[ INFO ] 2024-08-15 14:01:29,432 [ main ] |---| com.odontologia.project.ProjectApplication:654 - No active profile set, falling back to 1 default profile: "default"
+[ INFO ] 2024-08-15 14:01:29,984 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:111 - Tomcat initialized with port 8080 (http)
+[ INFO ] 2024-08-15 14:01:29,993 [ main ] |---| org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+[ INFO ] 2024-08-15 14:01:29,994 [ main ] |---| org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.26]
+[ INFO ] 2024-08-15 14:01:30,027 [ main ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+[ INFO ] 2024-08-15 14:01:30,028 [ main ] |---| org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 566 ms
+[ INFO ] 2024-08-15 14:01:30,247 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:243 - Tomcat started on port 8080 (http) with context path '/'
+[ INFO ] 2024-08-15 14:01:30,252 [ main ] |---| com.odontologia.project.ProjectApplication:56 - Started ProjectApplication in 1.1 seconds (process running for 1.512)
+[ INFO ] 2024-08-15 14:01:30,300 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:26 - AGREGANDO PACIENTE 1313077792 A LA BD
+[ ERROR] 2024-08-15 14:01:30,305 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:44 - ERROR AL AGREGAR PACIENTE A LA BD: Violación de indice de Unicidad ó Clave primaria: "PRIMARY KEY ON PUBLIC.PACIENTES(DNI) ( /* key:1313077792 */ CAST(1313077792 AS BIGINT), 'David', 'Valdiviezo', 'Portoviejo', DATE '2024-08-20')"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.PACIENTES(DNI) ( /* key:1313077792 */ CAST(1313077792 AS BIGINT), 'David', 'Valdiviezo', 'Portoviejo', DATE '2024-08-20')"; SQL statement:
+INSERT INTO PACIENTES (DNI, NOMBRE, APELLIDO, DOMICILIO, FECHA_ALTA) VALUES(?, ?, ?, ?, ?) [23505-224]
+[ INFO ] 2024-08-15 14:01:30,308 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:25 - AGREGANDO ODONTOLOGO 1313077795 A LA BD
+[ ERROR] 2024-08-15 14:01:30,309 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:43 - ERROR AL AGREGAR ODONTOLOGO A LA BD: Violación de indice de Unicidad ó Clave primaria: "PRIMARY KEY ON PUBLIC.ODONTOLOGOS(MATRICULA) ( /* key:1313077795 */ CAST(1313077795 AS BIGINT), 'Andres', 'Intriago')"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.ODONTOLOGOS(MATRICULA) ( /* key:1313077795 */ CAST(1313077795 AS BIGINT), 'Andres', 'Intriago')"; SQL statement:
+INSERT INTO ODONTOLOGOS (MATRICULA, NOMBRE, APELLIDO) VALUES(?, ?, ?) [23505-224]
