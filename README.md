@@ -6,6 +6,10 @@ Este proyecto Java, desarrollado utilizando el framework Spring Boot,
 tiene como objetivo crear un backend para un sistema de gestión de turnos en una clínica dental.
 Permite programar citas, administrar pacientes y odontólogos.
 
+## **INTEGRANTES**
+1. Jenny Alexandra Munera Serna.
+2. Andrés David Intriago Valdiviezo.
+
 ## **TRABAJO INTEGRADOR**
 
 **Sistema de reserva de turnos**
