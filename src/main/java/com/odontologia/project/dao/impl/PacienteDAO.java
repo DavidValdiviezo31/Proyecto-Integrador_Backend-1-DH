@@ -3,8 +3,8 @@ package com.odontologia.project.dao.impl;
 import com.odontologia.project.dao.DatabaseConnection;
 import com.odontologia.project.dao.IDao;
 import com.odontologia.project.models.Paciente;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -14,7 +14,7 @@ import java.util.Objects;
 
 public class PacienteDAO implements IDao<Paciente> {
 
-  private static final Logger logger = LogManager.getLogger(PacienteDAO.class);
+  private static final Logger logger = LoggerFactory.getLogger(PacienteDAO.class);
 
   @Override
   public Paciente guardar(Paciente paciente) {

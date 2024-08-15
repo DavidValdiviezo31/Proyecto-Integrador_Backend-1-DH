@@ -3,8 +3,8 @@ package com.odontologia.project.dao.impl;
 import com.odontologia.project.dao.DatabaseConnection;
 import com.odontologia.project.dao.IDao;
 import com.odontologia.project.models.Odontologo;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class OdontologoDAO implements IDao<Odontologo> {
 
-  private static final Logger logger = LogManager.getLogger(OdontologoDAO.class);
+  private static final Logger logger = LoggerFactory.getLogger(OdontologoDAO.class);
 
   @Override
   public Odontologo guardar(Odontologo odontologo) {

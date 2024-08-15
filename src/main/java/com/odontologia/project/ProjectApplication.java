@@ -20,7 +20,7 @@ public class ProjectApplication {
 
     Paciente p1 = new Paciente(1313077792L,"David", "Valdiviezo", "Portoviejo", LocalDate.of(2024, 8, 20));
 
-//    pacienteService.guardarPaciente(p1);
+    pacienteService.guardarPaciente(p1);
 //    pacienteService.buscarTodosPacientes();
 //    System.out.println(pacienteService.buscarPaciente(1313077792L));
 //    Paciente p2 = new Paciente(1313077792L,"Andres", "Valdiviezo", "Portoviejo", LocalDate.of(2024, 8, 20));
@@ -30,7 +30,7 @@ public class ProjectApplication {
 
     Odontologo od1 = new Odontologo(1313077795L, "Andres", "Intriago");
 
-//    odontologoService.guardarOdontologo(od1);
+    odontologoService.guardarOdontologo(od1);
 //    odontologoService.buscarTodosOdontologos();
 //    System.out.println(odontologoService.buscarOdontologo(1313077795L));
 //    Odontologo od2 = new Odontologo(1313077795L, "David", "Intriago");
