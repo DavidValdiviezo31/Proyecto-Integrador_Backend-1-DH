@@ -32,7 +32,7 @@ La aplicación debe ser desarrollada en capas:
 * **Java:** Lenguaje de programación principal.
 * **Spring Boot:** Framework para desarrollo de aplicaciones Java.
 * **H2 DATABASE:** Para almacenar información de pacientes, odontólogos, turnos y usuarios.
-* **LOG4J2:** Para tener registro de lo que sucede dentro de la aplicación.
+* **SLF4J:** Para tener registro de lo que sucede dentro de la aplicación.
 
 ### **ESTRUCTURA DEL PROYECTO:**
 
