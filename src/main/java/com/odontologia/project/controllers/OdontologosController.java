@@ -23,15 +23,19 @@ public class OdontologosController {
   @GetMapping("/buscarPorId")
   public String buscarOdontologo(Model model, @RequestParam Long matricula) {
     Odontologo odontologo = odontologoService.buscarOdontologo(matricula);
+
     model.addAttribute("nombre", odontologo.getNombre());
     model.addAttribute("apellido", odontologo.getApellido());
-    return "buscarOdontologo";
+
+    return "/odontologos/buscarOdontologo";
   }
 
   @GetMapping("/buscarTodos")
   public String buscarTodosOdontologos(Model model){
     List<Odontologo> odontologoList=  odontologoService.buscarTodosOdontologos();
+
     model.addAllAttributes(odontologoList);
-    return "buscarTodos";
+
+    return "/odontologos/buscarTodos";
   }
 }
