@@ -851,3 +851,23 @@ org.thymeleaf.exceptions.TemplateInputException: Error resolving template [busca
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1570)
+[ INFO ] 2024-08-16 10:30:26,890 [ main ] |---| com.odontologia.project.ProjectApplication:50 - Starting ProjectApplication using Java 22.0.2 with PID 10532 (D:\David\Digital House TechDev\B5\Backend 1\project\target\classes started by david in D:\David\Digital House TechDev\B5\Backend 1\project)
+[ INFO ] 2024-08-16 10:30:26,893 [ main ] |---| com.odontologia.project.ProjectApplication:654 - No active profile set, falling back to 1 default profile: "default"
+[ INFO ] 2024-08-16 10:30:27,455 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:111 - Tomcat initialized with port 8080 (http)
+[ INFO ] 2024-08-16 10:30:27,464 [ main ] |---| org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+[ INFO ] 2024-08-16 10:30:27,464 [ main ] |---| org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.26]
+[ INFO ] 2024-08-16 10:30:27,499 [ main ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+[ INFO ] 2024-08-16 10:30:27,499 [ main ] |---| org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 578 ms
+[ INFO ] 2024-08-16 10:30:27,740 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:243 - Tomcat started on port 8080 (http) with context path '/'
+[ INFO ] 2024-08-16 10:30:27,745 [ main ] |---| com.odontologia.project.ProjectApplication:56 - Started ProjectApplication in 1.133 seconds (process running for 1.56)
+[ INFO ] 2024-08-16 10:30:27,796 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:26 - AGREGANDO PACIENTE 1313077792 A LA BD
+[ ERROR] 2024-08-16 10:30:27,808 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:44 - ERROR AL AGREGAR PACIENTE A LA BD: Violación de indice de Unicidad ó Clave primaria: "PRIMARY KEY ON PUBLIC.PACIENTES(DNI) ( /* key:1313077792 */ CAST(1313077792 AS BIGINT), 'David', 'Valdiviezo', 'Portoviejo', DATE '2024-08-20')"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.PACIENTES(DNI) ( /* key:1313077792 */ CAST(1313077792 AS BIGINT), 'David', 'Valdiviezo', 'Portoviejo', DATE '2024-08-20')"; SQL statement:
+INSERT INTO PACIENTES (DNI, NOMBRE, APELLIDO, DOMICILIO, FECHA_ALTA) VALUES(?, ?, ?, ?, ?) [23505-224]
+[ INFO ] 2024-08-16 10:30:27,812 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:25 - AGREGANDO ODONTOLOGO 1313077795 A LA BD
+[ ERROR] 2024-08-16 10:30:27,813 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:43 - ERROR AL AGREGAR ODONTOLOGO A LA BD: Violación de indice de Unicidad ó Clave primaria: "PRIMARY KEY ON PUBLIC.ODONTOLOGOS(MATRICULA) ( /* key:1313077795 */ CAST(1313077795 AS BIGINT), 'Andres', 'Intriago')"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.ODONTOLOGOS(MATRICULA) ( /* key:1313077795 */ CAST(1313077795 AS BIGINT), 'Andres', 'Intriago')"; SQL statement:
+INSERT INTO ODONTOLOGOS (MATRICULA, NOMBRE, APELLIDO) VALUES(?, ?, ?) [23505-224]
+[ INFO ] 2024-08-16 10:30:30,429 [ http-nio-8080-exec-1 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 10:30:30,429 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 10:30:30,430 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:554 - Completed initialization in 1 ms
