@@ -8,8 +8,7 @@ import com.odontologia.project.services.IOdontologoService;
 import java.util.List;
 
 public class OdontologoService implements IOdontologoService {
-  private IDao<Odontologo> daoOdontologo;
-
+  private final IDao<Odontologo> daoOdontologo;
 
   public OdontologoService() {
     this.daoOdontologo = new OdontologoDAO();
@@ -38,5 +37,4 @@ public class OdontologoService implements IOdontologoService {
   public Odontologo eliminarOdontologo(Long matricula) {
     return daoOdontologo.eliminarPorId(matricula);
   }
-
 }

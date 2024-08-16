@@ -8,7 +8,7 @@ import com.odontologia.project.services.IPacienteService;
 import java.util.List;
 
 public class PacienteService implements IPacienteService {
-  private IDao<Paciente> daoPaciente;
+  private final IDao<Paciente> daoPaciente;
 
   public PacienteService() {
     this.daoPaciente = new PacienteDAO();
