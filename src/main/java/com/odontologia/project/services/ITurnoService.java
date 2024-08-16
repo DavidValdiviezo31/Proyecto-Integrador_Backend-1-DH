@@ -1,6 +1,5 @@
 package com.odontologia.project.services;
 
-import com.odontologia.project.models.Paciente;
 import com.odontologia.project.models.Turno;
 
 import java.util.List;
