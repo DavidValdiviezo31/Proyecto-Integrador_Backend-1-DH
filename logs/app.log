@@ -1,17 +1,853 @@
-[ INFO ] 2024-08-15 14:01:29,430 [ main ] |---| com.odontologia.project.ProjectApplication:50 - Starting ProjectApplication using Java 22.0.2 with PID 21896 (D:\David\Digital House TechDev\B5\Backend 1\project\target\classes started by david in D:\David\Digital House TechDev\B5\Backend 1\project)
-[ INFO ] 2024-08-15 14:01:29,432 [ main ] |---| com.odontologia.project.ProjectApplication:654 - No active profile set, falling back to 1 default profile: "default"
-[ INFO ] 2024-08-15 14:01:29,984 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:111 - Tomcat initialized with port 8080 (http)
-[ INFO ] 2024-08-15 14:01:29,993 [ main ] |---| org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
-[ INFO ] 2024-08-15 14:01:29,994 [ main ] |---| org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.26]
-[ INFO ] 2024-08-15 14:01:30,027 [ main ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
-[ INFO ] 2024-08-15 14:01:30,028 [ main ] |---| org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 566 ms
-[ INFO ] 2024-08-15 14:01:30,247 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:243 - Tomcat started on port 8080 (http) with context path '/'
-[ INFO ] 2024-08-15 14:01:30,252 [ main ] |---| com.odontologia.project.ProjectApplication:56 - Started ProjectApplication in 1.1 seconds (process running for 1.512)
-[ INFO ] 2024-08-15 14:01:30,300 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:26 - AGREGANDO PACIENTE 1313077792 A LA BD
-[ ERROR] 2024-08-15 14:01:30,305 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:44 - ERROR AL AGREGAR PACIENTE A LA BD: Violación de indice de Unicidad ó Clave primaria: "PRIMARY KEY ON PUBLIC.PACIENTES(DNI) ( /* key:1313077792 */ CAST(1313077792 AS BIGINT), 'David', 'Valdiviezo', 'Portoviejo', DATE '2024-08-20')"
+[ INFO ] 2024-08-16 10:19:33,525 [ main ] |---| com.odontologia.project.ProjectApplication:50 - Starting ProjectApplication using Java 22.0.2 with PID 11320 (D:\David\Digital House TechDev\B5\Backend 1\project\target\classes started by david in D:\David\Digital House TechDev\B5\Backend 1\project)
+[ INFO ] 2024-08-16 10:19:33,533 [ main ] |---| com.odontologia.project.ProjectApplication:654 - No active profile set, falling back to 1 default profile: "default"
+[ INFO ] 2024-08-16 10:19:34,199 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:111 - Tomcat initialized with port 8080 (http)
+[ INFO ] 2024-08-16 10:19:34,210 [ main ] |---| org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+[ INFO ] 2024-08-16 10:19:34,211 [ main ] |---| org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.26]
+[ INFO ] 2024-08-16 10:19:34,253 [ main ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+[ INFO ] 2024-08-16 10:19:34,253 [ main ] |---| org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 684 ms
+[ INFO ] 2024-08-16 10:19:34,533 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:243 - Tomcat started on port 8080 (http) with context path '/'
+[ INFO ] 2024-08-16 10:19:34,538 [ main ] |---| com.odontologia.project.ProjectApplication:56 - Started ProjectApplication in 1.386 seconds (process running for 1.964)
+[ ERROR] 2024-08-16 10:19:36,143 [ main ] |---| com.odontologia.project.dao.DatabaseConnection:24 - ERROR AL INICIAR LA CONEXIÓN CON LA BD: Conexión rota: "java.net.ConnectException: Connection refused: getsockopt: localhost"
+Connection is broken: "java.net.ConnectException: Connection refused: getsockopt: localhost" [90067-224]
+[ INFO ] 2024-08-16 10:19:36,144 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:26 - AGREGANDO PACIENTE 1313077792 A LA BD
+[ ERROR] 2024-08-16 10:19:36,144 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:44 - ERROR AL AGREGAR PACIENTE A LA BD: Cannot invoke "java.sql.Connection.setAutoCommit(boolean)" because "conn" is null
+[ ERROR] 2024-08-16 10:19:37,699 [ main ] |---| com.odontologia.project.dao.DatabaseConnection:24 - ERROR AL INICIAR LA CONEXIÓN CON LA BD: Conexión rota: "java.net.ConnectException: Connection refused: getsockopt: localhost"
+Connection is broken: "java.net.ConnectException: Connection refused: getsockopt: localhost" [90067-224]
+[ INFO ] 2024-08-16 10:19:37,699 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:25 - AGREGANDO ODONTOLOGO 1313077795 A LA BD
+[ ERROR] 2024-08-16 10:19:37,699 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:43 - ERROR AL AGREGAR ODONTOLOGO A LA BD: Cannot invoke "java.sql.Connection.setAutoCommit(boolean)" because "conn" is null
+[ INFO ] 2024-08-16 10:19:48,593 [ main ] |---| com.odontologia.project.ProjectApplication:50 - Starting ProjectApplication using Java 22.0.2 with PID 19140 (D:\David\Digital House TechDev\B5\Backend 1\project\target\classes started by david in D:\David\Digital House TechDev\B5\Backend 1\project)
+[ INFO ] 2024-08-16 10:19:48,596 [ main ] |---| com.odontologia.project.ProjectApplication:654 - No active profile set, falling back to 1 default profile: "default"
+[ INFO ] 2024-08-16 10:19:49,380 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:111 - Tomcat initialized with port 8080 (http)
+[ INFO ] 2024-08-16 10:19:49,390 [ main ] |---| org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+[ INFO ] 2024-08-16 10:19:49,391 [ main ] |---| org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.26]
+[ INFO ] 2024-08-16 10:19:49,429 [ main ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+[ INFO ] 2024-08-16 10:19:49,429 [ main ] |---| org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 790 ms
+[ INFO ] 2024-08-16 10:19:49,691 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:243 - Tomcat started on port 8080 (http) with context path '/'
+[ INFO ] 2024-08-16 10:19:49,697 [ main ] |---| com.odontologia.project.ProjectApplication:56 - Started ProjectApplication in 1.541 seconds (process running for 2.121)
+[ INFO ] 2024-08-16 10:19:49,827 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:26 - AGREGANDO PACIENTE 1313077792 A LA BD
+[ ERROR] 2024-08-16 10:19:49,838 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:44 - ERROR AL AGREGAR PACIENTE A LA BD: Violación de indice de Unicidad ó Clave primaria: "PRIMARY KEY ON PUBLIC.PACIENTES(DNI) ( /* key:0 */ CAST(1313077792 AS BIGINT), 'David', 'Valdiviezo', 'Portoviejo', DATE '2024-08-20')"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.PACIENTES(DNI) ( /* key:0 */ CAST(1313077792 AS BIGINT), 'David', 'Valdiviezo', 'Portoviejo', DATE '2024-08-20')"; SQL statement:
+INSERT INTO PACIENTES (DNI, NOMBRE, APELLIDO, DOMICILIO, FECHA_ALTA) VALUES(?, ?, ?, ?, ?) [23505-224]
+[ INFO ] 2024-08-16 10:19:50,081 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:25 - AGREGANDO ODONTOLOGO 1313077795 A LA BD
+[ ERROR] 2024-08-16 10:19:50,083 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:43 - ERROR AL AGREGAR ODONTOLOGO A LA BD: Violación de indice de Unicidad ó Clave primaria: "PRIMARY KEY ON PUBLIC.ODONTOLOGOS(MATRICULA) ( /* key:0 */ CAST(1313077795 AS BIGINT), 'Andres', 'Intriago')"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.ODONTOLOGOS(MATRICULA) ( /* key:0 */ CAST(1313077795 AS BIGINT), 'Andres', 'Intriago')"; SQL statement:
+INSERT INTO ODONTOLOGOS (MATRICULA, NOMBRE, APELLIDO) VALUES(?, ?, ?) [23505-224]
+[ INFO ] 2024-08-16 10:20:44,388 [ http-nio-8080-exec-1 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 10:20:44,389 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 10:20:44,389 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:554 - Completed initialization in 0 ms
+[ WARN ] 2024-08-16 10:20:44,423 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:247 - Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'matricula' for method parameter type Long is not present]
+[ WARN ] 2024-08-16 10:20:49,951 [ http-nio-8080-exec-3 ] |---| org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:247 - Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'matricula' for method parameter type Long is not present]
+[ WARN ] 2024-08-16 10:21:53,484 [ http-nio-8080-exec-7 ] |---| org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver:247 - Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'matricula' for method parameter type Long is present but converted to null]
+[ INFO ] 2024-08-16 10:22:15,215 [ main ] |---| com.odontologia.project.ProjectApplication:50 - Starting ProjectApplication using Java 22.0.2 with PID 19620 (D:\David\Digital House TechDev\B5\Backend 1\project\target\classes started by david in D:\David\Digital House TechDev\B5\Backend 1\project)
+[ INFO ] 2024-08-16 10:22:15,217 [ main ] |---| com.odontologia.project.ProjectApplication:654 - No active profile set, falling back to 1 default profile: "default"
+[ INFO ] 2024-08-16 10:22:15,763 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:111 - Tomcat initialized with port 8080 (http)
+[ INFO ] 2024-08-16 10:22:15,771 [ main ] |---| org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+[ INFO ] 2024-08-16 10:22:15,771 [ main ] |---| org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.26]
+[ INFO ] 2024-08-16 10:22:15,803 [ main ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+[ INFO ] 2024-08-16 10:22:15,803 [ main ] |---| org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 557 ms
+[ INFO ] 2024-08-16 10:22:16,024 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:243 - Tomcat started on port 8080 (http) with context path '/'
+[ INFO ] 2024-08-16 10:22:16,029 [ main ] |---| com.odontologia.project.ProjectApplication:56 - Started ProjectApplication in 1.089 seconds (process running for 1.513)
+[ INFO ] 2024-08-16 10:22:16,076 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:26 - AGREGANDO PACIENTE 1313077792 A LA BD
+[ ERROR] 2024-08-16 10:22:16,083 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:44 - ERROR AL AGREGAR PACIENTE A LA BD: Violación de indice de Unicidad ó Clave primaria: "PRIMARY KEY ON PUBLIC.PACIENTES(DNI) ( /* key:1313077792 */ CAST(1313077792 AS BIGINT), 'David', 'Valdiviezo', 'Portoviejo', DATE '2024-08-20')"
 Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.PACIENTES(DNI) ( /* key:1313077792 */ CAST(1313077792 AS BIGINT), 'David', 'Valdiviezo', 'Portoviejo', DATE '2024-08-20')"; SQL statement:
 INSERT INTO PACIENTES (DNI, NOMBRE, APELLIDO, DOMICILIO, FECHA_ALTA) VALUES(?, ?, ?, ?, ?) [23505-224]
-[ INFO ] 2024-08-15 14:01:30,308 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:25 - AGREGANDO ODONTOLOGO 1313077795 A LA BD
-[ ERROR] 2024-08-15 14:01:30,309 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:43 - ERROR AL AGREGAR ODONTOLOGO A LA BD: Violación de indice de Unicidad ó Clave primaria: "PRIMARY KEY ON PUBLIC.ODONTOLOGOS(MATRICULA) ( /* key:1313077795 */ CAST(1313077795 AS BIGINT), 'Andres', 'Intriago')"
+[ INFO ] 2024-08-16 10:22:16,086 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:25 - AGREGANDO ODONTOLOGO 1313077795 A LA BD
+[ ERROR] 2024-08-16 10:22:16,087 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:43 - ERROR AL AGREGAR ODONTOLOGO A LA BD: Violación de indice de Unicidad ó Clave primaria: "PRIMARY KEY ON PUBLIC.ODONTOLOGOS(MATRICULA) ( /* key:1313077795 */ CAST(1313077795 AS BIGINT), 'Andres', 'Intriago')"
 Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.ODONTOLOGOS(MATRICULA) ( /* key:1313077795 */ CAST(1313077795 AS BIGINT), 'Andres', 'Intriago')"; SQL statement:
 INSERT INTO ODONTOLOGOS (MATRICULA, NOMBRE, APELLIDO) VALUES(?, ?, ?) [23505-224]
+[ INFO ] 2024-08-16 10:22:19,770 [ http-nio-8080-exec-1 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 10:22:19,770 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 10:22:19,771 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:554 - Completed initialization in 0 ms
+[ ERROR] 2024-08-16 10:22:38,024 [ http-nio-8080-exec-2 ] |---| com.odontologia.project.dao.impl.OdontologoDAO:71 - ERROR AL BUSCAR ODONTOLOGO: EL ODONTOLOGO CON DNI 131307779 NO EXISTE EN LA BD.
+[ ERROR] 2024-08-16 10:22:38,026 [ http-nio-8080-exec-2 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet]:175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "com.odontologia.project.models.Odontologo.getNombre()" because "odontologo" is null] with root cause
+java.lang.NullPointerException: Cannot invoke "com.odontologia.project.models.Odontologo.getNombre()" because "odontologo" is null
+	at com.odontologia.project.controllers.OdontologosController.buscarOdontologo(OdontologosController.java:26)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+[ ERROR] 2024-08-16 10:22:50,542 [ http-nio-8080-exec-5 ] |---| com.odontologia.project.dao.impl.OdontologoDAO:71 - ERROR AL BUSCAR ODONTOLOGO: EL ODONTOLOGO CON DNI 1313077792 NO EXISTE EN LA BD.
+[ ERROR] 2024-08-16 10:22:50,543 [ http-nio-8080-exec-5 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet]:175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "com.odontologia.project.models.Odontologo.getNombre()" because "odontologo" is null] with root cause
+java.lang.NullPointerException: Cannot invoke "com.odontologia.project.models.Odontologo.getNombre()" because "odontologo" is null
+	at com.odontologia.project.controllers.OdontologosController.buscarOdontologo(OdontologosController.java:26)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+[ INFO ] 2024-08-16 10:24:02,144 [ main ] |---| com.odontologia.project.ProjectApplication:50 - Starting ProjectApplication using Java 22.0.2 with PID 6864 (D:\David\Digital House TechDev\B5\Backend 1\project\target\classes started by david in D:\David\Digital House TechDev\B5\Backend 1\project)
+[ INFO ] 2024-08-16 10:24:02,146 [ main ] |---| com.odontologia.project.ProjectApplication:654 - No active profile set, falling back to 1 default profile: "default"
+[ INFO ] 2024-08-16 10:24:02,705 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:111 - Tomcat initialized with port 8080 (http)
+[ INFO ] 2024-08-16 10:24:02,713 [ main ] |---| org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+[ INFO ] 2024-08-16 10:24:02,713 [ main ] |---| org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.26]
+[ INFO ] 2024-08-16 10:24:02,748 [ main ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+[ INFO ] 2024-08-16 10:24:02,748 [ main ] |---| org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 573 ms
+[ INFO ] 2024-08-16 10:24:02,992 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:243 - Tomcat started on port 8080 (http) with context path '/'
+[ INFO ] 2024-08-16 10:24:02,997 [ main ] |---| com.odontologia.project.ProjectApplication:56 - Started ProjectApplication in 1.16 seconds (process running for 1.576)
+[ INFO ] 2024-08-16 10:24:03,042 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:26 - AGREGANDO PACIENTE 1313077792 A LA BD
+[ ERROR] 2024-08-16 10:24:03,048 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:44 - ERROR AL AGREGAR PACIENTE A LA BD: Violación de indice de Unicidad ó Clave primaria: "PRIMARY KEY ON PUBLIC.PACIENTES(DNI) ( /* key:1313077792 */ CAST(1313077792 AS BIGINT), 'David', 'Valdiviezo', 'Portoviejo', DATE '2024-08-20')"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.PACIENTES(DNI) ( /* key:1313077792 */ CAST(1313077792 AS BIGINT), 'David', 'Valdiviezo', 'Portoviejo', DATE '2024-08-20')"; SQL statement:
+INSERT INTO PACIENTES (DNI, NOMBRE, APELLIDO, DOMICILIO, FECHA_ALTA) VALUES(?, ?, ?, ?, ?) [23505-224]
+[ INFO ] 2024-08-16 10:24:03,051 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:25 - AGREGANDO ODONTOLOGO 1313077795 A LA BD
+[ ERROR] 2024-08-16 10:24:03,052 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:43 - ERROR AL AGREGAR ODONTOLOGO A LA BD: Violación de indice de Unicidad ó Clave primaria: "PRIMARY KEY ON PUBLIC.ODONTOLOGOS(MATRICULA) ( /* key:1313077795 */ CAST(1313077795 AS BIGINT), 'Andres', 'Intriago')"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.ODONTOLOGOS(MATRICULA) ( /* key:1313077795 */ CAST(1313077795 AS BIGINT), 'Andres', 'Intriago')"; SQL statement:
+INSERT INTO ODONTOLOGOS (MATRICULA, NOMBRE, APELLIDO) VALUES(?, ?, ?) [23505-224]
+[ INFO ] 2024-08-16 10:24:06,170 [ http-nio-8080-exec-1 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 10:24:06,170 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 10:24:06,171 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:554 - Completed initialization in 1 ms
+[ ERROR] 2024-08-16 10:24:06,314 [ http-nio-8080-exec-1 ] |---| org.thymeleaf.TemplateEngine:1141 - [THYMELEAF][http-nio-8080-exec-1] Exception processing template "buscarOdontologo": Error resolving template [buscarOdontologo], template might not exist or might not be accessible by any of the configured Template Resolvers
+org.thymeleaf.exceptions.TemplateInputException: Error resolving template [buscarOdontologo], template might not exist or might not be accessible by any of the configured Template Resolvers
+	at org.thymeleaf.engine.TemplateManager.resolveTemplate(TemplateManager.java:869)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:607)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077)
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372)
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1431)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1167)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+[ ERROR] 2024-08-16 10:24:06,317 [ http-nio-8080-exec-1 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet]:175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.thymeleaf.exceptions.TemplateInputException: Error resolving template [buscarOdontologo], template might not exist or might not be accessible by any of the configured Template Resolvers] with root cause
+org.thymeleaf.exceptions.TemplateInputException: Error resolving template [buscarOdontologo], template might not exist or might not be accessible by any of the configured Template Resolvers
+	at org.thymeleaf.engine.TemplateManager.resolveTemplate(TemplateManager.java:869)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:607)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077)
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372)
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1431)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1167)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+[ ERROR] 2024-08-16 10:24:19,525 [ http-nio-8080-exec-2 ] |---| org.thymeleaf.TemplateEngine:1141 - [THYMELEAF][http-nio-8080-exec-2] Exception processing template "buscarOdontologo": Error resolving template [buscarOdontologo], template might not exist or might not be accessible by any of the configured Template Resolvers
+org.thymeleaf.exceptions.TemplateInputException: Error resolving template [buscarOdontologo], template might not exist or might not be accessible by any of the configured Template Resolvers
+	at org.thymeleaf.engine.TemplateManager.resolveTemplate(TemplateManager.java:869)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:607)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077)
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372)
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1431)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1167)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+[ ERROR] 2024-08-16 10:24:19,526 [ http-nio-8080-exec-2 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet]:175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.thymeleaf.exceptions.TemplateInputException: Error resolving template [buscarOdontologo], template might not exist or might not be accessible by any of the configured Template Resolvers] with root cause
+org.thymeleaf.exceptions.TemplateInputException: Error resolving template [buscarOdontologo], template might not exist or might not be accessible by any of the configured Template Resolvers
+	at org.thymeleaf.engine.TemplateManager.resolveTemplate(TemplateManager.java:869)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:607)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077)
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372)
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1431)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1167)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+[ INFO ] 2024-08-16 10:25:01,294 [ main ] |---| com.odontologia.project.ProjectApplication:50 - Starting ProjectApplication using Java 22.0.2 with PID 7320 (D:\David\Digital House TechDev\B5\Backend 1\project\target\classes started by david in D:\David\Digital House TechDev\B5\Backend 1\project)
+[ INFO ] 2024-08-16 10:25:01,296 [ main ] |---| com.odontologia.project.ProjectApplication:654 - No active profile set, falling back to 1 default profile: "default"
+[ INFO ] 2024-08-16 10:25:01,848 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:111 - Tomcat initialized with port 8080 (http)
+[ INFO ] 2024-08-16 10:25:01,864 [ main ] |---| org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+[ INFO ] 2024-08-16 10:25:01,864 [ main ] |---| org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.26]
+[ INFO ] 2024-08-16 10:25:01,898 [ main ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+[ INFO ] 2024-08-16 10:25:01,898 [ main ] |---| org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 572 ms
+[ INFO ] 2024-08-16 10:25:02,143 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:243 - Tomcat started on port 8080 (http) with context path '/'
+[ INFO ] 2024-08-16 10:25:02,148 [ main ] |---| com.odontologia.project.ProjectApplication:56 - Started ProjectApplication in 1.13 seconds (process running for 1.548)
+[ INFO ] 2024-08-16 10:25:02,196 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:26 - AGREGANDO PACIENTE 1313077792 A LA BD
+[ ERROR] 2024-08-16 10:25:02,206 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:44 - ERROR AL AGREGAR PACIENTE A LA BD: Violación de indice de Unicidad ó Clave primaria: "PRIMARY KEY ON PUBLIC.PACIENTES(DNI) ( /* key:1313077792 */ CAST(1313077792 AS BIGINT), 'David', 'Valdiviezo', 'Portoviejo', DATE '2024-08-20')"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.PACIENTES(DNI) ( /* key:1313077792 */ CAST(1313077792 AS BIGINT), 'David', 'Valdiviezo', 'Portoviejo', DATE '2024-08-20')"; SQL statement:
+INSERT INTO PACIENTES (DNI, NOMBRE, APELLIDO, DOMICILIO, FECHA_ALTA) VALUES(?, ?, ?, ?, ?) [23505-224]
+[ INFO ] 2024-08-16 10:25:02,211 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:25 - AGREGANDO ODONTOLOGO 1313077795 A LA BD
+[ ERROR] 2024-08-16 10:25:02,218 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:43 - ERROR AL AGREGAR ODONTOLOGO A LA BD: Violación de indice de Unicidad ó Clave primaria: "PRIMARY KEY ON PUBLIC.ODONTOLOGOS(MATRICULA) ( /* key:1313077795 */ CAST(1313077795 AS BIGINT), 'Andres', 'Intriago')"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.ODONTOLOGOS(MATRICULA) ( /* key:1313077795 */ CAST(1313077795 AS BIGINT), 'Andres', 'Intriago')"; SQL statement:
+INSERT INTO ODONTOLOGOS (MATRICULA, NOMBRE, APELLIDO) VALUES(?, ?, ?) [23505-224]
+[ INFO ] 2024-08-16 10:25:05,254 [ http-nio-8080-exec-1 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 10:25:05,254 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 10:25:05,255 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:554 - Completed initialization in 0 ms
+[ INFO ] 2024-08-16 10:25:30,876 [ main ] |---| com.odontologia.project.ProjectApplication:50 - Starting ProjectApplication using Java 22.0.2 with PID 360 (D:\David\Digital House TechDev\B5\Backend 1\project\target\classes started by david in D:\David\Digital House TechDev\B5\Backend 1\project)
+[ INFO ] 2024-08-16 10:25:30,878 [ main ] |---| com.odontologia.project.ProjectApplication:654 - No active profile set, falling back to 1 default profile: "default"
+[ INFO ] 2024-08-16 10:25:31,439 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:111 - Tomcat initialized with port 8080 (http)
+[ INFO ] 2024-08-16 10:25:31,447 [ main ] |---| org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+[ INFO ] 2024-08-16 10:25:31,447 [ main ] |---| org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.26]
+[ INFO ] 2024-08-16 10:25:31,480 [ main ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+[ INFO ] 2024-08-16 10:25:31,481 [ main ] |---| org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 572 ms
+[ INFO ] 2024-08-16 10:25:31,721 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:243 - Tomcat started on port 8080 (http) with context path '/'
+[ INFO ] 2024-08-16 10:25:31,727 [ main ] |---| com.odontologia.project.ProjectApplication:56 - Started ProjectApplication in 1.128 seconds (process running for 1.558)
+[ INFO ] 2024-08-16 10:25:31,775 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:26 - AGREGANDO PACIENTE 1313077792 A LA BD
+[ ERROR] 2024-08-16 10:25:31,783 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:44 - ERROR AL AGREGAR PACIENTE A LA BD: Violación de indice de Unicidad ó Clave primaria: "PRIMARY KEY ON PUBLIC.PACIENTES(DNI) ( /* key:1313077792 */ CAST(1313077792 AS BIGINT), 'David', 'Valdiviezo', 'Portoviejo', DATE '2024-08-20')"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.PACIENTES(DNI) ( /* key:1313077792 */ CAST(1313077792 AS BIGINT), 'David', 'Valdiviezo', 'Portoviejo', DATE '2024-08-20')"; SQL statement:
+INSERT INTO PACIENTES (DNI, NOMBRE, APELLIDO, DOMICILIO, FECHA_ALTA) VALUES(?, ?, ?, ?, ?) [23505-224]
+[ INFO ] 2024-08-16 10:25:31,788 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:25 - AGREGANDO ODONTOLOGO 1313077795 A LA BD
+[ ERROR] 2024-08-16 10:25:31,790 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:43 - ERROR AL AGREGAR ODONTOLOGO A LA BD: Violación de indice de Unicidad ó Clave primaria: "PRIMARY KEY ON PUBLIC.ODONTOLOGOS(MATRICULA) ( /* key:1313077795 */ CAST(1313077795 AS BIGINT), 'Andres', 'Intriago')"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.ODONTOLOGOS(MATRICULA) ( /* key:1313077795 */ CAST(1313077795 AS BIGINT), 'Andres', 'Intriago')"; SQL statement:
+INSERT INTO ODONTOLOGOS (MATRICULA, NOMBRE, APELLIDO) VALUES(?, ?, ?) [23505-224]
+[ INFO ] 2024-08-16 10:25:33,517 [ http-nio-8080-exec-1 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 10:25:33,517 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 10:25:33,518 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:554 - Completed initialization in 1 ms
+[ ERROR] 2024-08-16 10:25:33,636 [ http-nio-8080-exec-1 ] |---| org.thymeleaf.TemplateEngine:1141 - [THYMELEAF][http-nio-8080-exec-1] Exception processing template "buscarOdontologo": Error resolving template [buscarOdontologo], template might not exist or might not be accessible by any of the configured Template Resolvers
+org.thymeleaf.exceptions.TemplateInputException: Error resolving template [buscarOdontologo], template might not exist or might not be accessible by any of the configured Template Resolvers
+	at org.thymeleaf.engine.TemplateManager.resolveTemplate(TemplateManager.java:869)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:607)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077)
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372)
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1431)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1167)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+[ ERROR] 2024-08-16 10:25:33,648 [ http-nio-8080-exec-1 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet]:175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.thymeleaf.exceptions.TemplateInputException: Error resolving template [buscarOdontologo], template might not exist or might not be accessible by any of the configured Template Resolvers] with root cause
+org.thymeleaf.exceptions.TemplateInputException: Error resolving template [buscarOdontologo], template might not exist or might not be accessible by any of the configured Template Resolvers
+	at org.thymeleaf.engine.TemplateManager.resolveTemplate(TemplateManager.java:869)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:607)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077)
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372)
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1431)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1167)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+[ INFO ] 2024-08-16 10:27:30,420 [ main ] |---| com.odontologia.project.ProjectApplication:50 - Starting ProjectApplication using Java 22.0.2 with PID 12036 (D:\David\Digital House TechDev\B5\Backend 1\project\target\classes started by david in D:\David\Digital House TechDev\B5\Backend 1\project)
+[ INFO ] 2024-08-16 10:27:30,422 [ main ] |---| com.odontologia.project.ProjectApplication:654 - No active profile set, falling back to 1 default profile: "default"
+[ INFO ] 2024-08-16 10:27:30,978 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:111 - Tomcat initialized with port 8080 (http)
+[ INFO ] 2024-08-16 10:27:30,986 [ main ] |---| org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+[ INFO ] 2024-08-16 10:27:30,987 [ main ] |---| org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.26]
+[ INFO ] 2024-08-16 10:27:31,020 [ main ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+[ INFO ] 2024-08-16 10:27:31,020 [ main ] |---| org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 568 ms
+[ INFO ] 2024-08-16 10:27:31,257 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:243 - Tomcat started on port 8080 (http) with context path '/'
+[ INFO ] 2024-08-16 10:27:31,262 [ main ] |---| com.odontologia.project.ProjectApplication:56 - Started ProjectApplication in 1.121 seconds (process running for 1.53)
+[ INFO ] 2024-08-16 10:27:31,307 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:26 - AGREGANDO PACIENTE 1313077792 A LA BD
+[ ERROR] 2024-08-16 10:27:31,314 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:44 - ERROR AL AGREGAR PACIENTE A LA BD: Violación de indice de Unicidad ó Clave primaria: "PRIMARY KEY ON PUBLIC.PACIENTES(DNI) ( /* key:1313077792 */ CAST(1313077792 AS BIGINT), 'David', 'Valdiviezo', 'Portoviejo', DATE '2024-08-20')"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.PACIENTES(DNI) ( /* key:1313077792 */ CAST(1313077792 AS BIGINT), 'David', 'Valdiviezo', 'Portoviejo', DATE '2024-08-20')"; SQL statement:
+INSERT INTO PACIENTES (DNI, NOMBRE, APELLIDO, DOMICILIO, FECHA_ALTA) VALUES(?, ?, ?, ?, ?) [23505-224]
+[ INFO ] 2024-08-16 10:27:31,317 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:25 - AGREGANDO ODONTOLOGO 1313077795 A LA BD
+[ ERROR] 2024-08-16 10:27:31,318 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:43 - ERROR AL AGREGAR ODONTOLOGO A LA BD: Violación de indice de Unicidad ó Clave primaria: "PRIMARY KEY ON PUBLIC.ODONTOLOGOS(MATRICULA) ( /* key:1313077795 */ CAST(1313077795 AS BIGINT), 'Andres', 'Intriago')"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.ODONTOLOGOS(MATRICULA) ( /* key:1313077795 */ CAST(1313077795 AS BIGINT), 'Andres', 'Intriago')"; SQL statement:
+INSERT INTO ODONTOLOGOS (MATRICULA, NOMBRE, APELLIDO) VALUES(?, ?, ?) [23505-224]
+[ INFO ] 2024-08-16 10:27:33,537 [ http-nio-8080-exec-1 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 10:27:33,537 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 10:27:33,538 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:554 - Completed initialization in 1 ms
+[ ERROR] 2024-08-16 10:27:33,655 [ http-nio-8080-exec-1 ] |---| org.thymeleaf.TemplateEngine:1141 - [THYMELEAF][http-nio-8080-exec-1] Exception processing template "buscarOdontologo": Error resolving template [buscarOdontologo], template might not exist or might not be accessible by any of the configured Template Resolvers
+org.thymeleaf.exceptions.TemplateInputException: Error resolving template [buscarOdontologo], template might not exist or might not be accessible by any of the configured Template Resolvers
+	at org.thymeleaf.engine.TemplateManager.resolveTemplate(TemplateManager.java:869)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:607)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077)
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372)
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1431)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1167)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+[ ERROR] 2024-08-16 10:27:33,658 [ http-nio-8080-exec-1 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet]:175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.thymeleaf.exceptions.TemplateInputException: Error resolving template [buscarOdontologo], template might not exist or might not be accessible by any of the configured Template Resolvers] with root cause
+org.thymeleaf.exceptions.TemplateInputException: Error resolving template [buscarOdontologo], template might not exist or might not be accessible by any of the configured Template Resolvers
+	at org.thymeleaf.engine.TemplateManager.resolveTemplate(TemplateManager.java:869)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:607)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077)
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372)
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1431)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1167)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+[ INFO ] 2024-08-16 10:27:50,727 [ main ] |---| com.odontologia.project.ProjectApplication:50 - Starting ProjectApplication using Java 22.0.2 with PID 18168 (D:\David\Digital House TechDev\B5\Backend 1\project\target\classes started by david in D:\David\Digital House TechDev\B5\Backend 1\project)
+[ INFO ] 2024-08-16 10:27:50,729 [ main ] |---| com.odontologia.project.ProjectApplication:654 - No active profile set, falling back to 1 default profile: "default"
+[ INFO ] 2024-08-16 10:27:51,305 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:111 - Tomcat initialized with port 8080 (http)
+[ INFO ] 2024-08-16 10:27:51,315 [ main ] |---| org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+[ INFO ] 2024-08-16 10:27:51,315 [ main ] |---| org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.26]
+[ INFO ] 2024-08-16 10:27:51,354 [ main ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+[ INFO ] 2024-08-16 10:27:51,355 [ main ] |---| org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 594 ms
+[ INFO ] 2024-08-16 10:27:51,603 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:243 - Tomcat started on port 8080 (http) with context path '/'
+[ INFO ] 2024-08-16 10:27:51,609 [ main ] |---| com.odontologia.project.ProjectApplication:56 - Started ProjectApplication in 1.183 seconds (process running for 1.629)
+[ INFO ] 2024-08-16 10:27:51,656 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:26 - AGREGANDO PACIENTE 1313077792 A LA BD
+[ ERROR] 2024-08-16 10:27:51,662 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:44 - ERROR AL AGREGAR PACIENTE A LA BD: Violación de indice de Unicidad ó Clave primaria: "PRIMARY KEY ON PUBLIC.PACIENTES(DNI) ( /* key:1313077792 */ CAST(1313077792 AS BIGINT), 'David', 'Valdiviezo', 'Portoviejo', DATE '2024-08-20')"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.PACIENTES(DNI) ( /* key:1313077792 */ CAST(1313077792 AS BIGINT), 'David', 'Valdiviezo', 'Portoviejo', DATE '2024-08-20')"; SQL statement:
+INSERT INTO PACIENTES (DNI, NOMBRE, APELLIDO, DOMICILIO, FECHA_ALTA) VALUES(?, ?, ?, ?, ?) [23505-224]
+[ INFO ] 2024-08-16 10:27:51,665 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:25 - AGREGANDO ODONTOLOGO 1313077795 A LA BD
+[ ERROR] 2024-08-16 10:27:51,667 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:43 - ERROR AL AGREGAR ODONTOLOGO A LA BD: Violación de indice de Unicidad ó Clave primaria: "PRIMARY KEY ON PUBLIC.ODONTOLOGOS(MATRICULA) ( /* key:1313077795 */ CAST(1313077795 AS BIGINT), 'Andres', 'Intriago')"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.ODONTOLOGOS(MATRICULA) ( /* key:1313077795 */ CAST(1313077795 AS BIGINT), 'Andres', 'Intriago')"; SQL statement:
+INSERT INTO ODONTOLOGOS (MATRICULA, NOMBRE, APELLIDO) VALUES(?, ?, ?) [23505-224]
+[ INFO ] 2024-08-16 10:28:05,636 [ main ] |---| com.odontologia.project.ProjectApplication:50 - Starting ProjectApplication using Java 22.0.2 with PID 16468 (D:\David\Digital House TechDev\B5\Backend 1\project\target\classes started by david in D:\David\Digital House TechDev\B5\Backend 1\project)
+[ INFO ] 2024-08-16 10:28:05,638 [ main ] |---| com.odontologia.project.ProjectApplication:654 - No active profile set, falling back to 1 default profile: "default"
+[ INFO ] 2024-08-16 10:28:06,203 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:111 - Tomcat initialized with port 8080 (http)
+[ INFO ] 2024-08-16 10:28:06,212 [ main ] |---| org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+[ INFO ] 2024-08-16 10:28:06,212 [ main ] |---| org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.26]
+[ INFO ] 2024-08-16 10:28:06,247 [ main ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+[ INFO ] 2024-08-16 10:28:06,248 [ main ] |---| org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 579 ms
+[ INFO ] 2024-08-16 10:28:06,488 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:243 - Tomcat started on port 8080 (http) with context path '/'
+[ INFO ] 2024-08-16 10:28:06,493 [ main ] |---| com.odontologia.project.ProjectApplication:56 - Started ProjectApplication in 1.129 seconds (process running for 1.537)
+[ INFO ] 2024-08-16 10:28:06,541 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:26 - AGREGANDO PACIENTE 1313077792 A LA BD
+[ ERROR] 2024-08-16 10:28:06,546 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:44 - ERROR AL AGREGAR PACIENTE A LA BD: Violación de indice de Unicidad ó Clave primaria: "PRIMARY KEY ON PUBLIC.PACIENTES(DNI) ( /* key:1313077792 */ CAST(1313077792 AS BIGINT), 'David', 'Valdiviezo', 'Portoviejo', DATE '2024-08-20')"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.PACIENTES(DNI) ( /* key:1313077792 */ CAST(1313077792 AS BIGINT), 'David', 'Valdiviezo', 'Portoviejo', DATE '2024-08-20')"; SQL statement:
+INSERT INTO PACIENTES (DNI, NOMBRE, APELLIDO, DOMICILIO, FECHA_ALTA) VALUES(?, ?, ?, ?, ?) [23505-224]
+[ INFO ] 2024-08-16 10:28:06,549 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:25 - AGREGANDO ODONTOLOGO 1313077795 A LA BD
+[ ERROR] 2024-08-16 10:28:06,551 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:43 - ERROR AL AGREGAR ODONTOLOGO A LA BD: Violación de indice de Unicidad ó Clave primaria: "PRIMARY KEY ON PUBLIC.ODONTOLOGOS(MATRICULA) ( /* key:1313077795 */ CAST(1313077795 AS BIGINT), 'Andres', 'Intriago')"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.ODONTOLOGOS(MATRICULA) ( /* key:1313077795 */ CAST(1313077795 AS BIGINT), 'Andres', 'Intriago')"; SQL statement:
+INSERT INTO ODONTOLOGOS (MATRICULA, NOMBRE, APELLIDO) VALUES(?, ?, ?) [23505-224]
+[ INFO ] 2024-08-16 10:28:09,014 [ http-nio-8080-exec-1 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 10:28:09,014 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 10:28:09,015 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:554 - Completed initialization in 1 ms
+[ INFO ] 2024-08-16 10:28:23,434 [ main ] |---| com.odontologia.project.ProjectApplication:50 - Starting ProjectApplication using Java 22.0.2 with PID 19488 (D:\David\Digital House TechDev\B5\Backend 1\project\target\classes started by david in D:\David\Digital House TechDev\B5\Backend 1\project)
+[ INFO ] 2024-08-16 10:28:23,436 [ main ] |---| com.odontologia.project.ProjectApplication:654 - No active profile set, falling back to 1 default profile: "default"
+[ INFO ] 2024-08-16 10:28:24,001 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:111 - Tomcat initialized with port 8080 (http)
+[ INFO ] 2024-08-16 10:28:24,010 [ main ] |---| org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+[ INFO ] 2024-08-16 10:28:24,010 [ main ] |---| org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.26]
+[ INFO ] 2024-08-16 10:28:24,043 [ main ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+[ INFO ] 2024-08-16 10:28:24,044 [ main ] |---| org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 577 ms
+[ INFO ] 2024-08-16 10:28:24,283 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:243 - Tomcat started on port 8080 (http) with context path '/'
+[ INFO ] 2024-08-16 10:28:24,288 [ main ] |---| com.odontologia.project.ProjectApplication:56 - Started ProjectApplication in 1.139 seconds (process running for 1.562)
+[ INFO ] 2024-08-16 10:28:24,344 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:26 - AGREGANDO PACIENTE 1313077792 A LA BD
+[ ERROR] 2024-08-16 10:28:24,352 [ main ] |---| com.odontologia.project.dao.impl.PacienteDAO:44 - ERROR AL AGREGAR PACIENTE A LA BD: Violación de indice de Unicidad ó Clave primaria: "PRIMARY KEY ON PUBLIC.PACIENTES(DNI) ( /* key:1313077792 */ CAST(1313077792 AS BIGINT), 'David', 'Valdiviezo', 'Portoviejo', DATE '2024-08-20')"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.PACIENTES(DNI) ( /* key:1313077792 */ CAST(1313077792 AS BIGINT), 'David', 'Valdiviezo', 'Portoviejo', DATE '2024-08-20')"; SQL statement:
+INSERT INTO PACIENTES (DNI, NOMBRE, APELLIDO, DOMICILIO, FECHA_ALTA) VALUES(?, ?, ?, ?, ?) [23505-224]
+[ INFO ] 2024-08-16 10:28:24,355 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:25 - AGREGANDO ODONTOLOGO 1313077795 A LA BD
+[ ERROR] 2024-08-16 10:28:24,357 [ main ] |---| com.odontologia.project.dao.impl.OdontologoDAO:43 - ERROR AL AGREGAR ODONTOLOGO A LA BD: Violación de indice de Unicidad ó Clave primaria: "PRIMARY KEY ON PUBLIC.ODONTOLOGOS(MATRICULA) ( /* key:1313077795 */ CAST(1313077795 AS BIGINT), 'Andres', 'Intriago')"
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.ODONTOLOGOS(MATRICULA) ( /* key:1313077795 */ CAST(1313077795 AS BIGINT), 'Andres', 'Intriago')"; SQL statement:
+INSERT INTO ODONTOLOGOS (MATRICULA, NOMBRE, APELLIDO) VALUES(?, ?, ?) [23505-224]
+[ INFO ] 2024-08-16 10:28:27,590 [ http-nio-8080-exec-1 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 10:28:27,590 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 10:28:27,591 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:554 - Completed initialization in 1 ms
+[ ERROR] 2024-08-16 10:28:32,220 [ http-nio-8080-exec-3 ] |---| com.odontologia.project.dao.impl.OdontologoDAO:71 - ERROR AL BUSCAR ODONTOLOGO: EL ODONTOLOGO CON DNI 1313077792 NO EXISTE EN LA BD.
+[ ERROR] 2024-08-16 10:28:32,223 [ http-nio-8080-exec-3 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet]:175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "com.odontologia.project.models.Odontologo.getNombre()" because "odontologo" is null] with root cause
+java.lang.NullPointerException: Cannot invoke "com.odontologia.project.models.Odontologo.getNombre()" because "odontologo" is null
+	at com.odontologia.project.controllers.OdontologosController.buscarOdontologo(OdontologosController.java:26)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+[ ERROR] 2024-08-16 10:29:53,871 [ http-nio-8080-exec-5 ] |---| org.thymeleaf.TemplateEngine:1141 - [THYMELEAF][http-nio-8080-exec-5] Exception processing template "buscarPaciente": Error resolving template [buscarPaciente], template might not exist or might not be accessible by any of the configured Template Resolvers
+org.thymeleaf.exceptions.TemplateInputException: Error resolving template [buscarPaciente], template might not exist or might not be accessible by any of the configured Template Resolvers
+	at org.thymeleaf.engine.TemplateManager.resolveTemplate(TemplateManager.java:869)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:607)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077)
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372)
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1431)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1167)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+[ ERROR] 2024-08-16 10:29:53,872 [ http-nio-8080-exec-5 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet]:175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.thymeleaf.exceptions.TemplateInputException: Error resolving template [buscarPaciente], template might not exist or might not be accessible by any of the configured Template Resolvers] with root cause
+org.thymeleaf.exceptions.TemplateInputException: Error resolving template [buscarPaciente], template might not exist or might not be accessible by any of the configured Template Resolvers
+	at org.thymeleaf.engine.TemplateManager.resolveTemplate(TemplateManager.java:869)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:607)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1103)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1077)
+	at org.thymeleaf.spring6.view.ThymeleafView.renderFragment(ThymeleafView.java:372)
+	at org.thymeleaf.spring6.view.ThymeleafView.render(ThymeleafView.java:192)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1431)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1167)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
