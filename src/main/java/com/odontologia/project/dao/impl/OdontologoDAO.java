@@ -38,7 +38,7 @@ public class OdontologoDAO implements IDao<Odontologo> {
       try {
         if (conn != null) conn.rollback();
       } catch (Exception e) {
-        e.printStackTrace();
+        logger.error("ERROR AL EJECUTAR EL ROLLBACK: {}", err.getMessage());
       } finally {
         logger.error("ERROR AL AGREGAR ODONTOLOGO A LA BD: {}", err.getMessage());
       }
@@ -46,7 +46,7 @@ public class OdontologoDAO implements IDao<Odontologo> {
       try {
         if (conn != null) DatabaseConnection.endConnection(conn);
       } catch (Exception err) {
-        err.printStackTrace();
+        logger.error("ERROR AL CERRAR LA CONEXIÓN CON LA BD");
       }
     }
 
@@ -73,7 +73,7 @@ public class OdontologoDAO implements IDao<Odontologo> {
       try {
         if (conn != null) DatabaseConnection.endConnection(conn);
       } catch (Exception err) {
-        err.printStackTrace();
+        logger.error("ERROR AL CERRAR LA CONEXIÓN CON LA BD");
       }
     }
 
@@ -95,12 +95,12 @@ public class OdontologoDAO implements IDao<Odontologo> {
       System.out.println("---------------LISTA DE ODONTOLOGOS---------------");
       listaOdontologos.forEach(System.out::println);
     } catch (Exception err) {
-      err.printStackTrace();
+      logger.error("ERROR AL BUSCAR TURNOS: {}", err.getMessage());
     } finally {
       try {
         if (conn != null) DatabaseConnection.endConnection(conn);
       } catch (Exception err) {
-        err.printStackTrace();
+        logger.error("ERROR AL CERRAR LA CONEXIÓN CON LA BD");
       }
     }
     return listaOdontologos;
@@ -135,7 +135,7 @@ public class OdontologoDAO implements IDao<Odontologo> {
       try {
         if (conn != null) conn.rollback();
       } catch (Exception e) {
-        e.printStackTrace();
+        logger.error("ERROR AL EJECUTAR EL ROLLBACK: {}", err.getMessage());
       } finally {
         logger.error("ERROR AL MODIFICAR ODONTOLOGO: {}", err.getMessage());
       }
@@ -143,7 +143,7 @@ public class OdontologoDAO implements IDao<Odontologo> {
       try {
         if (conn != null) DatabaseConnection.endConnection(conn);
       } catch (Exception err) {
-        err.printStackTrace();
+        logger.error("ERROR AL CERRAR LA CONEXIÓN CON LA BD");
       }
     }
 
@@ -173,7 +173,7 @@ public class OdontologoDAO implements IDao<Odontologo> {
       try {
         if (conn != null) conn.rollback();
       } catch (Exception e) {
-        e.printStackTrace();
+        logger.error("ERROR AL EJECUTAR EL ROLLBACK: {}", err.getMessage());
       } finally {
         logger.error("ERROR AL ELIMINAR ODONTOLOGO: {}", err.getMessage());
       }
@@ -181,7 +181,7 @@ public class OdontologoDAO implements IDao<Odontologo> {
       try {
         if (conn != null) DatabaseConnection.endConnection(conn);
       } catch (Exception err) {
-        err.printStackTrace();
+        logger.error("ERROR AL CERRAR LA CONEXIÓN CON LA BD");
       }
     }
 

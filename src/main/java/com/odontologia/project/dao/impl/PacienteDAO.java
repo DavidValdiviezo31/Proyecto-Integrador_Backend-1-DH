@@ -39,7 +39,7 @@ public class PacienteDAO implements IDao<Paciente> {
       try {
         if (conn != null) conn.rollback();
       } catch (Exception e) {
-        e.printStackTrace();
+        logger.error("ERROR AL EJECUTAR EL ROLLBACK: {}", err.getMessage());
       } finally {
         logger.error("ERROR AL AGREGAR PACIENTE A LA BD: {}", err.getMessage());
       }
@@ -47,7 +47,7 @@ public class PacienteDAO implements IDao<Paciente> {
       try {
         if (conn != null) DatabaseConnection.endConnection(conn);
       } catch (Exception err) {
-        err.printStackTrace();
+        logger.error("ERROR AL CERRAR LA CONEXIÓN CON LA BD");
       }
     }
 
@@ -74,7 +74,7 @@ public class PacienteDAO implements IDao<Paciente> {
       try {
         if (conn != null) DatabaseConnection.endConnection(conn);
       } catch (Exception err) {
-        err.printStackTrace();
+        logger.error("ERROR AL CERRAR LA CONEXIÓN CON LA BD");
       }
     }
 
@@ -96,12 +96,12 @@ public class PacienteDAO implements IDao<Paciente> {
       System.out.println("---------------LISTA DE PACIENTES---------------");
       listaPacientes.forEach(System.out::println);
     } catch (Exception err) {
-      err.printStackTrace();
+      logger.error("ERROR AL BUSCAR TURNOS: {}", err.getMessage());
     } finally {
       try {
         if (conn != null) DatabaseConnection.endConnection(conn);
       } catch (Exception err) {
-        err.printStackTrace();
+        logger.error("ERROR AL CERRAR LA CONEXIÓN CON LA BD");
       }
     }
 
@@ -139,7 +139,7 @@ public class PacienteDAO implements IDao<Paciente> {
       try {
         if (conn != null) conn.rollback();
       } catch (Exception e) {
-        e.printStackTrace();
+        logger.error("ERROR AL EJECUTAR EL ROLLBACK: {}", err.getMessage());
       } finally {
         logger.error("ERROR AL MODIFICAR PACIENTE: {}", err.getMessage());
       }
@@ -147,7 +147,7 @@ public class PacienteDAO implements IDao<Paciente> {
       try {
         if (conn != null) DatabaseConnection.endConnection(conn);
       } catch (Exception err) {
-        err.printStackTrace();
+        logger.error("ERROR AL CERRAR LA CONEXIÓN CON LA BD");
       }
     }
 
@@ -178,7 +178,7 @@ public class PacienteDAO implements IDao<Paciente> {
       try {
         if (conn != null) conn.rollback();
       } catch (Exception e) {
-        e.printStackTrace();
+        logger.error("ERROR AL EJECUTAR EL ROLLBACK: {}", err.getMessage());
       } finally {
         logger.error("ERROR AL ELIMINAR PACIENTE: {}", err.getMessage());
       }
@@ -186,7 +186,7 @@ public class PacienteDAO implements IDao<Paciente> {
       try {
         if (conn != null) DatabaseConnection.endConnection(conn);
       } catch (Exception err) {
-        err.printStackTrace();
+        logger.error("ERROR AL CERRAR LA CONEXIÓN CON LA BD");
       }
     }
 

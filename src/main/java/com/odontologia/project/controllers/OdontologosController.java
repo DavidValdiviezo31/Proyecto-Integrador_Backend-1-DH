@@ -32,9 +32,7 @@ public class OdontologosController {
 
   @GetMapping("/buscarTodos")
   public String buscarTodosOdontologos(Model model){
-    List<Odontologo> odontologoList=  odontologoService.buscarTodosOdontologos();
-
-    model.addAttribute("odontologos", odontologoList);
+    model.addAttribute("odontologos", odontologoService.buscarTodosOdontologos());
 
     return "/odontologos/buscarTodos";
   }

@@ -1084,3 +1084,102 @@ java.lang.NullPointerException: Cannot invoke "com.odontologia.project.models.Pa
 [ INFO ] 2024-08-16 13:26:31,051 [ http-nio-8080-exec-1 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
 [ INFO ] 2024-08-16 13:26:31,051 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
 [ INFO ] 2024-08-16 13:26:31,052 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:554 - Completed initialization in 1 ms
+[ INFO ] 2024-08-16 14:13:29,765 [ main ] |---| com.odontologia.project.ProjectApplication:50 - Starting ProjectApplication using Java 22.0.2 with PID 11176 (D:\David\Digital House TechDev\B5\Backend 1\project\target\classes started by david in D:\David\Digital House TechDev\B5\Backend 1\project)
+[ INFO ] 2024-08-16 14:13:29,767 [ main ] |---| com.odontologia.project.ProjectApplication:654 - No active profile set, falling back to 1 default profile: "default"
+[ INFO ] 2024-08-16 14:13:30,522 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:111 - Tomcat initialized with port 8080 (http)
+[ INFO ] 2024-08-16 14:13:30,531 [ main ] |---| org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+[ INFO ] 2024-08-16 14:13:30,532 [ main ] |---| org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.26]
+[ INFO ] 2024-08-16 14:13:30,567 [ main ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+[ INFO ] 2024-08-16 14:13:30,567 [ main ] |---| org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 758 ms
+[ INFO ] 2024-08-16 14:13:30,915 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:243 - Tomcat started on port 8080 (http) with context path '/'
+[ INFO ] 2024-08-16 14:13:30,921 [ main ] |---| com.odontologia.project.ProjectApplication:56 - Started ProjectApplication in 1.522 seconds (process running for 2.066)
+[ INFO ] 2024-08-16 14:13:42,487 [ http-nio-8080-exec-1 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 14:13:42,487 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 14:13:42,488 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:554 - Completed initialization in 1 ms
+[ ERROR] 2024-08-16 14:13:43,916 [ http-nio-8080-exec-1 ] |---| com.odontologia.project.dao.DatabaseConnection:24 - ERROR AL INICIAR LA CONEXIÓN CON LA BD: Conexión rota: "java.net.ConnectException: Connection refused: getsockopt: localhost"
+Connection is broken: "java.net.ConnectException: Connection refused: getsockopt: localhost" [90067-224]
+[ INFO ] 2024-08-16 15:30:56,387 [ main ] |---| com.odontologia.project.ProjectApplication:50 - Starting ProjectApplication using Java 22.0.2 with PID 17472 (D:\David\Digital House TechDev\B5\Backend 1\project\target\classes started by david in D:\David\Digital House TechDev\B5\Backend 1\project)
+[ INFO ] 2024-08-16 15:30:56,388 [ main ] |---| com.odontologia.project.ProjectApplication:654 - No active profile set, falling back to 1 default profile: "default"
+[ INFO ] 2024-08-16 15:30:56,981 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:111 - Tomcat initialized with port 8080 (http)
+[ INFO ] 2024-08-16 15:30:56,989 [ main ] |---| org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+[ INFO ] 2024-08-16 15:30:56,990 [ main ] |---| org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.26]
+[ INFO ] 2024-08-16 15:30:57,024 [ main ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+[ INFO ] 2024-08-16 15:30:57,024 [ main ] |---| org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 604 ms
+[ INFO ] 2024-08-16 15:30:57,276 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:243 - Tomcat started on port 8080 (http) with context path '/'
+[ INFO ] 2024-08-16 15:30:57,282 [ main ] |---| com.odontologia.project.ProjectApplication:56 - Started ProjectApplication in 1.187 seconds (process running for 1.618)
+[ INFO ] 2024-08-16 15:36:07,936 [ main ] |---| com.odontologia.project.ProjectApplication:50 - Starting ProjectApplication using Java 22.0.2 with PID 17204 (D:\David\Digital House TechDev\B5\Backend 1\project\target\classes started by david in D:\David\Digital House TechDev\B5\Backend 1\project)
+[ INFO ] 2024-08-16 15:36:07,938 [ main ] |---| com.odontologia.project.ProjectApplication:654 - No active profile set, falling back to 1 default profile: "default"
+[ INFO ] 2024-08-16 15:36:08,515 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:111 - Tomcat initialized with port 8080 (http)
+[ INFO ] 2024-08-16 15:36:08,524 [ main ] |---| org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+[ INFO ] 2024-08-16 15:36:08,524 [ main ] |---| org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.26]
+[ INFO ] 2024-08-16 15:36:08,558 [ main ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+[ INFO ] 2024-08-16 15:36:08,558 [ main ] |---| org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 589 ms
+[ INFO ] 2024-08-16 15:36:08,805 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:243 - Tomcat started on port 8080 (http) with context path '/'
+[ INFO ] 2024-08-16 15:36:08,810 [ main ] |---| com.odontologia.project.ProjectApplication:56 - Started ProjectApplication in 1.158 seconds (process running for 1.574)
+[ INFO ] 2024-08-16 15:40:04,310 [ http-nio-8080-exec-1 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 15:40:04,311 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 15:40:04,311 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:554 - Completed initialization in 0 ms
+[ INFO ] 2024-08-16 15:40:41,068 [ main ] |---| com.odontologia.project.ProjectApplication:50 - Starting ProjectApplication using Java 22.0.2 with PID 18120 (D:\David\Digital House TechDev\B5\Backend 1\project\target\classes started by david in D:\David\Digital House TechDev\B5\Backend 1\project)
+[ INFO ] 2024-08-16 15:40:41,070 [ main ] |---| com.odontologia.project.ProjectApplication:654 - No active profile set, falling back to 1 default profile: "default"
+[ INFO ] 2024-08-16 15:40:41,716 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:111 - Tomcat initialized with port 8080 (http)
+[ INFO ] 2024-08-16 15:40:41,725 [ main ] |---| org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+[ INFO ] 2024-08-16 15:40:41,725 [ main ] |---| org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.26]
+[ INFO ] 2024-08-16 15:40:41,761 [ main ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+[ INFO ] 2024-08-16 15:40:41,761 [ main ] |---| org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 657 ms
+[ INFO ] 2024-08-16 15:40:42,015 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:243 - Tomcat started on port 8080 (http) with context path '/'
+[ INFO ] 2024-08-16 15:40:42,020 [ main ] |---| com.odontologia.project.ProjectApplication:56 - Started ProjectApplication in 1.284 seconds (process running for 1.816)
+[ INFO ] 2024-08-16 15:40:46,231 [ http-nio-8080-exec-1 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 15:40:46,231 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 15:40:46,232 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:554 - Completed initialization in 1 ms
+[ ERROR] 2024-08-16 15:40:53,336 [ http-nio-8080-exec-3 ] |---| com.odontologia.project.dao.impl.TurnoDAO:79 - ERROR AL BUSCAR TURNO: EL TURNO CON ID 6 NO EXISTE EN LA BD.
+[ ERROR] 2024-08-16 15:40:53,340 [ http-nio-8080-exec-3 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet]:175 - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke "com.odontologia.project.models.Turno.getPaciente()" because "turno" is null] with root cause
+java.lang.NullPointerException: Cannot invoke "com.odontologia.project.models.Turno.getPaciente()" because "turno" is null
+	at com.odontologia.project.controllers.TurnosController.buscarPorId(TurnosController.java:26)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
