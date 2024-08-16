@@ -2,8 +2,8 @@ package com.odontologia.project;
 
 import com.odontologia.project.models.Odontologo;
 import com.odontologia.project.models.Paciente;
-import com.odontologia.project.services.OdontologoService;
-import com.odontologia.project.services.PacienteService;
+import com.odontologia.project.services.impl.OdontologoService;
+import com.odontologia.project.services.impl.PacienteService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
