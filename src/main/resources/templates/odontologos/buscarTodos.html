@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title> Buscar Todos los Odontologos </title>
+    <meta charset="UTF-8">
+    <title> Buscar Todos los Odontologos </title>
 </head>
 <body>
-
-<p>Soy el odontólogo <span th:text="${nombre}"/> <span th:text="${apellido}"/> </p>
-
+    <div th:each="odontologo : ${odontologos}" style="border: black 2px solid; margin-bottom: 2px">
+        <p>Nombre: <span th:text="${odontologo.nombre}"></span></p>
+        <p>Apellido: <span th:text="${odontologo.apellido}"></span></p>
+    </div>
 </body>
 </html>

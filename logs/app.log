@@ -1036,3 +1036,51 @@ java.lang.NullPointerException: Cannot invoke "com.odontologia.project.models.Pa
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1570)
+[ INFO ] 2024-08-16 13:24:27,866 [ main ] |---| com.odontologia.project.ProjectApplication:50 - Starting ProjectApplication using Java 22.0.2 with PID 3804 (D:\David\Digital House TechDev\B5\Backend 1\project\target\classes started by david in D:\David\Digital House TechDev\B5\Backend 1\project)
+[ INFO ] 2024-08-16 13:24:27,868 [ main ] |---| com.odontologia.project.ProjectApplication:654 - No active profile set, falling back to 1 default profile: "default"
+[ INFO ] 2024-08-16 13:24:28,482 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:111 - Tomcat initialized with port 8080 (http)
+[ INFO ] 2024-08-16 13:24:28,495 [ main ] |---| org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+[ INFO ] 2024-08-16 13:24:28,495 [ main ] |---| org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.26]
+[ INFO ] 2024-08-16 13:24:28,532 [ main ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+[ INFO ] 2024-08-16 13:24:28,533 [ main ] |---| org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 635 ms
+[ INFO ] 2024-08-16 13:24:28,805 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:243 - Tomcat started on port 8080 (http) with context path '/'
+[ INFO ] 2024-08-16 13:24:28,811 [ main ] |---| com.odontologia.project.ProjectApplication:56 - Started ProjectApplication in 1.236 seconds (process running for 1.683)
+[ INFO ] 2024-08-16 13:24:47,172 [ http-nio-8080-exec-1 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 13:24:47,172 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 13:24:47,173 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:554 - Completed initialization in 1 ms
+[ INFO ] 2024-08-16 13:25:21,636 [ main ] |---| com.odontologia.project.ProjectApplication:50 - Starting ProjectApplication using Java 22.0.2 with PID 3552 (D:\David\Digital House TechDev\B5\Backend 1\project\target\classes started by david in D:\David\Digital House TechDev\B5\Backend 1\project)
+[ INFO ] 2024-08-16 13:25:21,638 [ main ] |---| com.odontologia.project.ProjectApplication:654 - No active profile set, falling back to 1 default profile: "default"
+[ INFO ] 2024-08-16 13:25:22,197 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:111 - Tomcat initialized with port 8080 (http)
+[ INFO ] 2024-08-16 13:25:22,205 [ main ] |---| org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+[ INFO ] 2024-08-16 13:25:22,205 [ main ] |---| org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.26]
+[ INFO ] 2024-08-16 13:25:22,239 [ main ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+[ INFO ] 2024-08-16 13:25:22,239 [ main ] |---| org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 570 ms
+[ INFO ] 2024-08-16 13:25:22,476 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:243 - Tomcat started on port 8080 (http) with context path '/'
+[ INFO ] 2024-08-16 13:25:22,482 [ main ] |---| com.odontologia.project.ProjectApplication:56 - Started ProjectApplication in 1.125 seconds (process running for 1.527)
+[ INFO ] 2024-08-16 13:25:25,477 [ http-nio-8080-exec-1 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 13:25:25,477 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 13:25:25,478 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:554 - Completed initialization in 1 ms
+[ INFO ] 2024-08-16 13:26:03,185 [ main ] |---| com.odontologia.project.ProjectApplication:50 - Starting ProjectApplication using Java 22.0.2 with PID 21116 (D:\David\Digital House TechDev\B5\Backend 1\project\target\classes started by david in D:\David\Digital House TechDev\B5\Backend 1\project)
+[ INFO ] 2024-08-16 13:26:03,187 [ main ] |---| com.odontologia.project.ProjectApplication:654 - No active profile set, falling back to 1 default profile: "default"
+[ INFO ] 2024-08-16 13:26:03,749 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:111 - Tomcat initialized with port 8080 (http)
+[ INFO ] 2024-08-16 13:26:03,757 [ main ] |---| org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+[ INFO ] 2024-08-16 13:26:03,758 [ main ] |---| org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.26]
+[ INFO ] 2024-08-16 13:26:03,792 [ main ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+[ INFO ] 2024-08-16 13:26:03,792 [ main ] |---| org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 575 ms
+[ INFO ] 2024-08-16 13:26:04,037 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:243 - Tomcat started on port 8080 (http) with context path '/'
+[ INFO ] 2024-08-16 13:26:04,042 [ main ] |---| com.odontologia.project.ProjectApplication:56 - Started ProjectApplication in 1.149 seconds (process running for 1.575)
+[ INFO ] 2024-08-16 13:26:05,534 [ http-nio-8080-exec-1 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 13:26:05,534 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 13:26:05,535 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:554 - Completed initialization in 1 ms
+[ INFO ] 2024-08-16 13:26:28,887 [ main ] |---| com.odontologia.project.ProjectApplication:50 - Starting ProjectApplication using Java 22.0.2 with PID 1844 (D:\David\Digital House TechDev\B5\Backend 1\project\target\classes started by david in D:\David\Digital House TechDev\B5\Backend 1\project)
+[ INFO ] 2024-08-16 13:26:28,888 [ main ] |---| com.odontologia.project.ProjectApplication:654 - No active profile set, falling back to 1 default profile: "default"
+[ INFO ] 2024-08-16 13:26:29,460 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:111 - Tomcat initialized with port 8080 (http)
+[ INFO ] 2024-08-16 13:26:29,468 [ main ] |---| org.apache.catalina.core.StandardService:173 - Starting service [Tomcat]
+[ INFO ] 2024-08-16 13:26:29,469 [ main ] |---| org.apache.catalina.core.StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.26]
+[ INFO ] 2024-08-16 13:26:29,503 [ main ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring embedded WebApplicationContext
+[ INFO ] 2024-08-16 13:26:29,504 [ main ] |---| org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 584 ms
+[ INFO ] 2024-08-16 13:26:29,757 [ main ] |---| org.springframework.boot.web.embedded.tomcat.TomcatWebServer:243 - Tomcat started on port 8080 (http) with context path '/'
+[ INFO ] 2024-08-16 13:26:29,762 [ main ] |---| com.odontologia.project.ProjectApplication:56 - Started ProjectApplication in 1.148 seconds (process running for 1.555)
+[ INFO ] 2024-08-16 13:26:31,051 [ http-nio-8080-exec-1 ] |---| org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:173 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 13:26:31,051 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:532 - Initializing Servlet 'dispatcherServlet'
+[ INFO ] 2024-08-16 13:26:31,052 [ http-nio-8080-exec-1 ] |---| org.springframework.web.servlet.DispatcherServlet:554 - Completed initialization in 1 ms

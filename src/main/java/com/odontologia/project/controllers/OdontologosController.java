@@ -34,7 +34,7 @@ public class OdontologosController {
   public String buscarTodosOdontologos(Model model){
     List<Odontologo> odontologoList=  odontologoService.buscarTodosOdontologos();
 
-    model.addAllAttributes(odontologoList);
+    model.addAttribute("odontologos", odontologoList);
 
     return "/odontologos/buscarTodos";
   }
