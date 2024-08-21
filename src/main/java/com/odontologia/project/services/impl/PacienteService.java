@@ -20,8 +20,8 @@ public class PacienteService implements IPacienteService {
   }
 
   @Override
-  public Paciente buscarPaciente(Long dni) {
-    return daoPaciente.buscarPorId(dni);
+  public Paciente buscarPaciente(Long id) {
+    return daoPaciente.buscarPorId(id);
   }
 
   @Override
@@ -35,7 +35,7 @@ public class PacienteService implements IPacienteService {
   }
 
   @Override
-  public Paciente eliminarPaciente(Long dni) {
-    return daoPaciente.eliminarPorId(dni);
+  public Paciente eliminarPaciente(Long id) {
+    return daoPaciente.eliminarPorId(id);
   }
 }

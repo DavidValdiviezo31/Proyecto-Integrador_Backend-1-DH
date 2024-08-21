@@ -3,6 +3,7 @@ package com.odontologia.project.models;
 import java.time.LocalDate;
 
 public class Paciente {
+  private Long id;
   private Long dni;
   private String nombre;
   private String apellido;
@@ -15,6 +16,23 @@ public class Paciente {
     this.apellido = apellido;
     this.domicilio = domicilio;
     this.fechaAlta = fechaAlta;
+  }
+
+  public Paciente(Long id, Long dni, String nombre, String apellido, String domicilio, LocalDate fechaAlta) {
+    this.id = id;
+    this.dni = dni;
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.domicilio = domicilio;
+    this.fechaAlta = fechaAlta;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
   }
 
   public Long getDni() {

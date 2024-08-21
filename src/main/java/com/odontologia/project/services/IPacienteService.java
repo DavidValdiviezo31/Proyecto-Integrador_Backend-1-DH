@@ -7,11 +7,11 @@ import java.util.List;
 public interface IPacienteService {
   Paciente guardarPaciente(Paciente paciente);
 
-  Paciente buscarPaciente(Long dni);
+  Paciente buscarPaciente(Long id);
 
   List<Paciente> buscarTodosPacientes();
 
   Paciente actualizarPaciente(Paciente paciente);
 
-  Paciente eliminarPaciente(Long dni);
+  Paciente eliminarPaciente(Long id);
 }

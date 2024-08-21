@@ -21,6 +21,7 @@ public class PacienteDAO implements IDao<Paciente> {
     Connection conn = DatabaseConnection.startConnection();
     final String SQL_INSERT = "INSERT INTO PACIENTES " +
         "(DNI, NOMBRE, APELLIDO, DOMICILIO, FECHA_ALTA) VALUES(?, ?, ?, ?, ?)";
+    Paciente pacienteConId = null;
 
     try {
       logger.info("AGREGANDO PACIENTE {} A LA BD", paciente.getDni());
@@ -33,7 +34,10 @@ public class PacienteDAO implements IDao<Paciente> {
 
       conn.setAutoCommit(true);
 
-      if (rs.next()) logger.info("PACIENTE {} AGREGADO EXITOSAMENTE A LA BD.", paciente.getDni());
+      if (rs.next()) {
+        pacienteConId = crearPaciente(rs);
+        logger.info("PACIENTE {} AGREGADO EXITOSAMENTE A LA BD.", pacienteConId.getId());
+      }
 
     } catch (Exception err) {
       try {
@@ -51,20 +55,20 @@ public class PacienteDAO implements IDao<Paciente> {
       }
     }
 
-    return paciente;
+    return pacienteConId;
   }
 
   @Override
-  public Paciente buscarPorId(Long dni) {
+  public Paciente buscarPorId(Long id) {
     Connection conn = DatabaseConnection.startConnection();
-    final String SQL_SELECT_BY_ID = "SELECT * FROM PACIENTES WHERE DNI = ?";
+    final String SQL_SELECT_BY_ID = "SELECT * FROM PACIENTES WHERE ID = ?";
 
     try {
       PreparedStatement pStmt = conn.prepareStatement(SQL_SELECT_BY_ID);
-      pStmt.setLong(1, dni);
+      pStmt.setLong(1, id);
       ResultSet rs = pStmt.executeQuery();
 
-      if (!rs.next()) throw new Exception("EL PACIENTE CON DNI " + dni + " NO EXISTE EN LA BD.");
+      if (!rs.next()) throw new Exception("EL PACIENTE CON ID " + id + " NO EXISTE EN LA BD.");
 
       return crearPaciente(rs);
 
@@ -85,18 +89,19 @@ public class PacienteDAO implements IDao<Paciente> {
   public List<Paciente> buscarTodos() {
     Connection conn = DatabaseConnection.startConnection();
     final String SQL_SELECT_ALL = "SELECT * FROM PACIENTES";
+    Paciente paciente = null;
     List<Paciente> listaPacientes = new ArrayList<>();
 
     try {
       Statement stmt = conn.createStatement();
       ResultSet rs = stmt.executeQuery(SQL_SELECT_ALL);
 
-      while (rs.next()) listaPacientes.add(crearPaciente(rs));
-
-      System.out.println("---------------LISTA DE PACIENTES---------------");
-      listaPacientes.forEach(System.out::println);
+      while (rs.next()) {
+        paciente = crearPaciente(rs);
+        listaPacientes.add(paciente);
+      }
     } catch (Exception err) {
-      logger.error("ERROR AL BUSCAR TURNOS: {}", err.getMessage());
+      logger.error("ERROR AL BUSCAR PACIENTES: {}", err.getMessage());
     } finally {
       try {
         if (conn != null) DatabaseConnection.endConnection(conn);
@@ -117,16 +122,16 @@ public class PacienteDAO implements IDao<Paciente> {
         "APELLIDO = ?, " +
         "DOMICILIO = ?, " +
         "FECHA_ALTA = ? " +
-        "WHERE DNI = ?";
+        "WHERE ID = ?";
 
     try {
-      Paciente pacienteDB = buscarPorId(paciente.getDni());
+      Paciente pacienteDB = buscarPorId(paciente.getId());
 
-      if (Objects.isNull(pacienteDB)) throw new Exception("EL PACIENTE " + paciente.getDni() + " NO EXISTE EN LA BD.");
+      if (Objects.isNull(pacienteDB)) throw new Exception("EL PACIENTE " + paciente.getId() + " NO EXISTE EN LA BD.");
 
       conn.setAutoCommit(false);
       PreparedStatement pStmt = crearPreparedStatement(conn, SQL_UPDATE, paciente);
-      pStmt.setLong(6, paciente.getDni());
+      pStmt.setLong(6, paciente.getId());
 
       pStmt.executeUpdate();
       ResultSet rs = pStmt.getGeneratedKeys();
@@ -155,18 +160,18 @@ public class PacienteDAO implements IDao<Paciente> {
   }
 
   @Override
-  public Paciente eliminarPorId(Long dni) {
+  public Paciente eliminarPorId(Long id) {
     Connection conn = DatabaseConnection.startConnection();
-    final String SQL_DELETE_BY_ID = "DELETE FROM PACIENTES WHERE DNI = ?";
+    final String SQL_DELETE_BY_ID = "DELETE FROM PACIENTES WHERE ID = ?";
 
     try {
-      Paciente paciente = buscarPorId(dni);
-      if (Objects.isNull(paciente)) throw new Exception("EL PACIENTE " + dni + " NO EXISTE EN LA BD.");
+      Paciente paciente = buscarPorId(id);
+      if (Objects.isNull(paciente)) throw new Exception("EL PACIENTE " + id + " NO EXISTE EN LA BD.");
 
       conn.setAutoCommit(false);
       PreparedStatement pStmt = conn.prepareStatement(SQL_DELETE_BY_ID);
 
-      pStmt.setLong(1, dni);
+      pStmt.setLong(1, id);
 
       pStmt.executeUpdate();
       conn.setAutoCommit(true);
@@ -194,13 +199,14 @@ public class PacienteDAO implements IDao<Paciente> {
   }
 
   private static Paciente crearPaciente(ResultSet rs) throws SQLException {
+    Long idDB = rs.getLong("ID");
     Long dniDB = rs.getLong("DNI");
     String nombreDB = rs.getString("NOMBRE");
     String apellidoDB = rs.getString("APELLIDO");
     String domicilioDB = rs.getString("DOMICILIO");
     LocalDate fechaAltaDB = rs.getDate("FECHA_ALTA").toLocalDate();
 
-    return new Paciente(dniDB, nombreDB, apellidoDB, domicilioDB, fechaAltaDB);
+    return new Paciente(idDB, dniDB, nombreDB, apellidoDB, domicilioDB, fechaAltaDB);
   }
 
   private static PreparedStatement crearPreparedStatement(Connection conn, String SQL, Paciente paciente) throws SQLException {
