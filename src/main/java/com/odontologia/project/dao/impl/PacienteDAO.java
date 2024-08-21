@@ -2,7 +2,9 @@ package com.odontologia.project.dao.impl;
 
 import com.odontologia.project.dao.DatabaseConnection;
 import com.odontologia.project.dao.IDao;
+import com.odontologia.project.models.Domicilio;
 import com.odontologia.project.models.Paciente;
+import com.odontologia.project.services.impl.DomicilioService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,11 +22,12 @@ public class PacienteDAO implements IDao<Paciente> {
   public Paciente guardar(Paciente paciente) {
     Connection conn = DatabaseConnection.startConnection();
     final String SQL_INSERT = "INSERT INTO PACIENTES " +
-        "(DNI, NOMBRE, APELLIDO, DOMICILIO, FECHA_ALTA) VALUES(?, ?, ?, ?, ?)";
-    Paciente pacienteConId = null;
+        "(DNI, NOMBRE, APELLIDO, DOMICILIO_ID, FECHA_ALTA) VALUES(?, ?, ?, ?, ?)";
 
     try {
-      logger.info("AGREGANDO PACIENTE {} A LA BD", paciente.getDni());
+      DomicilioService domicilioService = new DomicilioService();
+      Domicilio domicilio = domicilioService.guardarDomicilio(paciente.getDomicilio());
+      paciente.setDomicilio(domicilio);
 
       conn.setAutoCommit(false);
       PreparedStatement pStmt = crearPreparedStatement(conn, SQL_INSERT, paciente);
@@ -35,8 +38,8 @@ public class PacienteDAO implements IDao<Paciente> {
       conn.setAutoCommit(true);
 
       if (rs.next()) {
-        pacienteConId = crearPaciente(rs);
-        logger.info("PACIENTE {} AGREGADO EXITOSAMENTE A LA BD.", pacienteConId.getId());
+        paciente.setId(rs.getLong("ID"));
+        logger.info("PACIENTE {} AGREGADO EXITOSAMENTE A LA BD.", paciente.getId());
       }
 
     } catch (Exception err) {
@@ -55,7 +58,7 @@ public class PacienteDAO implements IDao<Paciente> {
       }
     }
 
-    return pacienteConId;
+    return paciente;
   }
 
   @Override
@@ -120,7 +123,7 @@ public class PacienteDAO implements IDao<Paciente> {
         "DNI = ?, " +
         "NOMBRE = ?, " +
         "APELLIDO = ?, " +
-        "DOMICILIO = ?, " +
+        "DOMICILIO_ID = ?, " +
         "FECHA_ALTA = ? " +
         "WHERE ID = ?";
 
@@ -130,6 +133,8 @@ public class PacienteDAO implements IDao<Paciente> {
       if (Objects.isNull(pacienteDB)) throw new Exception("EL PACIENTE " + paciente.getId() + " NO EXISTE EN LA BD.");
 
       conn.setAutoCommit(false);
+      paciente.setDomicilio(pacienteDB.getDomicilio());
+
       PreparedStatement pStmt = crearPreparedStatement(conn, SQL_UPDATE, paciente);
       pStmt.setLong(6, paciente.getId());
 
@@ -174,6 +179,8 @@ public class PacienteDAO implements IDao<Paciente> {
       pStmt.setLong(1, id);
 
       pStmt.executeUpdate();
+      DomicilioService domicilioService = new DomicilioService();
+      domicilioService.eliminarDomicilio(paciente.getDomicilio().getId());
       conn.setAutoCommit(true);
 
       logger.info("PACIENTE {} ELIMINADO EXITOSAMENTE.", paciente.getDni());
@@ -199,11 +206,12 @@ public class PacienteDAO implements IDao<Paciente> {
   }
 
   private static Paciente crearPaciente(ResultSet rs) throws SQLException {
+    DomicilioService domicilioService = new DomicilioService();
     Long idDB = rs.getLong("ID");
     Long dniDB = rs.getLong("DNI");
     String nombreDB = rs.getString("NOMBRE");
     String apellidoDB = rs.getString("APELLIDO");
-    String domicilioDB = rs.getString("DOMICILIO");
+    Domicilio domicilioDB = domicilioService.buscarDomicilio(rs.getLong("DOMICILIO_ID"));
     LocalDate fechaAltaDB = rs.getDate("FECHA_ALTA").toLocalDate();
 
     return new Paciente(idDB, dniDB, nombreDB, apellidoDB, domicilioDB, fechaAltaDB);
@@ -212,10 +220,14 @@ public class PacienteDAO implements IDao<Paciente> {
   private static PreparedStatement crearPreparedStatement(Connection conn, String SQL, Paciente paciente) throws SQLException {
     PreparedStatement pStmt = conn.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
 
+    if (paciente.getDomicilio().getId() == null) {
+      DomicilioService domicilioService = new DomicilioService();
+    }
+
     pStmt.setLong(1, paciente.getDni());
     pStmt.setString(2, paciente.getNombre());
     pStmt.setString(3, paciente.getApellido());
-    pStmt.setString(4, paciente.getDomicilio());
+    pStmt.setLong(4, paciente.getDomicilio().getId());
     pStmt.setDate(5, Date.valueOf(paciente.getFechaAlta()));
 
     return pStmt;

@@ -7,10 +7,12 @@ public class Paciente {
   private Long dni;
   private String nombre;
   private String apellido;
-  private String domicilio;
+  private Domicilio domicilio;
   private LocalDate fechaAlta;
 
-  public Paciente(Long dni, String nombre, String apellido, String domicilio, LocalDate fechaAlta) {
+  public Paciente() {}
+
+  public Paciente(Long dni, String nombre, String apellido, Domicilio domicilio, LocalDate fechaAlta) {
     this.dni = dni;
     this.nombre = nombre;
     this.apellido = apellido;
@@ -18,7 +20,7 @@ public class Paciente {
     this.fechaAlta = fechaAlta;
   }
 
-  public Paciente(Long id, Long dni, String nombre, String apellido, String domicilio, LocalDate fechaAlta) {
+  public Paciente(Long id, Long dni, String nombre, String apellido, Domicilio domicilio, LocalDate fechaAlta) {
     this.id = id;
     this.dni = dni;
     this.nombre = nombre;
@@ -59,11 +61,11 @@ public class Paciente {
     this.apellido = apellido;
   }
 
-  public String getDomicilio() {
+  public Domicilio getDomicilio() {
     return domicilio;
   }
 
-  public void setDomicilio(String domicilio) {
+  public void setDomicilio(Domicilio domicilio) {
     this.domicilio = domicilio;
   }
 
