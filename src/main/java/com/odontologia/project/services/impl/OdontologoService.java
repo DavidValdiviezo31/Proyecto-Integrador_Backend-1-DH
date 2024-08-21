@@ -20,8 +20,8 @@ public class OdontologoService implements IOdontologoService {
   }
 
   @Override
-  public Odontologo buscarOdontologo(Long matricula) {
-    return daoOdontologo.buscarPorId(matricula);
+  public Odontologo buscarOdontologo(Long id) {
+    return daoOdontologo.buscarPorId(id);
   }
 
   @Override
@@ -34,7 +34,7 @@ public class OdontologoService implements IOdontologoService {
     return daoOdontologo.actualizar(odontologo);
   }
 
-  public Odontologo eliminarOdontologo(Long matricula) {
-    return daoOdontologo.eliminarPorId(matricula);
+  public Odontologo eliminarOdontologo(Long id) {
+    return daoOdontologo.eliminarPorId(id);
   }
 }
