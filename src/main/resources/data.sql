@@ -1,15 +1,24 @@
-INSERT INTO PACIENTES (DNI, NOMBRE, APELLIDO, DOMICILIO, FECHA_ALTA)
-VALUES (1313077791, 'Jenny', 'Munera', 'Bogota', '2024-05-10'),
-(1313077792, 'Andres', 'Intrago', 'Portoviejo', '2024-08-10')
-(1313077793, 'Carlos', 'Perez', 'Lima', '2025-06-19'),
-(1313077794, 'Alejandro', 'Sosa', 'Mexico', '2024-07-10');
-
 INSERT INTO ODONTOLOGOS (MATRICULA, NOMBRE, APELLIDO)
 VALUES (1313077791,  'Jenny', 'Munera'),
 (1313077792, 'Carlos', 'Perez'),
 (1313077793, 'Alejandro', 'Sosa'),
 (1313077794, 'Brenda', 'Zarco'),
 (1313077795, 'David', 'Valdiviezo');
+
+
+INSERT INTO PACIENTES (DNI, NOMBRE, APELLIDO, DOMICILIO_ID, FECHA_ALTA)
+VALUES (1313077791, 'Jenny', 'Munera', 1, '2024-05-10'),
+(1313077792, 'Andres', 'Intriago', 2, '2024-08-10'),
+(1313077793, 'Carlos', 'Perez', 3, '2025-06-19'),
+(1313077794, 'Alejandro', 'Sosa', 4, '2024-07-10');
+
+
+INSERT INTO DOMICILIOS (CALLE, NUMERO, LOCALIDAD, PROVINCIA)
+VALUES ('Horacio Hidrovo', 25, 'Portoviejo', 'Manabi'),
+('Reales Tamarindos', 25, 'Machala', 'Los Rios'),
+('Avenida Uruguay', 25, 'Cuenca', 'Azuay'),
+('Calle Mexico', 25, 'Quito', 'Pichincha');
+
 
 INSERT INTO TURNOS (FECHA, HORA, DNI_PACIENTE, MATRICULA_ODONTOLOGO)
 VALUES ('2025-06-19', '15:30:00', 1313077791, 1313077792),

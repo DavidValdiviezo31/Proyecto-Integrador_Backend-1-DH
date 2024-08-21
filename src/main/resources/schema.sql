@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS `ODONTOLOGOS`;
 DROP TABLE IF EXISTS `PACIENTES`;
+DROP TABLE IF EXISTS `DOMICILIOS`;
 DROP TABLE IF EXISTS `TURNOS`;
 DROP TABLE IF EXISTS `USUARIOS`;
 
@@ -16,9 +17,18 @@ CREATE TABLE IF NOT EXISTS `PACIENTES` (
 	`dni` bigint NOT NULL UNIQUE,
 	`nombre` varchar(100) NOT NULL,
 	`apellido` varchar(100) NOT NULL,
-	`domicilio` varchar(200) NOT NULL,
+	`domicilio_id` bigint NOT NULL,
 	`fecha_alta` date NOT NULL,
 	PRIMARY KEY (`id`)
+);
+
+CREATE TABLE IF NOT EXISTS `DOMICILIOS` (
+    `id` INT AUTO_INCREMENT NOT NULL UNIQUE,
+    `calle` varchar(100) NOT NULL UNIQUE,
+    `numero` INT NOT NULL,
+    `localidad` varchar(100) NOT NULL,
+    `provincia` varchar(200) NOT NULL,
+    PRIMARY KEY (`id`)
 );
 
 CREATE TABLE IF NOT EXISTS `TURNOS` (
