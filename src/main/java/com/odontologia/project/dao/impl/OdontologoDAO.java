@@ -20,11 +20,8 @@ public class OdontologoDAO implements IDao<Odontologo> {
     Connection conn = DatabaseConnection.startConnection();
     final String SQL_INSERT = "INSERT INTO ODONTOLOGOS " +
         "(MATRICULA, NOMBRE, APELLIDO) VALUES(?, ?, ?)";
-    Odontologo odontologoConId = null;
 
     try {
-      logger.info("AGREGANDO ODONTOLOGO {} A LA BD", odontologo.getMatricula());
-
       conn.setAutoCommit(false);
       PreparedStatement pStmt = crearPreparedStatement(conn, SQL_INSERT, odontologo);
 
@@ -34,8 +31,8 @@ public class OdontologoDAO implements IDao<Odontologo> {
       conn.setAutoCommit(true);
 
       if (rs.next()) {
-        odontologoConId = crearOdontologo(rs);
-        logger.info("ODONTOLOGO {} AGREGADO EXITOSAMENTE A LA BD.", odontologoConId.getId());
+        odontologo.setId(rs.getLong("ID"));
+        logger.info("ODONTOLOGO {} AGREGADO EXITOSAMENTE A LA BD.", odontologo.getId());
       }
 
     } catch (Exception err) {
@@ -54,7 +51,7 @@ public class OdontologoDAO implements IDao<Odontologo> {
       }
     }
 
-    return odontologoConId;
+    return odontologo;
   }
 
   @Override
