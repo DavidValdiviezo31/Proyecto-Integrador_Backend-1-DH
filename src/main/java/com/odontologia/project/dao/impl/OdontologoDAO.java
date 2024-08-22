@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class OdontologoDAO implements IDao<Odontologo> {
 
@@ -34,7 +33,6 @@ public class OdontologoDAO implements IDao<Odontologo> {
         odontologo.setId(rs.getLong("ID"));
         logger.info("ODONTOLOGO {} AGREGADO EXITOSAMENTE A LA BD.", odontologo.getId());
       }
-
     } catch (Exception err) {
       try {
         if (conn != null) conn.rollback();
@@ -67,7 +65,6 @@ public class OdontologoDAO implements IDao<Odontologo> {
       if (!rs.next()) throw new Exception("EL ODONTOLOGO CON ID " + id + " NO EXISTE EN LA BD.");
 
       return crearOdontologo(rs);
-
     } catch (Exception err) {
       logger.error("ERROR AL BUSCAR ODONTOLOGO: {}", err.getMessage());
     } finally {
@@ -85,17 +82,13 @@ public class OdontologoDAO implements IDao<Odontologo> {
   public List<Odontologo> buscarTodos() {
     Connection conn = DatabaseConnection.startConnection();
     final String SQL_SELECT_ALL = "SELECT * FROM ODONTOLOGOS";
-    Odontologo odontologo = null;
     List<Odontologo> listaOdontologos = new ArrayList<>();
 
     try {
       Statement stmt = conn.createStatement();
       ResultSet rs = stmt.executeQuery(SQL_SELECT_ALL);
 
-      while (rs.next()) {
-        odontologo = crearOdontologo(rs);
-        listaOdontologos.add(odontologo);
-      }
+      while (rs.next()) listaOdontologos.add(crearOdontologo(rs));
     } catch (Exception err) {
       logger.error("ERROR AL BUSCAR ODONTOLOGOS: {}", err.getMessage());
     } finally {
@@ -118,21 +111,18 @@ public class OdontologoDAO implements IDao<Odontologo> {
         "WHERE ID = ?";
 
     try {
-      Odontologo odontologoDB = buscarPorId(odontologo.getId());
+      buscarPorId(odontologo.getId());
 
-      if (odontologoDB != null) {
+      conn.setAutoCommit(false);
+      PreparedStatement pStmt = crearPreparedStatement(conn, SQL_UPDATE, odontologo);
+      pStmt.setLong(4, odontologo.getId());
 
-        conn.setAutoCommit(false);
-        PreparedStatement pStmt = crearPreparedStatement(conn, SQL_UPDATE, odontologo);
-        pStmt.setLong(4, odontologo.getId());
+      pStmt.executeUpdate();
+      ResultSet rs = pStmt.getGeneratedKeys();
 
-        pStmt.executeUpdate();
-        ResultSet rs = pStmt.getGeneratedKeys();
+      conn.setAutoCommit(true);
 
-        conn.setAutoCommit(true);
-
-        if (rs.next()) logger.info("ODONTOLOGO {} MODIFICADO EXITOSAMENTE.", odontologo.getMatricula());
-      }
+      if (rs.next()) logger.info("ODONTOLOGO {} MODIFICADO EXITOSAMENTE.", odontologo.getMatricula());
     } catch (Exception err) {
       try {
         if (conn != null) conn.rollback();
@@ -158,8 +148,7 @@ public class OdontologoDAO implements IDao<Odontologo> {
     final String SQL_DELETE_BY_ID = "DELETE FROM ODONTOLOGOS WHERE ID = ?";
 
     try {
-      Odontologo odontologo = buscarPorId(id);
-      if (Objects.isNull(odontologo)) throw new Exception("EL ODONTOLOGO " + id + " NO EXISTE EN LA BD.");
+      Odontologo odontologoDB = buscarPorId(id);
 
       conn.setAutoCommit(false);
       PreparedStatement pStmt = conn.prepareStatement(SQL_DELETE_BY_ID);
@@ -169,9 +158,9 @@ public class OdontologoDAO implements IDao<Odontologo> {
       pStmt.executeUpdate();
       conn.setAutoCommit(true);
 
-      logger.info("ODONTOLOGO {} ELIMINADO EXITOSAMENTE.", odontologo.getMatricula());
+      logger.info("ODONTOLOGO {} ELIMINADO EXITOSAMENTE.", odontologoDB.getMatricula());
 
-      return odontologo;
+      return odontologoDB;
     } catch (Exception err) {
       try {
         if (conn != null) conn.rollback();

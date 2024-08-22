@@ -17,7 +17,7 @@ public class OdontologosController {
     this.odontologoService = new OdontologoService();
   }
 
-  @PostMapping("/")
+  @PostMapping
   public ResponseEntity<Odontologo> crearOdontologo(@RequestBody Odontologo odontologo) {
     return ResponseEntity.ok(odontologoService.guardarOdontologo(odontologo));
   }
@@ -27,7 +27,7 @@ public class OdontologosController {
     return ResponseEntity.ok(odontologoService.buscarOdontologo(id));
   }
 
-  @GetMapping("/")
+  @GetMapping
   public ResponseEntity<List<Odontologo>> buscarTodosOdontologos(){
     return ResponseEntity.ok(odontologoService.buscarTodosOdontologos());
   }

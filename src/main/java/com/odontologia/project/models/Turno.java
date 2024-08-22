@@ -66,15 +66,4 @@ public class Turno {
   public void setOdontologo(Odontologo odontologo) {
     this.odontologo = odontologo;
   }
-
-  @Override
-  public String toString() {
-    return "Turno{" +
-        "id=" + id +
-        ", fecha=" + fecha +
-        ", hora=" + hora +
-        ", paciente=" + paciente +
-        ", odontologo=" + odontologo +
-        '}';
-  }
 }

@@ -12,7 +12,6 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class PacienteDAO implements IDao<Paciente> {
 
@@ -41,7 +40,6 @@ public class PacienteDAO implements IDao<Paciente> {
         paciente.setId(rs.getLong("ID"));
         logger.info("PACIENTE {} AGREGADO EXITOSAMENTE A LA BD.", paciente.getId());
       }
-
     } catch (Exception err) {
       try {
         if (conn != null) conn.rollback();
@@ -74,7 +72,6 @@ public class PacienteDAO implements IDao<Paciente> {
       if (!rs.next()) throw new Exception("EL PACIENTE CON ID " + id + " NO EXISTE EN LA BD.");
 
       return crearPaciente(rs);
-
     } catch (Exception err) {
       logger.error("ERROR AL BUSCAR PACIENTE: {}", err.getMessage());
     } finally {
@@ -92,17 +89,13 @@ public class PacienteDAO implements IDao<Paciente> {
   public List<Paciente> buscarTodos() {
     Connection conn = DatabaseConnection.startConnection();
     final String SQL_SELECT_ALL = "SELECT * FROM PACIENTES";
-    Paciente paciente = null;
     List<Paciente> listaPacientes = new ArrayList<>();
 
     try {
       Statement stmt = conn.createStatement();
       ResultSet rs = stmt.executeQuery(SQL_SELECT_ALL);
 
-      while (rs.next()) {
-        paciente = crearPaciente(rs);
-        listaPacientes.add(paciente);
-      }
+      while (rs.next()) listaPacientes.add(crearPaciente(rs));
     } catch (Exception err) {
       logger.error("ERROR AL BUSCAR PACIENTES: {}", err.getMessage());
     } finally {
@@ -130,8 +123,6 @@ public class PacienteDAO implements IDao<Paciente> {
     try {
       Paciente pacienteDB = buscarPorId(paciente.getId());
 
-      if (Objects.isNull(pacienteDB)) throw new Exception("EL PACIENTE " + paciente.getId() + " NO EXISTE EN LA BD.");
-
       conn.setAutoCommit(false);
       paciente.setDomicilio(pacienteDB.getDomicilio());
 
@@ -144,7 +135,6 @@ public class PacienteDAO implements IDao<Paciente> {
       conn.setAutoCommit(true);
 
       if (rs.next()) logger.info("PACIENTE {} MODIFICADO EXITOSAMENTE.", paciente.getDni());
-
     } catch (Exception err) {
       try {
         if (conn != null) conn.rollback();
@@ -170,8 +160,7 @@ public class PacienteDAO implements IDao<Paciente> {
     final String SQL_DELETE_BY_ID = "DELETE FROM PACIENTES WHERE ID = ?";
 
     try {
-      Paciente paciente = buscarPorId(id);
-      if (Objects.isNull(paciente)) throw new Exception("EL PACIENTE " + id + " NO EXISTE EN LA BD.");
+      Paciente pacienteDB = buscarPorId(id);
 
       conn.setAutoCommit(false);
       PreparedStatement pStmt = conn.prepareStatement(SQL_DELETE_BY_ID);
@@ -180,12 +169,12 @@ public class PacienteDAO implements IDao<Paciente> {
 
       pStmt.executeUpdate();
       DomicilioService domicilioService = new DomicilioService();
-      domicilioService.eliminarDomicilio(paciente.getDomicilio().getId());
+      domicilioService.eliminarDomicilio(pacienteDB.getDomicilio().getId());
       conn.setAutoCommit(true);
 
-      logger.info("PACIENTE {} ELIMINADO EXITOSAMENTE.", paciente.getDni());
+      logger.info("PACIENTE {} ELIMINADO EXITOSAMENTE.", pacienteDB.getDni());
 
-      return paciente;
+      return pacienteDB;
     } catch (Exception err) {
       try {
         if (conn != null) conn.rollback();
@@ -219,10 +208,6 @@ public class PacienteDAO implements IDao<Paciente> {
 
   private static PreparedStatement crearPreparedStatement(Connection conn, String SQL, Paciente paciente) throws SQLException {
     PreparedStatement pStmt = conn.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-
-    if (paciente.getDomicilio().getId() == null) {
-      DomicilioService domicilioService = new DomicilioService();
-    }
 
     pStmt.setLong(1, paciente.getDni());
     pStmt.setString(2, paciente.getNombre());

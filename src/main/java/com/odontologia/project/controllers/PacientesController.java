@@ -17,7 +17,7 @@ public class PacientesController {
     this.pacienteService = new PacienteService();
   }
 
-  @PostMapping("/")
+  @PostMapping
   public ResponseEntity<Paciente> crearPaciente(@RequestBody Paciente paciente) {
     System.out.println("PACIENTE CONTROLLER - POST");
     return ResponseEntity.ok(pacienteService.guardarPaciente(paciente));
@@ -28,7 +28,7 @@ public class PacientesController {
     return ResponseEntity.ok(pacienteService.buscarPaciente(id));
   }
 
-  @GetMapping("/")
+  @GetMapping
   public ResponseEntity<List<Paciente>> buscarTodosPaciente(){
     return ResponseEntity.ok(pacienteService.buscarTodosPacientes());
   }

@@ -76,15 +76,4 @@ public class Paciente {
   public void setFechaAlta(LocalDate fechaAlta) {
     this.fechaAlta = fechaAlta;
   }
-
-  @Override
-  public String toString() {
-    return "Paciente{" +
-        "dni=" + dni +
-        ", nombre='" + nombre + '\'' +
-        ", apellido='" + apellido + '\'' +
-        ", domicilio='" + domicilio + '\'' +
-        ", fechaAlta=" + fechaAlta +
-        '}';
-  }
 }

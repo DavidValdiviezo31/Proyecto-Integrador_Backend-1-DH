@@ -29,7 +29,7 @@ public class TurnosController {
     this.odontologoService = new OdontologoService();
   }
 
-  @PostMapping("/")
+  @PostMapping
   public ResponseEntity<Turno> crearTurno(@RequestBody Turno turno, @RequestParam("paciente") Long pacienteId, @RequestParam("odontologo") Long odontologoId) {
     Paciente paciente = pacienteService.buscarPaciente(pacienteId);
     Odontologo odontologo = odontologoService.buscarOdontologo(odontologoId);
@@ -47,7 +47,7 @@ public class TurnosController {
     return ResponseEntity.ok(turnoService.buscarTurno(id));
   }
 
-  @GetMapping("/")
+  @GetMapping
   public ResponseEntity<List<Turno>> buscarTodosTurnos() {
     return ResponseEntity.ok(turnoService.buscarTodosTurnos());
   }

@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class DomicilioDAO implements IDao<Domicilio> {
 
@@ -34,7 +33,6 @@ public class DomicilioDAO implements IDao<Domicilio> {
         domicilio.setId(rs.getLong("ID"));
         logger.info("DOMICILIO {} AGREGADO EXITOSAMENTE A LA BD.", domicilio.getId());
       }
-
     } catch (Exception err) {
       try {
         if (conn != null) conn.rollback();
@@ -67,7 +65,6 @@ public class DomicilioDAO implements IDao<Domicilio> {
       if (!rs.next()) throw new Exception("EL DOMICILIO CON ID " + id + " NO EXISTE EN LA BD.");
 
       return crearDomicilio(rs);
-
     } catch (Exception err) {
       logger.error("ERROR AL BUSCAR DOMICILIO: {}", err.getMessage());
     } finally {
@@ -85,17 +82,13 @@ public class DomicilioDAO implements IDao<Domicilio> {
   public List<Domicilio> buscarTodos() {
     Connection conn = DatabaseConnection.startConnection();
     final String SQL_SELECT_ALL = "SELECT * FROM DOMICILIOS";
-    Domicilio domicilio = null;
     List<Domicilio> listaDomicilios = new ArrayList<>();
 
     try {
       Statement stmt = conn.createStatement();
       ResultSet rs = stmt.executeQuery(SQL_SELECT_ALL);
 
-      while (rs.next()) {
-        domicilio = crearDomicilio(rs);
-        listaDomicilios.add(domicilio);
-      }
+      while (rs.next()) listaDomicilios.add(crearDomicilio(rs));
     } catch (Exception err) {
       logger.error("ERROR AL BUSCAR DOMICILIOS: {}", err.getMessage());
     } finally {
@@ -120,9 +113,7 @@ public class DomicilioDAO implements IDao<Domicilio> {
         "WHERE ID = ?";
 
     try {
-      Domicilio domicilioDB = buscarPorId(domicilio.getId());
-
-      if (Objects.isNull(domicilioDB)) throw new Exception("EL DOMICILIO " + domicilio.getId() + " NO EXISTE EN LA BD.");
+      buscarPorId(domicilio.getId());
 
       conn.setAutoCommit(false);
       PreparedStatement pStmt = crearPreparedStatement(conn, SQL_UPDATE, domicilio);
@@ -134,7 +125,6 @@ public class DomicilioDAO implements IDao<Domicilio> {
       conn.setAutoCommit(true);
 
       if (rs.next()) logger.info("DOMICILIO {} MODIFICADO EXITOSAMENTE.", domicilio.getId());
-
     } catch (Exception err) {
       try {
         if (conn != null) conn.rollback();
@@ -160,8 +150,7 @@ public class DomicilioDAO implements IDao<Domicilio> {
     final String SQL_DELETE_BY_ID = "DELETE FROM DOMICILIOS WHERE ID = ?";
 
     try {
-      Domicilio domicilio = buscarPorId(id);
-      if (Objects.isNull(domicilio)) throw new Exception("EL DOMICILIO " + id + " NO EXISTE EN LA BD.");
+      Domicilio domicilioDB = buscarPorId(id);
 
       conn.setAutoCommit(false);
       PreparedStatement pStmt = conn.prepareStatement(SQL_DELETE_BY_ID);
@@ -171,9 +160,9 @@ public class DomicilioDAO implements IDao<Domicilio> {
       pStmt.executeUpdate();
       conn.setAutoCommit(true);
 
-      logger.info("DOMICILIO {} ELIMINADO EXITOSAMENTE.", domicilio.getId());
+      logger.info("DOMICILIO {} ELIMINADO EXITOSAMENTE.", domicilioDB.getId());
 
-      return domicilio;
+      return domicilioDB;
     } catch (Exception err) {
       try {
         if (conn != null) conn.rollback();

@@ -15,7 +15,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class TurnoDAO implements IDao<Turno> {
 
@@ -72,7 +71,6 @@ public class TurnoDAO implements IDao<Turno> {
       if (!rs.next()) throw new Exception("EL TURNO CON ID " + id + " NO EXISTE EN LA BD.");
 
       return crearTurno(rs);
-
     } catch (Exception err) {
       logger.error("ERROR AL BUSCAR TURNO: {}", err.getMessage());
     } finally {
@@ -96,9 +94,6 @@ public class TurnoDAO implements IDao<Turno> {
       ResultSet rs = stmt.executeQuery(SQL_SELECT_ALL);
 
       while (rs.next()) listaTurnos.add(crearTurno(rs));
-
-      System.out.println("---------------LISTA DE TURNOS---------------");
-      listaTurnos.forEach(System.out::println);
     } catch (Exception err) {
       logger.error("ERROR AL BUSCAR TURNOS: {}", err.getMessage());
     } finally {
@@ -123,9 +118,7 @@ public class TurnoDAO implements IDao<Turno> {
         "WHERE ID = ?";
 
     try {
-      Turno turnoDB = buscarPorId(turno.getId());
-
-      if (Objects.isNull(turnoDB)) throw new Exception("EL TURNO " + turno.getId() + " NO EXISTE EN LA BD.");
+      buscarPorId(turno.getId());
 
       conn.setAutoCommit(false);
       PreparedStatement pStmt = crearPreparedStatement(conn, SQL_UPDATE, turno);
@@ -137,7 +130,6 @@ public class TurnoDAO implements IDao<Turno> {
       conn.setAutoCommit(true);
 
       if (rs.next()) logger.info("TURNO {} MODIFICADO EXITOSAMENTE.", turno.getId());
-
     } catch (Exception err) {
       try {
         if (conn != null) conn.rollback();
@@ -163,8 +155,7 @@ public class TurnoDAO implements IDao<Turno> {
     final String SQL_DELETE_BY_ID = "DELETE FROM TURNOS WHERE ID = ?";
 
     try {
-      Turno turno = buscarPorId(id);
-      if (Objects.isNull(turno)) throw new Exception("EL TURNO " + id + " NO EXISTE EN LA BD.");
+      Turno turnoDB = buscarPorId(id);
 
       conn.setAutoCommit(false);
       PreparedStatement pStmt = conn.prepareStatement(SQL_DELETE_BY_ID);
@@ -174,9 +165,9 @@ public class TurnoDAO implements IDao<Turno> {
       pStmt.executeUpdate();
       conn.setAutoCommit(true);
 
-      logger.info("TURNO {} ELIMINADO EXITOSAMENTE.", turno.getId());
+      logger.info("TURNO {} ELIMINADO EXITOSAMENTE.", turnoDB.getId());
 
-      return turno;
+      return turnoDB;
     } catch (Exception err) {
       try {
         if (conn != null) conn.rollback();

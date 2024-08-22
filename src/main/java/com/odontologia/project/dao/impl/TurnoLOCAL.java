@@ -47,19 +47,27 @@ public class TurnoLOCAL implements IDao<Turno> {
   @Override
   public Turno actualizar(Turno turno) {
     try {
-      Turno turnoActualizado = buscarPorId(turno.getId());
+      Turno turnoDB = buscarPorId(turno.getId());
 
-      if (turnoActualizado.getFecha() != turno.getFecha() && turno.getFecha() != null) turnoActualizado.setFecha(turno.getFecha());
-      if (turnoActualizado.getHora() != turno.getHora() && turno.getHora() != null) turnoActualizado.setHora(turno.getHora());
-      if (turnoActualizado.getOdontologo() != turno.getOdontologo() && turno.getOdontologo() != null) turnoActualizado.setOdontologo(turno.getOdontologo());
-      if (turnoActualizado.getPaciente() != turno.getPaciente() && turno.getPaciente() != null) turnoActualizado.setPaciente(turno.getPaciente());
+      if (turnoDB.getFecha() != turno.getFecha() && turno.getFecha() != null)
+        turnoDB.setFecha(turno.getFecha());
+
+      if (turnoDB.getHora() != turno.getHora() && turno.getHora() != null)
+        turnoDB.setHora(turno.getHora());
+
+      if (turnoDB.getOdontologo() != turno.getOdontologo() && !Objects.isNull(turno.getOdontologo()))
+        turnoDB.setOdontologo(turno.getOdontologo());
+
+      if (turnoDB.getPaciente() != turno.getPaciente() && !Objects.isNull(turno.getPaciente()))
+        turnoDB.setPaciente(turno.getPaciente());
 
       logger.info("TURNO {} MODIFICADO EXITOSAMENTE.", turno.getId());
 
-      return turnoActualizado;
+      return turnoDB;
     } catch (Exception err) {
       logger.error("ERROR AL MODIFICAR TURNO: {}", err.getMessage());
     }
+
     return null;
   }
 
@@ -67,14 +75,17 @@ public class TurnoLOCAL implements IDao<Turno> {
   public Turno eliminarPorId(Long id) {
 
     try {
-      Turno turnoEliminado = buscarPorId(id);
+      Turno turnoDB = buscarPorId(id);
 
-      listaTurnos.remove(turnoEliminado);
-      logger.info("TURNO {} ELIMINADO EXITOSAMENTE.", turnoEliminado.getId());
-      return turnoEliminado;
+      listaTurnos.remove(turnoDB);
+
+      logger.info("TURNO {} ELIMINADO EXITOSAMENTE.", turnoDB.getId());
+
+      return turnoDB;
     } catch (Exception err) {
       logger.error("ERROR AL ELIMINAR TURNO: {}", err.getMessage());
     }
+
     return null;
   }
 }
