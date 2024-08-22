@@ -1,7 +1,7 @@
 package com.odontologia.project.services.impl;
 
 import com.odontologia.project.dao.IDao;
-import com.odontologia.project.dao.impl.TurnoDAO;
+import com.odontologia.project.dao.impl.TurnoLOCAL;
 import com.odontologia.project.models.Turno;
 import com.odontologia.project.services.ITurnoService;
 
@@ -11,7 +11,7 @@ public class TurnoService implements ITurnoService {
   private final IDao<Turno> daoTurno;
 
   public TurnoService() {
-    this.daoTurno = new TurnoDAO();
+    this.daoTurno = new TurnoLOCAL();
   }
 
   @Override
