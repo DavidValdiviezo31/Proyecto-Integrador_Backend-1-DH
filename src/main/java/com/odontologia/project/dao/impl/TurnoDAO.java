@@ -28,8 +28,6 @@ public class TurnoDAO implements IDao<Turno> {
         "(FECHA, HORA, DNI_PACIENTE, MATRICULA_ODONTOLOGO) VALUES(?, ?, ?, ?)";
 
     try {
-      logger.info("AGREGANDO TURNO CON EL ODONTOLOGO {} PARA EL PACIENTE {}", turno.getOdontologo().getMatricula() , turno.getPaciente().getDni());
-
       conn.setAutoCommit(false);
       PreparedStatement pStmt = crearPreparedStatement(conn, SQL_INSERT, turno);
 
