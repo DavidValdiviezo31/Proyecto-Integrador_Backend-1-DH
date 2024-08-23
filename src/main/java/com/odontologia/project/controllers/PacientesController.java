@@ -2,7 +2,7 @@ package com.odontologia.project.controllers;
 
 import com.odontologia.project.models.Paciente;
 import com.odontologia.project.services.IPacienteService;
-import com.odontologia.project.services.impl.PacienteService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,34 +13,33 @@ import java.util.List;
 public class PacientesController {
   private final IPacienteService pacienteService;
 
-  public PacientesController() {
-    this.pacienteService = new PacienteService();
+  public PacientesController(IPacienteService pacienteService) {
+    this.pacienteService = pacienteService;
   }
 
   @PostMapping
   public ResponseEntity<Paciente> crearPaciente(@RequestBody Paciente paciente) {
-    System.out.println("PACIENTE CONTROLLER - POST");
-    return ResponseEntity.ok(pacienteService.guardarPaciente(paciente));
+    return new ResponseEntity<>(pacienteService.guardarPaciente(paciente), HttpStatus.CREATED);
   }
 
   @GetMapping("/{id}")
   public ResponseEntity<Paciente> buscarPaciente(@PathVariable Long id) {
-    return ResponseEntity.ok(pacienteService.buscarPaciente(id));
+    return new ResponseEntity<>(pacienteService.buscarPaciente(id), HttpStatus.FOUND);
   }
 
   @GetMapping
   public ResponseEntity<List<Paciente>> buscarTodosPaciente(){
-    return ResponseEntity.ok(pacienteService.buscarTodosPacientes());
+    return new ResponseEntity<>(pacienteService.buscarTodosPacientes(), HttpStatus.FOUND);
   }
 
   @PutMapping("/{id}")
   public ResponseEntity<Paciente> actualizarPaciente(@PathVariable Long id, @RequestBody Paciente paciente) {
     paciente.setId(id);
-    return ResponseEntity.ok(pacienteService.actualizarPaciente(paciente));
+    return new ResponseEntity<>(pacienteService.actualizarPaciente(paciente), HttpStatus.OK);
   }
 
   @DeleteMapping("/{id}")
   public ResponseEntity<Paciente> eliminarPaciente(@PathVariable Long id) {
-    return ResponseEntity.ok(pacienteService.eliminarPaciente(id));
+    return new ResponseEntity<>(pacienteService.eliminarPaciente(id), HttpStatus.OK);
   }
 }

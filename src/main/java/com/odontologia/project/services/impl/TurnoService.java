@@ -4,15 +4,16 @@ import com.odontologia.project.dao.IDao;
 import com.odontologia.project.dao.impl.TurnoLOCAL;
 import com.odontologia.project.models.Turno;
 import com.odontologia.project.services.ITurnoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TurnoService implements ITurnoService {
-  private final IDao<Turno> daoTurno;
 
-  public TurnoService() {
-    this.daoTurno = new TurnoLOCAL();
-  }
+  @Autowired
+  private IDao<Turno> daoTurno;
 
   @Override
   public Turno guardarTurno(Turno turno) {

@@ -5,11 +5,13 @@ import com.odontologia.project.dao.IDao;
 import com.odontologia.project.models.Odontologo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class OdontologoDAO implements IDao<Odontologo> {
 
   private static final Logger logger = LoggerFactory.getLogger(OdontologoDAO.class);

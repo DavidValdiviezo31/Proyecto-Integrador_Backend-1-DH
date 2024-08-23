@@ -6,9 +6,7 @@ import com.odontologia.project.models.Turno;
 import com.odontologia.project.services.IOdontologoService;
 import com.odontologia.project.services.IPacienteService;
 import com.odontologia.project.services.ITurnoService;
-import com.odontologia.project.services.impl.OdontologoService;
-import com.odontologia.project.services.impl.PacienteService;
-import com.odontologia.project.services.impl.TurnoService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,10 +21,10 @@ public class TurnosController {
   private final IOdontologoService odontologoService;
 
 
-  public TurnosController() {
-    this.turnoService = new TurnoService();
-    this.pacienteService = new PacienteService();
-    this.odontologoService = new OdontologoService();
+  public TurnosController(ITurnoService turnoService, IPacienteService pacienteService, IOdontologoService odontologoService) {
+    this.turnoService = turnoService;
+    this.pacienteService = pacienteService;
+    this.odontologoService = odontologoService;
   }
 
   @PostMapping
@@ -39,27 +37,27 @@ public class TurnosController {
     turno.setPaciente(paciente);
     turno.setOdontologo(odontologo);
 
-    return ResponseEntity.ok(turnoService.guardarTurno(turno));
+    return new ResponseEntity<>(turnoService.guardarTurno(turno), HttpStatus.CREATED);
   }
 
   @GetMapping("/{id}")
   public ResponseEntity<Turno> buscarTurno(@PathVariable Long id) {
-    return ResponseEntity.ok(turnoService.buscarTurno(id));
+    return new ResponseEntity<>(turnoService.buscarTurno(id), HttpStatus.FOUND);
   }
 
   @GetMapping
   public ResponseEntity<List<Turno>> buscarTodosTurnos() {
-    return ResponseEntity.ok(turnoService.buscarTodosTurnos());
+    return new ResponseEntity<>(turnoService.buscarTodosTurnos(), HttpStatus.FOUND);
   }
 
   @PutMapping("/{id}")
   public ResponseEntity<Turno> actualizarTurno(@PathVariable Long id, @RequestBody Turno turno) {
     turno.setId(id);
-    return ResponseEntity.ok(turnoService.actualizarTurno(turno));
+    return new ResponseEntity<>(turnoService.actualizarTurno(turno), HttpStatus.OK);
   }
 
   @DeleteMapping("/{id}")
   public ResponseEntity<Turno> eliminarTurno(@PathVariable Long id) {
-    return ResponseEntity.ok(turnoService.eliminarTurno(id));
+    return new ResponseEntity<>(turnoService.eliminarTurno(id), HttpStatus.OK);
   }
 }

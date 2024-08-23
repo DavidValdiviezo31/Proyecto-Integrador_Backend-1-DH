@@ -7,12 +7,14 @@ import com.odontologia.project.models.Paciente;
 import com.odontologia.project.services.impl.DomicilioService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class PacienteDAO implements IDao<Paciente> {
 
   private static final Logger logger = LoggerFactory.getLogger(PacienteDAO.class);

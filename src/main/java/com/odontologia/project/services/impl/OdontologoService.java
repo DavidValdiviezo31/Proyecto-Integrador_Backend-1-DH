@@ -4,15 +4,16 @@ import com.odontologia.project.dao.IDao;
 import com.odontologia.project.dao.impl.OdontologoDAO;
 import com.odontologia.project.models.Odontologo;
 import com.odontologia.project.services.IOdontologoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class OdontologoService implements IOdontologoService {
-  private final IDao<Odontologo> daoOdontologo;
 
-  public OdontologoService() {
-    this.daoOdontologo = new OdontologoDAO();
-  }
+  @Autowired
+  private IDao<Odontologo> daoOdontologo;
 
   @Override
   public Odontologo guardarOdontologo(Odontologo odontologo) {
