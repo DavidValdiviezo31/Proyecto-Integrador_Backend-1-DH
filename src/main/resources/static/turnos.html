@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <title>Turnos</title>
+</head>
+<body>
+  <header class="w-full my-4">
+      <div
+        class="flex px-4 py-2 bg-blue-800 absolute w-fit h-fit justify-center items-center gap-4 top-4 left-4 text-white font-medium text-lg rounded-full"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-left"
+        >
+          <path
+            stroke="none"
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+          <path d="M5 12l14 0" />
+          <path d="M5 12l6 6" />
+          <path d="M5 12l6 -6" />
+        </svg>
+        <a href="./index.html">Inicio</a>
+      </div>
+      <h1 class="text-center mb-4 font-bold text-4xl">Turnos</h1>
+      <nav class="w-1/2 mx-auto h-full flex justify-center">
+        <div class="w-fit h-full flex">
+          <button
+            class="text-white bg-blue-700 hover:bg-blue-800 font-medium text-lg px-12 py-6 h-full flex items-center rounded-l-xl hover:scale-[1.02] transition-all duration-300"
+            id="btnActualizarLista"
+          >
+            Actualizar Lista
+          </button>
+          <button
+            class="text-white bg-blue-700 hover:bg-blue-800 font-medium text-lg px-12 py-6 h-full flex items-center rounded-r-xl hover:scale-[1.02] transition-all duration-300"
+            id="btnAgregarOdontologo"
+          >
+            Agregar Turno
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main></main>
+</body>
+</html>
