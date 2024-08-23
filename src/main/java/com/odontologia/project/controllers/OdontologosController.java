@@ -24,12 +24,12 @@ public class OdontologosController {
 
   @GetMapping("/{id}")
   public ResponseEntity<Odontologo> buscarOdontologo(@PathVariable Long id) {
-    return new ResponseEntity<>(odontologoService.buscarOdontologo(id), HttpStatus.FOUND);
+    return new ResponseEntity<>(odontologoService.buscarOdontologo(id), HttpStatus.OK);
   }
 
   @GetMapping
   public ResponseEntity<List<Odontologo>> buscarTodosOdontologos(){
-    return new ResponseEntity<>(odontologoService.buscarTodosOdontologos(), HttpStatus.FOUND);
+    return new ResponseEntity<>(odontologoService.buscarTodosOdontologos(), HttpStatus.OK);
   }
 
   @PutMapping("/{id}")

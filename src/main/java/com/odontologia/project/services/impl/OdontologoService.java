@@ -1,7 +1,6 @@
 package com.odontologia.project.services.impl;
 
 import com.odontologia.project.dao.IDao;
-import com.odontologia.project.dao.impl.OdontologoDAO;
 import com.odontologia.project.models.Odontologo;
 import com.odontologia.project.services.IOdontologoService;
 import org.springframework.beans.factory.annotation.Autowired;

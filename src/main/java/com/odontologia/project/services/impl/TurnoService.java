@@ -1,7 +1,6 @@
 package com.odontologia.project.services.impl;
 
 import com.odontologia.project.dao.IDao;
-import com.odontologia.project.dao.impl.TurnoLOCAL;
 import com.odontologia.project.models.Turno;
 import com.odontologia.project.services.ITurnoService;
 import org.springframework.beans.factory.annotation.Autowired;

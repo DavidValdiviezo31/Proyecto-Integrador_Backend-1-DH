@@ -24,12 +24,12 @@ public class PacientesController {
 
   @GetMapping("/{id}")
   public ResponseEntity<Paciente> buscarPaciente(@PathVariable Long id) {
-    return new ResponseEntity<>(pacienteService.buscarPaciente(id), HttpStatus.FOUND);
+    return new ResponseEntity<>(pacienteService.buscarPaciente(id), HttpStatus.OK);
   }
 
   @GetMapping
   public ResponseEntity<List<Paciente>> buscarTodosPaciente(){
-    return new ResponseEntity<>(pacienteService.buscarTodosPacientes(), HttpStatus.FOUND);
+    return new ResponseEntity<>(pacienteService.buscarTodosPacientes(), HttpStatus.OK);
   }
 
   @PutMapping("/{id}")

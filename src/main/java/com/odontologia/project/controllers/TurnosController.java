@@ -42,12 +42,12 @@ public class TurnosController {
 
   @GetMapping("/{id}")
   public ResponseEntity<Turno> buscarTurno(@PathVariable Long id) {
-    return new ResponseEntity<>(turnoService.buscarTurno(id), HttpStatus.FOUND);
+    return new ResponseEntity<>(turnoService.buscarTurno(id), HttpStatus.OK);
   }
 
   @GetMapping
   public ResponseEntity<List<Turno>> buscarTodosTurnos() {
-    return new ResponseEntity<>(turnoService.buscarTodosTurnos(), HttpStatus.FOUND);
+    return new ResponseEntity<>(turnoService.buscarTodosTurnos(), HttpStatus.OK);
   }
 
   @PutMapping("/{id}")
