@@ -10,3 +10,13 @@ const pacienteModel = {
   },
   fechaAlta: '2020-01-01'
 }
+
+const pacienteFormContainer = document.querySelector('#pacienteFormContainer')
+const domicilioFormContainer = document.querySelector('#domicilioFormContainer')
+
+pacienteFormContainer.addEventListener('submit', async (e) => {
+  e.preventDefault()
+
+  pacienteFormContainer.classList.add('hidden')
+  domicilioFormContainer.classList.remove('hidden')
+})
