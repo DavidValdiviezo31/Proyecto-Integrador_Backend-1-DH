@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/odontologos")
@@ -19,12 +20,20 @@ public class OdontologosController {
 
   @PostMapping
   public ResponseEntity<Odontologo> crearOdontologo(@RequestBody Odontologo odontologo) {
-    return new ResponseEntity<>(odontologoService.guardarOdontologo(odontologo), HttpStatus.CREATED);
+    Odontologo odontologoCreado = odontologoService.guardarOdontologo(odontologo);
+
+    return Objects.isNull(odontologoCreado)
+        ? new ResponseEntity<>(HttpStatus.BAD_REQUEST)
+        : new ResponseEntity<>(odontologoCreado, HttpStatus.CREATED);
   }
 
   @GetMapping("/{id}")
   public ResponseEntity<Odontologo> buscarOdontologo(@PathVariable Long id) {
-    return new ResponseEntity<>(odontologoService.buscarOdontologo(id), HttpStatus.OK);
+    Odontologo odontologoBuscado = odontologoService.buscarOdontologo(id);
+
+    return Objects.isNull(odontologoBuscado)
+        ? new ResponseEntity<>(HttpStatus.BAD_REQUEST)
+        : new ResponseEntity<>(odontologoBuscado, HttpStatus.OK);
   }
 
   @GetMapping
@@ -35,11 +44,19 @@ public class OdontologosController {
   @PutMapping("/{id}")
   public ResponseEntity<Odontologo> actualizarOdontologo(@PathVariable Long id, @RequestBody Odontologo odontologo) {
     odontologo.setId(id);
-    return new ResponseEntity<>(odontologoService.actualizarOdontologo(odontologo), HttpStatus.OK);
+    Odontologo odontologoActualizar = odontologoService.actualizarOdontologo(odontologo);
+
+    return Objects.isNull(odontologoActualizar)
+        ? new ResponseEntity<>(HttpStatus.BAD_REQUEST)
+        : new ResponseEntity<>(odontologoActualizar, HttpStatus.OK);
   }
 
   @DeleteMapping("/{id}")
   public ResponseEntity<Odontologo> eliminarOdontologo(@PathVariable Long id) {
-    return new ResponseEntity<>(odontologoService.eliminarOdontologo(id), HttpStatus.OK);
+    Odontologo odontologoEliminar = odontologoService.eliminarOdontologo(id);
+
+    return Objects.isNull(odontologoEliminar)
+        ? new ResponseEntity<>(HttpStatus.BAD_REQUEST)
+        : new ResponseEntity<>(odontologoEliminar, HttpStatus.OK);
   }
 }

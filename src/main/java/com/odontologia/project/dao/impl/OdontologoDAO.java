@@ -6,6 +6,7 @@ import com.odontologia.project.models.Odontologo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -42,6 +43,7 @@ public class OdontologoDAO implements IDao<Odontologo> {
         logger.error("ERROR AL EJECUTAR EL ROLLBACK: {}", err.getMessage());
       } finally {
         logger.error("ERROR AL AGREGAR ODONTOLOGO A LA BD: {}", err.getMessage());
+        odontologo = null;
       }
     } finally {
       try {
@@ -69,6 +71,7 @@ public class OdontologoDAO implements IDao<Odontologo> {
       return crearOdontologo(rs);
     } catch (Exception err) {
       logger.error("ERROR AL BUSCAR ODONTOLOGO: {}", err.getMessage());
+      return null;
     } finally {
       try {
         if (conn != null) DatabaseConnection.endConnection(conn);
@@ -76,8 +79,6 @@ public class OdontologoDAO implements IDao<Odontologo> {
         logger.error("ERROR AL CERRAR LA CONEXIÓN CON LA BD");
       }
     }
-
-    return null;
   }
 
   @Override
@@ -100,6 +101,7 @@ public class OdontologoDAO implements IDao<Odontologo> {
         logger.error("ERROR AL CERRAR LA CONEXIÓN CON LA BD");
       }
     }
+
     return listaOdontologos;
   }
 
@@ -132,6 +134,7 @@ public class OdontologoDAO implements IDao<Odontologo> {
         logger.error("ERROR AL EJECUTAR EL ROLLBACK: {}", err.getMessage());
       } finally {
         logger.error("ERROR AL MODIFICAR ODONTOLOGO: {}", err.getMessage());
+        odontologo = null;
       }
     } finally {
       try {
