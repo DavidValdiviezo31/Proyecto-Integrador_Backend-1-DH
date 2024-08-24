@@ -13,13 +13,13 @@ async function postOdontologos({ matricula, nombre, apellido }) {
     const config = fetchConfig({ method: 'POST', data: { matricula, nombre, apellido } })
 
     const res = await fetch('/odontologos', config)
-    if (!res.ok) throw new Error('Error al crear odontólogo')
+    if (!res.ok) throw new Error('Error al crear odontólogo.')
 
     Swal.fire({
       icon: 'success',
       title: 'Odontólogo creado',
       showConfirmButton: false,
-      timer: 1500
+      timer: 1750
     })
 
     return await res.json()
@@ -37,7 +37,7 @@ async function getOdontologoById(id) {
     const config = fetchConfig({ method: 'GET' })
 
     const res = await fetch(`/odontologos/${id}`, config)
-    if (!res.ok) throw new Error('Error al cargar odontólogo')
+    if (!res.ok) throw new Error('Error al buscar odontólogo')
 
     return await res.json()
   } catch (err) {
@@ -77,7 +77,7 @@ async function putOdontologo({ id, matricula, nombre, apellido }) {
       icon: 'success',
       title: 'Odontólogo actualizado',
       showConfirmButton: false,
-      timer: 1500
+      timer: 1750
     })
 
     odontologoForm.querySelector('button').textContent = 'Agregar'
@@ -103,7 +103,7 @@ async function deleteOdontologo(id) {
       icon: 'success',
       title: 'Odontólogo eliminado',
       showConfirmButton: false,
-      timer: 1500
+      timer: 1750
     })
   } catch (err) {
     Swal.fire({
@@ -235,6 +235,16 @@ table.addEventListener('click', async e => {
   if (!btn) return
 
   if (btn.includes('btnDelete')) {
+    const { isConfirmed } = await Swal.fire({
+      title: '¿Estas seguro que deseas eliminar el Odontologo?',
+      showCancelButton: true,
+      confirmButtonText: `Eliminar`,
+      confirmButtonColor: '#DC2626',
+      cancelButtonText: `Cancelar`
+    })
+
+    if (!isConfirmed) return
+
     const id = btn.split('-')[1]
     await deleteOdontologo(id)
     actualizarLista()
