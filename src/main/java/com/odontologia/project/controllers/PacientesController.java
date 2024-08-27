@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/pacientes")
@@ -19,12 +20,20 @@ public class PacientesController {
 
   @PostMapping
   public ResponseEntity<Paciente> crearPaciente(@RequestBody Paciente paciente) {
-    return new ResponseEntity<>(pacienteService.guardarPaciente(paciente), HttpStatus.CREATED);
+    Paciente pacienteCreado = pacienteService.guardarPaciente(paciente);
+
+    return Objects.isNull(pacienteCreado)
+        ? new ResponseEntity<>(HttpStatus.BAD_REQUEST)
+        : new ResponseEntity<>(pacienteCreado, HttpStatus.CREATED);
   }
 
   @GetMapping("/{id}")
   public ResponseEntity<Paciente> buscarPaciente(@PathVariable Long id) {
-    return new ResponseEntity<>(pacienteService.buscarPaciente(id), HttpStatus.OK);
+    Paciente pacienteBuscado = pacienteService.buscarPaciente(id);
+
+    return Objects.isNull(pacienteBuscado)
+        ? new ResponseEntity<>(HttpStatus.BAD_REQUEST)
+        : new ResponseEntity<>(pacienteBuscado, HttpStatus.OK);
   }
 
   @GetMapping
@@ -35,11 +44,18 @@ public class PacientesController {
   @PutMapping("/{id}")
   public ResponseEntity<Paciente> actualizarPaciente(@PathVariable Long id, @RequestBody Paciente paciente) {
     paciente.setId(id);
-    return new ResponseEntity<>(pacienteService.actualizarPaciente(paciente), HttpStatus.OK);
+    Paciente pacienteActualizar = pacienteService.actualizarPaciente(paciente);
+    return Objects.isNull(pacienteActualizar)
+        ? new ResponseEntity<>(HttpStatus.BAD_REQUEST)
+        : new ResponseEntity<>(pacienteActualizar, HttpStatus.OK);
   }
 
   @DeleteMapping("/{id}")
   public ResponseEntity<Paciente> eliminarPaciente(@PathVariable Long id) {
-    return new ResponseEntity<>(pacienteService.eliminarPaciente(id), HttpStatus.OK);
+    Paciente pacienteEliminar = pacienteService.eliminarPaciente(id);
+
+    return Objects.isNull(pacienteEliminar)
+        ? new ResponseEntity<>(HttpStatus.BAD_REQUEST)
+        : new ResponseEntity<>(pacienteEliminar, HttpStatus.OK);
   }
 }

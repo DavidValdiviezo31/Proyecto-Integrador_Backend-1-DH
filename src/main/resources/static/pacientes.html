@@ -56,7 +56,7 @@
           </button>
           <button
             class="text-white bg-blue-700 hover:bg-blue-800 font-medium text-lg px-12 py-6 h-full flex items-center rounded-r-xl hover:scale-[1.02] transition-all duration-300"
-            id="btnAgregarOdontologo"
+            id="btnAgregarPaciente"
           >
             Agregar Paciente
           </button>
@@ -65,207 +65,225 @@
     </header>
 
     <main class="my-8 w-3/4 mx-auto">
-      <div
-        class=""
-        id="pacienteFormContainer"
-      >
-        <h2 class="font-bold text-center mb-8">AGREGAR PACIENTE</h2>
-        <form
-          class="flex flex-col gap-2 items-center w-72 items mx-auto"
-          id="pacienteForm"
+      <section class="relative">
+        <button
+          type="button"
+          id="closeBtn"
+          class="absolute hidden top-2 left-48 text-white bg-red-500 hover:bg-red-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-all"
         >
-          <div class="flex flex-col gap-2 w-full">
-            <label
-              for="pacienteId"
-              class="block text-sm font-medium text-gray-900"
-              >Id:</label
-            >
-            <input
-              type="text"
-              id="pacienteId"
-              class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 outline-none"
-              required
-              readonly
-            />
-          </div>
-
-          <div class="flex flex-col gap-2 w-full">
-            <label
-              for="dni"
-              class="block text-sm font-medium text-gray-900"
-              >DNI:</label
-            >
-            <input
-              type="text"
-              id="dni"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              placeholder="1234567890"
-              required
-            />
-          </div>
-
-          <div class="flex flex-col gap-2 w-full">
-            <label
-              for="nombre"
-              class="block text-sm font-medium text-gray-900"
-              >Nombre:</label
-            >
-            <input
-              type="text"
-              id="nombre"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              placeholder="John"
-              required
-            />
-          </div>
-
-          <div class="flex flex-col gap-2 w-full">
-            <label
-              for="apellido"
-              class="block text-sm font-medium text-gray-900"
-              >Apellido:</label
-            >
-            <input
-              type="text"
-              id="apellido"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              placeholder="Smith"
-              required
-            />
-          </div>
-
-          <div class="flex flex-col gap-2 w-full">
-            <label
-              for="datepicker"
-              class="block text-sm font-medium text-gray-900"
-              >Fecha de Alta:</label
-            >
-            <div class="relative max-w-sm">
-              <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                <svg
-                  class="w-4 h-4 text-gray-500"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
-                  />
-                </svg>
-              </div>
+          Cerrar
+        </button>
+        <div
+          class="hidden"
+          id="domicilioFormContainer"
+        >
+          <h2 class="font-bold text-center mb-8">AGREGAR DOMICILIO</h2>
+          <form
+            class="flex flex-col gap-2 items-center w-72 items mx-auto"
+            id="domicilioForm"
+          >
+            <div class="flex flex-col gap-2 w-full">
+              <label
+                for="domicilioId"
+                class="block text-sm font-medium text-gray-900"
+                >Id</label
+              >
               <input
-                id="datepicker"
-                datepicker
-                datepicker-autohide
                 type="text"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full ps-10 p-2.5"
-                placeholder="Select date"
+                id="domicilioId"
+                class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 outline-none"
+                required
+                readonly
               />
             </div>
-          </div>
 
-          <button
-            type="submit"
-            class="my-4 text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-          >
-            Siguiente
-          </button>
-        </form>
-      </div>
+            <div class="flex flex-col gap-2 w-full">
+              <label
+                for="calle"
+                class="block text-sm font-medium text-gray-900"
+                >Calle:</label
+              >
+              <input
+                type="text"
+                id="calle"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Avenida Principal"
+                required
+              />
+            </div>
 
-      <div
-        class="hidden"
-        id="domicilioFormContainer"
-      >
-        <h2 class="font-bold text-center mb-8">AGREGAR DOMICILIO</h2>
-        <form
-          class="flex flex-col gap-2 items-center w-72 items mx-auto"
-          id="domicilioForm"
+            <div class="flex flex-col gap-2 w-full">
+              <label
+                for="numero"
+                class="block text-sm font-medium text-gray-900"
+                >Numero:</label
+              >
+              <input
+                type="text"
+                id="numero"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="32"
+                required
+              />
+            </div>
+
+            <div class="flex flex-col gap-2 w-full">
+              <label
+                for="localidad"
+                class="block text-sm font-medium text-gray-900"
+                >Localidad:</label
+              >
+              <input
+                type="text"
+                id="localidad"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Quito"
+                required
+              />
+            </div>
+
+            <div class="flex flex-col gap-2 w-full">
+              <label
+                for="provincia"
+                class="block text-sm font-medium text-gray-900"
+                >Provincia:</label
+              >
+              <input
+                type="text"
+                id="provincia"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Pichincha"
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="my-4 text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-all"
+            >
+              Siguiente
+            </button>
+          </form>
+        </div>
+
+        <div
+          class="hidden"
+          id="pacienteFormContainer"
         >
-          <div class="flex flex-col gap-2 w-full">
-            <label
-              for="domicilioId"
-              class="block text-sm font-medium text-gray-900"
-              >Id</label
-            >
-            <input
-              type="text"
-              id="domicilioId"
-              class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 outline-none"
-              required
-              readonly
-            />
-          </div>
-
-          <div class="flex flex-col gap-2 w-full">
-            <label
-              for="calle"
-              class="block text-sm font-medium text-gray-900"
-              >Calle:</label
-            >
-            <input
-              type="text"
-              id="calle"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              placeholder="Avenida Principal"
-              required
-            />
-          </div>
-
-          <div class="flex flex-col gap-2 w-full">
-            <label
-              for="numero"
-              class="block text-sm font-medium text-gray-900"
-              >Numero:</label
-            >
-            <input
-              type="text"
-              id="numero"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              placeholder="32"
-              required
-            />
-          </div>
-
-          <div class="flex flex-col gap-2 w-full">
-            <label
-              for="localidad"
-              class="block text-sm font-medium text-gray-900"
-              >Localidad:</label
-            >
-            <input
-              type="text"
-              id="localidad"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              placeholder="Quito"
-              required
-            />
-          </div>
-
-          <div class="flex flex-col gap-2 w-full">
-            <label
-              for="provincia"
-              class="block text-sm font-medium text-gray-900"
-              >Provincia:</label
-            >
-            <input
-              type="text"
-              id="provincia"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              placeholder="Pichincha"
-              required
-            />
-          </div>
-
-          <button
-            type="submit"
-            class="my-4 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+          <h2 class="font-bold text-center mb-8">AGREGAR PACIENTE</h2>
+          <form
+            class="flex flex-col gap-2 items-center w-72 items mx-auto"
+            id="pacienteForm"
           >
-            Agregar
-          </button>
-        </form>
-      </div>
+            <div class="flex flex-col gap-2 w-full">
+              <label
+                for="pacienteId"
+                class="block text-sm font-medium text-gray-900"
+                >Id:</label
+              >
+              <input
+                type="text"
+                id="pacienteId"
+                class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 outline-none"
+                required
+                readonly
+              />
+            </div>
+
+            <div class="flex flex-col gap-2 w-full">
+              <label
+                for="dni"
+                class="block text-sm font-medium text-gray-900"
+                >DNI:</label
+              >
+              <input
+                type="text"
+                id="dni"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="1234567890"
+                required
+              />
+            </div>
+
+            <div class="flex flex-col gap-2 w-full">
+              <label
+                for="nombre"
+                class="block text-sm font-medium text-gray-900"
+                >Nombre:</label
+              >
+              <input
+                type="text"
+                id="nombre"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="John"
+                required
+              />
+            </div>
+
+            <div class="flex flex-col gap-2 w-full">
+              <label
+                for="apellido"
+                class="block text-sm font-medium text-gray-900"
+                >Apellido:</label
+              >
+              <input
+                type="text"
+                id="apellido"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Smith"
+                required
+              />
+            </div>
+
+            <div class="flex flex-col gap-2 w-full">
+              <label
+                for="fechaAlta"
+                class="block text-sm font-medium text-gray-900"
+                >Fecha de Alta:</label
+              >
+              <div class="relative max-w-sm">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                  <svg
+                    class="w-4 h-4 text-gray-500"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
+                    />
+                  </svg>
+                </div>
+                <input
+                  id="fechaAlta"
+                  datepicker
+                  datepicker-autohide
+                  type="text"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full ps-10 p-2.5"
+                  placeholder="Select date"
+                />
+              </div>
+            </div>
+
+            <div class="flex gap-6">
+              <button
+                type="button"
+                id="btnAtras"
+                class="my-4 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+              >
+                Atras
+              </button>
+              <button
+                type="submit"
+                class="my-4 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+              >
+                Agregar
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
 
       <!-- TABLE -->
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -323,8 +341,8 @@
             </tr>
           </thead>
 
-          <tbody id="odontologoTableBody">
-            <!-- Odontologos will be added here -->
+          <tbody id="pacienteTableBody">
+            <!-- Pacientes will be added here -->
           </tbody>
         </table>
       </div>
