@@ -188,9 +188,8 @@ function renderizarOdontologos(odontologos) {
   })
 }
 
-async function actualizarLista() {
-  const odontologos = await getAllOdontologos()
-  renderizarOdontologos(odontologos)
+function actualizarLista() {
+  getAllOdontologos().then(renderizarOdontologos)
 }
 
 actualizarLista()

@@ -5,7 +5,7 @@ export function fetchConfig({ method, data }) {
     return {
       method,
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       }
     }
   }
@@ -14,7 +14,7 @@ export function fetchConfig({ method, data }) {
     return {
       method,
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
     }
@@ -23,7 +23,7 @@ export function fetchConfig({ method, data }) {
   if (method === 'DELETE') {
     return {
       method,
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     }
   }
 }
