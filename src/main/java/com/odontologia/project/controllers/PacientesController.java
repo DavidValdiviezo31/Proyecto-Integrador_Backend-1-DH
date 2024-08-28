@@ -5,18 +5,16 @@ import com.odontologia.project.services.IPacienteService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.Objects;
 
 @RestController
 @RequestMapping("/pacientes")
+@RequiredArgsConstructor
 public class PacientesController {
   private final IPacienteService pacienteService;
-
-  public PacientesController(IPacienteService pacienteService) {
-    this.pacienteService = pacienteService;
-  }
 
   @PostMapping
   public ResponseEntity<Paciente> crearPaciente(@RequestBody Paciente paciente) {
@@ -29,7 +27,7 @@ public class PacientesController {
 
   @GetMapping("/{id}")
   public ResponseEntity<Paciente> buscarPaciente(@PathVariable Long id) {
-    Paciente pacienteBuscado = pacienteService.buscarPaciente(id);
+    Paciente pacienteBuscado = pacienteService.buscarPacientePorId(id);
 
     return Objects.isNull(pacienteBuscado)
         ? new ResponseEntity<>(HttpStatus.BAD_REQUEST)
@@ -52,7 +50,7 @@ public class PacientesController {
 
   @DeleteMapping("/{id}")
   public ResponseEntity<Paciente> eliminarPaciente(@PathVariable Long id) {
-    Paciente pacienteEliminar = pacienteService.eliminarPaciente(id);
+    Paciente pacienteEliminar = pacienteService.eliminarPacientePorId(id);
 
     return Objects.isNull(pacienteEliminar)
         ? new ResponseEntity<>(HttpStatus.BAD_REQUEST)

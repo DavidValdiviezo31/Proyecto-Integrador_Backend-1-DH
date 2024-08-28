@@ -1,79 +1,31 @@
 package com.odontologia.project.models;
 
-import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+import java.util.Set;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "pacientes")
 public class Paciente {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+  @Column(unique = true)
   private Long dni;
   private String nombre;
   private String apellido;
+  @OneToOne(cascade = CascadeType.ALL)
   private Domicilio domicilio;
   private LocalDate fechaAlta;
-
-  public Paciente() {}
-
-  public Paciente(Long dni, String nombre, String apellido, Domicilio domicilio, LocalDate fechaAlta) {
-    this.dni = dni;
-    this.nombre = nombre;
-    this.apellido = apellido;
-    this.domicilio = domicilio;
-    this.fechaAlta = fechaAlta;
-  }
-
-  public Paciente(Long id, Long dni, String nombre, String apellido, Domicilio domicilio, LocalDate fechaAlta) {
-    this.id = id;
-    this.dni = dni;
-    this.nombre = nombre;
-    this.apellido = apellido;
-    this.domicilio = domicilio;
-    this.fechaAlta = fechaAlta;
-  }
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public Long getDni() {
-    return dni;
-  }
-
-  public void setDni(Long dni) {
-    this.dni = dni;
-  }
-
-  public String getNombre() {
-    return nombre;
-  }
-
-  public void setNombre(String nombre) {
-    this.nombre = nombre;
-  }
-
-  public String getApellido() {
-    return apellido;
-  }
-
-  public void setApellido(String apellido) {
-    this.apellido = apellido;
-  }
-
-  public Domicilio getDomicilio() {
-    return domicilio;
-  }
-
-  public void setDomicilio(Domicilio domicilio) {
-    this.domicilio = domicilio;
-  }
-
-  public LocalDate getFechaAlta() {
-    return fechaAlta;
-  }
-
-  public void setFechaAlta(LocalDate fechaAlta) {
-    this.fechaAlta = fechaAlta;
-  }
+  @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
+  @JsonIgnore
+  private Set<Turno> turnos;
 }
