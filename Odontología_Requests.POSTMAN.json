@@ -24,11 +24,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/odontologos",
+							"raw": "{{LOCAL_URL}}/odontologos",
 							"host": [
-								"localhost"
+								"{{LOCAL_URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"odontologos"
 							]
@@ -42,11 +41,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/odontologos/:id",
+							"raw": "{{LOCAL_URL}}/odontologos/:id",
 							"host": [
-								"localhost"
+								"{{LOCAL_URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"odontologos",
 								":id"
@@ -67,11 +65,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/odontologos",
+							"raw": "{{LOCAL_URL}}/odontologos",
 							"host": [
-								"localhost"
+								"{{LOCAL_URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"odontologos"
 							]
@@ -94,11 +91,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/odontologos/:id",
+							"raw": "{{LOCAL_URL}}/odontologos/:id",
 							"host": [
-								"localhost"
+								"{{LOCAL_URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"odontologos",
 								":id"
@@ -119,11 +115,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/odontologos/:id",
+							"raw": "{{LOCAL_URL}}/odontologos/:id",
 							"host": [
-								"localhost"
+								"{{LOCAL_URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"odontologos",
 								":id"
@@ -150,7 +145,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"dni\": 1313077795,\r\n    \"nombre\": \"Daniel\",\r\n    \"apellido\": \"Zambrano\",\r\n    \"domicilio\": {\r\n        \"calle\": \"Bellavista\",\r\n        \"numero\": 25,\r\n        \"localidad\": \"24 de mayo\",\r\n        \"provincia\": \"Manabi\"\r\n    },\r\n    \"fechaAlta\": \"2025-07-10\"\r\n}",
+							"raw": "{\r\n    \"dni\": 1313077796,\r\n    \"nombre\": \"Daniel\",\r\n    \"apellido\": \"Zambrano\",\r\n    \"domicilio\": {\r\n        \"calle\": \"Bellavista\",\r\n        \"numero\": 25,\r\n        \"localidad\": \"24 de mayo\",\r\n        \"provincia\": \"Manabi\"\r\n    },\r\n    \"fechaAlta\": \"2025-07-10\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -158,11 +153,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/pacientes",
+							"raw": "{{LOCAL_URL}}/pacientes",
 							"host": [
-								"localhost"
+								"{{LOCAL_URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"pacientes"
 							]
@@ -176,11 +170,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/pacientes/:id",
+							"raw": "{{LOCAL_URL}}/pacientes/:id",
 							"host": [
-								"localhost"
+								"{{LOCAL_URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"pacientes",
 								":id"
@@ -201,11 +194,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/pacientes",
+							"raw": "{{LOCAL_URL}}/pacientes",
 							"host": [
-								"localhost"
+								"{{LOCAL_URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"pacientes"
 							]
@@ -228,11 +220,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/pacientes/:id",
+							"raw": "{{LOCAL_URL}}/pacientes/:id",
 							"host": [
-								"localhost"
+								"{{LOCAL_URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"pacientes",
 								":id"
@@ -253,11 +244,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/pacientes/:id",
+							"raw": "{{LOCAL_URL}}/pacientes/:id",
 							"host": [
-								"localhost"
+								"{{LOCAL_URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"pacientes",
 								":id"
@@ -292,11 +282,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/turnos?paciente=3&odontologo=2",
+							"raw": "{{LOCAL_URL}}/turnos?paciente=3&odontologo=2",
 							"host": [
-								"localhost"
+								"{{LOCAL_URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"turnos"
 							],
@@ -320,11 +309,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/turnos/:id",
+							"raw": "{{LOCAL_URL}}/turnos/:id",
 							"host": [
-								"localhost"
+								"{{LOCAL_URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"turnos",
 								":id"
@@ -345,11 +333,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/turnos",
+							"raw": "{{LOCAL_URL}}/turnos",
 							"host": [
-								"localhost"
+								"{{LOCAL_URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"turnos"
 							]
@@ -372,11 +359,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/turnos/:id",
+							"raw": "{{LOCAL_URL}}/turnos/:id",
 							"host": [
-								"localhost"
+								"{{LOCAL_URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"turnos",
 								":id"
@@ -397,11 +383,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/turnos/:id",
+							"raw": "{{LOCAL_URL}}/turnos/:id",
 							"host": [
-								"localhost"
+								"{{LOCAL_URL}}"
 							],
-							"port": "8080",
 							"path": [
 								"turnos",
 								":id"

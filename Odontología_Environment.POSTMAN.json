@@ -1,0 +1,15 @@
+{
+	"id": "606a0cee-3134-4a61-aa21-2dd83fb96127",
+	"name": "Odontologia",
+	"values": [
+		{
+			"key": "LOCAL_URL",
+			"value": "localhost:8080",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2024-08-28T18:27:21.286Z",
+	"_postman_exported_using": "Postman/11.10.0"
+}
