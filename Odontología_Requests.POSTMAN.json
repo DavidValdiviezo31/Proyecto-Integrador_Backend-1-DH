@@ -181,7 +181,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "5"
+									"value": "1"
 								}
 							]
 						}
@@ -274,7 +274,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"fecha\": \"2024-05-20\",\r\n    \"hora\": \"13:00:00\",\r\n    \"paciente\": null,\r\n    \"odontologo\": null\r\n}",
+							"raw": "{\r\n    \"fecha\": \"2024-05-20\",\r\n    \"hora\": \"15:00:00\",\r\n    \"paciente\": {\r\n        \"id\": 1\r\n    },\r\n    \"odontologo\": {\r\n        \"id\": 1\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -282,22 +282,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{LOCAL_URL}}/turnos?paciente=3&odontologo=2",
+							"raw": "{{LOCAL_URL}}/turnos",
 							"host": [
 								"{{LOCAL_URL}}"
 							],
 							"path": [
 								"turnos"
-							],
-							"query": [
-								{
-									"key": "paciente",
-									"value": "3"
-								},
-								{
-									"key": "odontologo",
-									"value": "2"
-								}
 							]
 						}
 					},
