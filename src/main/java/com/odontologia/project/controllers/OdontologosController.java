@@ -5,18 +5,16 @@ import com.odontologia.project.services.IOdontologoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.Objects;
 
 @RestController
 @RequestMapping("/odontologos")
+@RequiredArgsConstructor
 public class OdontologosController {
   private final IOdontologoService odontologoService;
-
-  public OdontologosController(IOdontologoService odontologoService) {
-    this.odontologoService = odontologoService;
-  }
 
   @PostMapping
   public ResponseEntity<Odontologo> crearOdontologo(@RequestBody Odontologo odontologo) {
@@ -29,7 +27,7 @@ public class OdontologosController {
 
   @GetMapping("/{id}")
   public ResponseEntity<Odontologo> buscarOdontologo(@PathVariable Long id) {
-    Odontologo odontologoBuscado = odontologoService.buscarOdontologo(id);
+    Odontologo odontologoBuscado = odontologoService.buscarOdontologoPorId(id);
 
     return Objects.isNull(odontologoBuscado)
         ? new ResponseEntity<>(HttpStatus.BAD_REQUEST)
@@ -53,7 +51,7 @@ public class OdontologosController {
 
   @DeleteMapping("/{id}")
   public ResponseEntity<Odontologo> eliminarOdontologo(@PathVariable Long id) {
-    Odontologo odontologoEliminar = odontologoService.eliminarOdontologo(id);
+    Odontologo odontologoEliminar = odontologoService.eliminarOdontologoPorId(id);
 
     return Objects.isNull(odontologoEliminar)
         ? new ResponseEntity<>(HttpStatus.BAD_REQUEST)

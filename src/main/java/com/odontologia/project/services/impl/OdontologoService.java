@@ -1,40 +1,51 @@
 package com.odontologia.project.services.impl;
 
-import com.odontologia.project.dao.IDao;
 import com.odontologia.project.models.Odontologo;
+import com.odontologia.project.repository.IOdontologoRepository;
 import com.odontologia.project.services.IOdontologoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
+@RequiredArgsConstructor
 public class OdontologoService implements IOdontologoService {
-
-  @Autowired
-  private IDao<Odontologo> daoOdontologo;
+  private final IOdontologoRepository iOdontologoRepository;
 
   @Override
   public Odontologo guardarOdontologo(Odontologo odontologo) {
-    return daoOdontologo.guardar(odontologo);
+    return iOdontologoRepository.save(odontologo);
   }
 
   @Override
-  public Odontologo buscarOdontologo(Long id) {
-    return daoOdontologo.buscarPorId(id);
+  public Odontologo buscarOdontologoPorId(Long id) {
+    return iOdontologoRepository.findById(id).orElse(null);
   }
 
   @Override
   public List<Odontologo> buscarTodosOdontologos() {
-    return daoOdontologo.buscarTodos();
+    return iOdontologoRepository.findAll();
   }
 
   @Override
   public Odontologo actualizarOdontologo(Odontologo odontologo) {
-    return daoOdontologo.actualizar(odontologo);
+    Odontologo odontologoActualizado = buscarOdontologoPorId(odontologo.getId());
+
+    odontologoActualizado.setNombre(odontologo.getNombre());
+    odontologoActualizado.setApellido(odontologo.getApellido());
+    odontologoActualizado.setMatricula(odontologo.getMatricula());
+
+    return iOdontologoRepository.save(odontologoActualizado);
   }
 
-  public Odontologo eliminarOdontologo(Long id) {
-    return daoOdontologo.eliminarPorId(id);
+  public Odontologo eliminarOdontologoPorId(Long id) {
+    Odontologo odontologoEliminado = buscarOdontologoPorId(id);
+
+    if (Objects.isNull(odontologoEliminado)) return null;
+
+    iOdontologoRepository.deleteById(id);
+    return odontologoEliminado;
   }
 }

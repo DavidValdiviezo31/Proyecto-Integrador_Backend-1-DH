@@ -7,11 +7,11 @@ import java.util.List;
 public interface IOdontologoService {
   Odontologo guardarOdontologo(Odontologo odontologo);
 
-  Odontologo buscarOdontologo(Long id);
+  Odontologo buscarOdontologoPorId(Long id);
 
   List<Odontologo> buscarTodosOdontologos();
 
   Odontologo actualizarOdontologo(Odontologo odontologo);
 
-  Odontologo eliminarOdontologo(Long id);
+  Odontologo eliminarOdontologoPorId(Long id);
 }
