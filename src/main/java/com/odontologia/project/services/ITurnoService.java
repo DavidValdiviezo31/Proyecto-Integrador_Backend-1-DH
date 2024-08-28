@@ -7,11 +7,11 @@ import java.util.List;
 public interface ITurnoService {
   Turno guardarTurno(Turno turno);
 
-  Turno buscarTurno(Long id);
+  Turno buscarTurnoPorId(Long id);
 
   List<Turno> buscarTodosTurnos();
 
   Turno actualizarTurno(Turno turno);
 
-  Turno eliminarTurno(Long id);
+  Turno eliminarTurnoPorId(Long id);
 }
