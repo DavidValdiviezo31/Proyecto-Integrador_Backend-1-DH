@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script
       type="module"
-      src="../../js/odontologos.js"
+      src="./js/odontologos.js"
       defer
     ></script>
     <title>Odontologos</title>
@@ -65,9 +65,35 @@
 
     <main class="my-8 w-3/4 mx-auto">
       <div
-        class="hidden"
+        class="hidden relative"
         id="odontologoFormContainer"
       >
+        <button
+          type="button"
+          id="closeBtn"
+          class="absolute hidden top-2 left-48 text-white bg-red-500 hover:bg-red-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-all"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-x"
+          >
+            <path
+              stroke="none"
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+            <path d="M18 6l-12 12" />
+            <path d="M6 6l12 12" />
+          </svg>
+        </button>
         <h2 class="font-bold text-center mb-8">AGREGAR ODONTOLOGO</h2>
         <form
           class="flex flex-col gap-2 items-center w-72 items mx-auto"

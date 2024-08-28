@@ -6,6 +6,7 @@ const updateButton = document.querySelector('#btnActualizarLista')
 const newOdontologoButton = document.querySelector('#btnAgregarOdontologo')
 const odontologoFormContainer = document.querySelector('#odontologoFormContainer')
 const odontologoForm = document.querySelector('#odontologoForm')
+const closeFormButton = document.querySelector('#closeBtn')
 
 // CRUD METHODS
 async function postOdontologos({ matricula, nombre, apellido }) {
@@ -219,13 +220,11 @@ updateButton.addEventListener('click', actualizarLista)
 
 newOdontologoButton.addEventListener('click', () => {
   const btnText = odontologoForm.querySelector('button')
+  btnText.textContent = 'Agregar'
 
-  if (btnText.textContent === 'Actualizar' && !odontologoFormContainer.classList.contains('hidden')) {
-    btnText.textContent = 'Agregar'
-    limpiarFormulario()
-  } else {
-    odontologoFormContainer.classList.toggle('hidden')
-  }
+  limpiarFormulario()
+  closeFormButton.classList.remove('hidden')
+  odontologoFormContainer.classList.remove('hidden')
 })
 
 table.addEventListener('click', async e => {
@@ -253,6 +252,7 @@ table.addEventListener('click', async e => {
     const id = btn.split('-')[1]
     const odontologo = await getOdontologoById(id)
     odontologoFormContainer.classList.remove('hidden')
+    closeFormButton.classList.remove('hidden')
     odontologoForm.querySelector('button').textContent = 'Actualizar'
     setFormData(odontologo)
   }
@@ -274,4 +274,10 @@ odontologoForm.addEventListener('submit', async e => {
 
   odontologoFormContainer.classList.add('hidden')
   actualizarLista()
+})
+
+closeFormButton.addEventListener('click', () => {
+  limpiarFormulario()
+  odontologoFormContainer.classList.add('hidden')
+  closeFormButton.classList.add('hidden')
 })
