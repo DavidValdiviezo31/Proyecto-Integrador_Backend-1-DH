@@ -7,11 +7,11 @@ import java.util.List;
 public interface IDomicilioService {
   Domicilio guardarDomicilio(Domicilio domicilio);
 
-  Domicilio buscarDomicilio(Long id);
+  Domicilio buscarDomicilioPorId(Long id);
 
   List<Domicilio> buscarTodosDomicilios();
 
   Domicilio actualizarDomicilio(Domicilio domicilio);
 
-  Domicilio eliminarDomicilio(Long id);
+  Domicilio eliminarDomicilioPorId(Long id);
 }
