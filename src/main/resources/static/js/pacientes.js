@@ -1,4 +1,4 @@
-import { fetchConfig } from './utils.js'
+import { fetchConfig, sweetAlert } from './utils.js'
 
 // VARIABLES DOM
 const btnAtras = document.querySelector('#btnAtras')
@@ -18,20 +18,11 @@ async function postPacientes({ dni, nombre, apellido, domicilio, fechaAlta }) {
     const res = await fetch('/pacientes', config)
     if (!res.ok) throw new Error('Error al crear paciente.')
 
-    Swal.fire({
-      icon: 'success',
-      title: 'Paciente creado',
-      showConfirmButton: false,
-      timer: 1750
-    })
+    sweetAlert({ type: 'success', title: 'Paciente creado' })
 
     return await res.json()
-  } catch (err) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: err.message
-    })
+  } catch ({ message }) {
+    sweetAlert({ type: 'error', text: message })
   }
 }
 
@@ -43,12 +34,8 @@ async function getPacienteById(id) {
     if (!res.ok) throw new Error('Error al buscar paciente')
 
     return await res.json()
-  } catch (err) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: err.message
-    })
+  } catch ({ message }) {
+    sweetAlert({ type: 'error', text: message })
   }
 }
 
@@ -60,12 +47,8 @@ async function getAllPacientes() {
     if (!res.ok) throw new Error('Error al cargar la lista de pacientes')
 
     return await res.json()
-  } catch (err) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: err.message
-    })
+  } catch ({ message }) {
+    sweetAlert({ type: 'error', text: message })
   }
 }
 
@@ -76,20 +59,11 @@ async function putPaciente({ id, dni, nombre, apellido, domicilio, fechaAlta }) 
     const res = await fetch(`/pacientes/${id}`, config)
     if (!res.ok) throw new Error('Error al actualizar paciente.')
 
-    Swal.fire({
-      icon: 'success',
-      title: 'Paciente actualizado',
-      showConfirmButton: false,
-      timer: 1750
-    })
+    sweetAlert({ type: 'success', title: 'Paciente actualizado' })
 
     limpiarFormulario()
-  } catch (err) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: err.message
-    })
+  } catch ({ message }) {
+    sweetAlert({ type: 'error', text: message })
   }
 }
 
@@ -100,18 +74,9 @@ async function deletePaciente(id) {
     const res = await fetch(`/pacientes/${id}`, config)
     if (!res.ok) throw new Error('Error al eliminar paciente.')
 
-    Swal.fire({
-      icon: 'success',
-      title: 'Paciente eliminado',
-      showConfirmButton: false,
-      timer: 1750
-    })
-  } catch (err) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: err.message
-    })
+    sweetAlert({ type: 'success', title: 'Paciente eliminado' })
+  } catch ({ message }) {
+    sweetAlert({ type: 'error', text: message })
   }
 }
 
@@ -196,24 +161,22 @@ function actualizarLista() {
   getAllPacientes().then(renderizarPacientes)
 }
 
-actualizarLista()
-
+// FORM FUNCTIONS
 function getFormData() {
-  const id = parseInt(pacienteForm.querySelector('#pacienteId').value)
-  const dni = parseInt(pacienteForm.querySelector('#dni').value)
-  const nombre = pacienteForm.querySelector('#nombre').value
-  const apellido = pacienteForm.querySelector('#apellido').value
-  const fechaAlta = new Date(pacienteForm.querySelector('#fechaAlta').value).toISOString().split('T')[0]
-
-  const domicilio = {
-    id: parseInt(domicilioForm.querySelector('#domicilioId').value),
-    calle: domicilioForm.querySelector('#calle').value,
-    numero: parseInt(domicilioForm.querySelector('#numero').value),
-    localidad: domicilioForm.querySelector('#localidad').value,
-    provincia: domicilioForm.querySelector('#provincia').value
+  return {
+    id: parseInt(pacienteForm.querySelector('#pacienteId').value),
+    dni: parseInt(pacienteForm.querySelector('#dni').value),
+    nombre: pacienteForm.querySelector('#nombre').value,
+    apellido: pacienteForm.querySelector('#apellido').value,
+    fechaAlta: pacienteForm.querySelector('#fechaAlta').value,
+    domicilio: {
+      id: parseInt(domicilioForm.querySelector('#domicilioId').value),
+      calle: domicilioForm.querySelector('#calle').value,
+      numero: parseInt(domicilioForm.querySelector('#numero').value),
+      localidad: domicilioForm.querySelector('#localidad').value,
+      provincia: domicilioForm.querySelector('#provincia').value
+    }
   }
-
-  return { id, dni, nombre, apellido, domicilio, fechaAlta }
 }
 
 function setFormData({ id, dni, nombre, apellido, domicilio, fechaAlta }) {
@@ -237,91 +200,101 @@ function limpiarFormulario() {
   pacienteForm.reset()
 }
 
-// EVENT LISTENERS
-btnAtras.addEventListener('click', async e => {
-  e.preventDefault()
-
-  pacienteFormContainer.classList.add('hidden')
-  domicilioFormContainer.classList.remove('hidden')
-})
-
-domicilioFormContainer.addEventListener('submit', async e => {
-  e.preventDefault()
-
-  domicilioFormContainer.classList.add('hidden')
-  pacienteFormContainer.classList.remove('hidden')
-})
-
-domicilioForm.addEventListener('submit', e => {
-  e.preventDefault()
-})
-
-newPacienteButton.addEventListener('click', () => {
-  const btnText = pacienteForm.querySelector('button[type="submit"]')
-  btnText.textContent = 'Agregar'
-
-  limpiarFormulario()
-
+function mostrarFormulario(textoBoton) {
+  pacienteForm.querySelector('button[type="submit"]').textContent = textoBoton
   closeFormButton.classList.remove('hidden')
   domicilioFormContainer.classList.remove('hidden')
   pacienteFormContainer.classList.add('hidden')
-})
+}
 
-table.addEventListener('click', async e => {
+function ocultarFormulario() {
+  limpiarFormulario()
+  domicilioFormContainer.classList.add('hidden')
+  pacienteFormContainer.classList.add('hidden')
+  closeFormButton.classList.add('hidden')
+}
+
+// EVENT HANDLERS
+function agregarEventListeners() {
+  btnAtras.addEventListener('click', handleBtnAtras)
+  domicilioFormContainer.addEventListener('submit', handleSubmitDomicilioForm)
+  domicilioForm.addEventListener('submit', e => e.preventDefault())
+  newPacienteButton.addEventListener('click', handleNuevoPaciente)
+  table.addEventListener('click', handleClickTabla)
+  pacienteForm.addEventListener('submit', handleSubmitPacienteForm)
+  closeFormButton.addEventListener('click', ocultarFormulario)
+}
+
+function handleBtnAtras(e) {
+  e.preventDefault()
+  pacienteFormContainer.classList.add('hidden')
+  domicilioFormContainer.classList.remove('hidden')
+}
+
+function handleSubmitDomicilioForm(e) {
+  e.preventDefault()
+  domicilioFormContainer.classList.add('hidden')
+  pacienteFormContainer.classList.remove('hidden')
+}
+
+function handleNuevoPaciente() {
+  mostrarFormulario('Agregar')
+}
+
+async function handleClickTabla(e) {
   const btn = e.target.closest('button')?.id
-
   if (!btn) return
 
   if (btn.includes('btnDelete')) {
-    const { isConfirmed } = await Swal.fire({
-      title: '¿Estas seguro que deseas eliminar el Paciente?',
-      showCancelButton: true,
-      confirmButtonText: `Eliminar`,
-      confirmButtonColor: '#DC2626',
-      cancelButtonText: `Cancelar`
-    })
-
-    if (!isConfirmed) return
-
-    const id = btn.split('-')[1]
-    await deletePaciente(id)
-    actualizarLista()
+    await handleEliminarPaciente(btn)
+  } else if (btn.includes('btnEdit')) {
+    await handleEditarPaciente(btn)
   }
+}
 
-  if (btn.includes('btnEdit')) {
-    const id = btn.split('-')[1]
-    const paciente = await getPacienteById(id)
-    domicilioFormContainer.classList.remove('hidden')
-    closeFormButton.classList.remove('hidden')
-    pacienteFormContainer.classList.add('hidden')
-    pacienteForm.querySelector('button[type="submit"]').textContent = 'Actualizar'
-    setFormData(paciente)
-  }
-})
+async function handleEliminarPaciente(btn) {
+  const { isConfirmed } = await Swal.fire({
+    title: '¿Estas seguro que deseas eliminar el Paciente?',
+    showCancelButton: true,
+    confirmButtonText: `Eliminar`,
+    confirmButtonColor: '#DC2626',
+    cancelButtonText: `Cancelar`
+  })
 
-pacienteForm.addEventListener('submit', async e => {
+  if (!isConfirmed) return
+
+  const id = btn.split('-')[1]
+  await deletePaciente(id)
+  actualizarLista()
+}
+
+async function handleEditarPaciente(btn) {
+  const id = btn.split('-')[1]
+  const paciente = await getPacienteById(id)
+  mostrarFormulario('Actualizar')
+  setFormData(paciente)
+}
+
+async function handleSubmitPacienteForm(e) {
   e.preventDefault()
 
   const { id, dni, nombre, apellido, domicilio, fechaAlta } = getFormData()
 
   if (id) {
     await putPaciente({ id, dni, nombre, apellido, domicilio, fechaAlta })
-    pacienteFormContainer.classList.add('hidden')
-    actualizarLista()
-    return
+  } else {
+    const { id: _, ...nuevoDomicilio } = domicilio
+    await postPacientes({ dni, nombre, apellido, domicilio: nuevoDomicilio, fechaAlta })
   }
 
-  const { id: _, ...nuevoDomicilio } = domicilio
-
-  await postPacientes({ dni, nombre, apellido, domicilio: nuevoDomicilio, fechaAlta })
-
-  pacienteFormContainer.classList.add('hidden')
+  ocultarFormulario()
   actualizarLista()
-})
+}
 
-closeFormButton.addEventListener('click', () => {
-  limpiarFormulario()
-  domicilioFormContainer.classList.add('hidden')
-  pacienteFormContainer.classList.add('hidden')
-  closeFormButton.classList.add('hidden')
-})
+// MAIN FUNCTION
+function main() {
+  actualizarLista()
+  agregarEventListeners()
+}
+
+main()

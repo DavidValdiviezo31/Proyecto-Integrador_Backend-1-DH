@@ -1,4 +1,4 @@
-import { fetchConfig } from './utils.js'
+import { fetchConfig, sweetAlert } from './utils.js'
 
 // VARIABLES DOM
 const table = document.querySelector('#odontologoTableBody')
@@ -10,108 +10,73 @@ const closeFormButton = document.querySelector('#closeBtn')
 
 // CRUD METHODS
 async function postOdontologos({ matricula, nombre, apellido }) {
-  try {
-    const config = fetchConfig({ method: 'POST', data: { matricula, nombre, apellido } })
+  const config = fetchConfig({ method: 'POST', data: { matricula, nombre, apellido } })
 
+  try {
     const res = await fetch('/odontologos', config)
     if (!res.ok) throw new Error('Error al crear odontólogo.')
 
-    Swal.fire({
-      icon: 'success',
-      title: 'Odontólogo creado',
-      showConfirmButton: false,
-      timer: 1750
-    })
+    sweetAlert({ type: 'success', title: 'Odontólogo creado' })
 
     return await res.json()
-  } catch (err) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: err.message
-    })
+  } catch ({ message }) {
+    sweetAlert({ type: 'error', text: message })
   }
 }
 
 async function getOdontologoById(id) {
-  try {
-    const config = fetchConfig({ method: 'GET' })
+  const config = fetchConfig({ method: 'GET' })
 
+  try {
     const res = await fetch(`/odontologos/${id}`, config)
     if (!res.ok) throw new Error('Error al buscar odontólogo')
 
     return await res.json()
-  } catch (err) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: err.message
-    })
+  } catch ({ message }) {
+    sweetAlert({ type: 'error', text: message })
   }
 }
 
 async function getAllOdontologos() {
-  try {
-    const config = fetchConfig({ method: 'GET' })
+  const config = fetchConfig({ method: 'GET' })
 
+  try {
     const res = await fetch('/odontologos', config)
     if (!res.ok) throw new Error('Error al cargar la lista de odontólogos')
 
     return await res.json()
-  } catch (err) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: err.message
-    })
+  } catch ({ message }) {
+    sweetAlert({ type: 'error', text: message })
   }
 }
 
 async function putOdontologo({ id, matricula, nombre, apellido }) {
-  try {
-    const config = fetchConfig({ method: 'PUT', data: { matricula, nombre, apellido } })
+  const config = fetchConfig({ method: 'PUT', data: { matricula, nombre, apellido } })
 
+  try {
     const res = await fetch(`/odontologos/${id}`, config)
     if (!res.ok) throw new Error('Error al actualizar odontólogo')
 
-    Swal.fire({
-      icon: 'success',
-      title: 'Odontólogo actualizado',
-      showConfirmButton: false,
-      timer: 1750
-    })
+    sweetAlert({ type: 'success', title: 'Odontólogo actualizado' })
 
     odontologoForm.querySelector('button').textContent = 'Agregar'
     limpiarFormulario()
     odontologoFormContainer.classList.add('hidden')
-  } catch (err) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: err.message
-    })
+  } catch ({ message }) {
+    sweetAlert({ type: 'error', text: message })
   }
 }
 
 async function deleteOdontologo(id) {
-  try {
-    const config = fetchConfig({ method: 'DELETE' })
+  const config = fetchConfig({ method: 'DELETE' })
 
+  try {
     const res = await fetch(`/odontologos/${id}`, config)
     if (!res.ok) throw new Error('Error al eliminar odontólogo')
 
-    Swal.fire({
-      icon: 'success',
-      title: 'Odontólogo eliminado',
-      showConfirmButton: false,
-      timer: 1750
-    })
-  } catch (err) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: err.message
-    })
+    sweetAlert({ type: 'success', title: 'Odontólogo eliminado' })
+  } catch ({ message }) {
+    sweetAlert({ type: 'error', text: message })
   }
 }
 
@@ -193,18 +158,17 @@ function actualizarLista() {
   getAllOdontologos().then(renderizarOdontologos)
 }
 
-actualizarLista()
-
-function getFormData() {
-  const id = parseInt(odontologoForm.querySelector('#odontologoId').value)
-  const matricula = parseInt(odontologoForm.querySelector('#matricula').value)
-  const nombre = odontologoForm.querySelector('#nombre').value
-  const apellido = odontologoForm.querySelector('#apellido').value
-
-  return { id, matricula, nombre, apellido }
+// FORM FUNCTIONS
+function obtenerDatosFormulario() {
+  return {
+    id: parseInt(odontologoForm.querySelector('#odontologoId').value),
+    matricula: parseInt(odontologoForm.querySelector('#matricula').value),
+    nombre: odontologoForm.querySelector('#nombre').value,
+    apellido: odontologoForm.querySelector('#apellido').value
+  }
 }
 
-function setFormData({ id, matricula, nombre, apellido }) {
+function insertarDatosFormulario({ id, matricula, nombre, apellido }) {
   odontologoForm.querySelector('#odontologoId').value = id
   odontologoForm.querySelector('#matricula').value = matricula
   odontologoForm.querySelector('#nombre').value = nombre
@@ -215,69 +179,86 @@ function limpiarFormulario() {
   odontologoForm.reset()
 }
 
-// EVENTS LISTENERS
-updateButton.addEventListener('click', actualizarLista)
-
-newOdontologoButton.addEventListener('click', () => {
-  const btnText = odontologoForm.querySelector('button')
-  btnText.textContent = 'Agregar'
-
-  limpiarFormulario()
+function mostrarFormulario(textoBoton) {
+  odontologoForm.querySelector('button').textContent = textoBoton
   closeFormButton.classList.remove('hidden')
   odontologoFormContainer.classList.remove('hidden')
-})
+}
 
-table.addEventListener('click', async e => {
-  const btn = e.target.closest('button')?.id
-
-  if (!btn) return
-
-  if (btn.includes('btnDelete')) {
-    const { isConfirmed } = await Swal.fire({
-      title: '¿Estas seguro que deseas eliminar el Odontologo?',
-      showCancelButton: true,
-      confirmButtonText: `Eliminar`,
-      confirmButtonColor: '#DC2626',
-      cancelButtonText: `Cancelar`
-    })
-
-    if (!isConfirmed) return
-
-    const id = btn.split('-')[1]
-    await deleteOdontologo(id)
-    actualizarLista()
-  }
-
-  if (btn.includes('btnEdit')) {
-    const id = btn.split('-')[1]
-    const odontologo = await getOdontologoById(id)
-    odontologoFormContainer.classList.remove('hidden')
-    closeFormButton.classList.remove('hidden')
-    odontologoForm.querySelector('button').textContent = 'Actualizar'
-    setFormData(odontologo)
-  }
-})
-
-odontologoForm.addEventListener('submit', async e => {
-  e.preventDefault()
-
-  const { id, matricula, nombre, apellido } = getFormData()
-
-  if (id) {
-    await putOdontologo({ id, matricula, nombre, apellido })
-    odontologoFormContainer.classList.add('hidden')
-    actualizarLista()
-    return
-  }
-
-  await postOdontologos({ matricula, nombre, apellido })
-
-  odontologoFormContainer.classList.add('hidden')
-  actualizarLista()
-})
-
-closeFormButton.addEventListener('click', () => {
+function ocultarFormulario() {
   limpiarFormulario()
   odontologoFormContainer.classList.add('hidden')
   closeFormButton.classList.add('hidden')
-})
+}
+
+// EVENT HANDLERS
+function agregarEventListeners() {
+  updateButton.addEventListener('click', actualizarLista)
+
+  newOdontologoButton.addEventListener('click', () => {
+    mostrarFormulario('Agregar')
+  })
+
+  table.addEventListener('click', handleClickTabla)
+
+  odontologoForm.addEventListener('submit', handleSubmitFormulario)
+
+  closeFormButton.addEventListener('click', ocultarFormulario)
+}
+
+async function handleClickTabla(e) {
+  const btn = e.target.closest('button')?.id
+  if (!btn) return
+
+  if (btn.includes('btnDelete')) {
+    await handleEliminarOdontologo(btn)
+  } else if (btn.includes('btnEdit')) {
+    await handleEditarOdontologo(btn)
+  }
+}
+
+async function handleEliminarOdontologo(btn) {
+  const { isConfirmed } = await Swal.fire({
+    title: '¿Estas seguro que deseas eliminar el Odontólogo?',
+    showCancelButton: true,
+    confirmButtonText: `Eliminar`,
+    confirmButtonColor: '#DC2626',
+    cancelButtonText: `Cancelar`
+  })
+
+  if (!isConfirmed) return
+
+  const id = btn.split('-')[1]
+  await deleteOdontologo(id)
+  actualizarLista()
+}
+
+async function handleEditarOdontologo(btn) {
+  const id = btn.split('-')[1]
+  const odontologo = await getOdontologoById(id)
+  mostrarFormulario('Actualizar')
+  insertarDatosFormulario(odontologo)
+}
+
+async function handleSubmitFormulario(e) {
+  e.preventDefault()
+
+  const { id, matricula, nombre, apellido } = obtenerDatosFormulario()
+
+  if (id) {
+    await putOdontologo({ id, matricula, nombre, apellido })
+  } else {
+    await postOdontologos({ matricula, nombre, apellido })
+  }
+
+  ocultarFormulario()
+  actualizarLista()
+}
+
+// MAIN FUNCTION
+function main() {
+  actualizarLista()
+  agregarEventListeners()
+}
+
+main()

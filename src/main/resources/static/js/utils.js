@@ -27,3 +27,25 @@ export function fetchConfig({ method, data }) {
     }
   }
 }
+
+export function sweetAlert({ type, title, text }) {
+  switch (type) {
+    case 'error':
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text
+      })
+      break
+    case 'success':
+      Swal.fire({
+        icon: 'success',
+        title,
+        showConfirmButton: false,
+        timer: 1750
+      })
+      break
+    default:
+      break
+  }
+}
