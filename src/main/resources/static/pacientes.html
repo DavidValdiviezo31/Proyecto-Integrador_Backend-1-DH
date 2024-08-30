@@ -106,11 +106,11 @@
     </header>
 
     <main class="my-8 w-3/4 mx-auto">
-      <section class="relative">
+      <section class="relative w-fit h-fit mx-auto mb-4">
         <button
           type="button"
           id="closeBtn"
-          class="absolute hidden top-2 left-48 text-white bg-red-500 hover:bg-red-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-all"
+          class="absolute hidden top-0 left-0 -translate-x-1/2 -translate-y-1/2 text-white bg-red-500 hover:bg-red-600 font-medium rounded-full text-sm p-2 text-center font-bold transition-all"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -134,7 +134,7 @@
           </svg>
         </button>
         <div
-          class="hidden"
+          class="hidden bg-gray-50 rounded-xl px-8 py-4"
           id="domicilioFormContainer"
         >
           <h2 class="font-bold text-center mb-8">AGREGAR DOMICILIO</h2>
@@ -227,7 +227,7 @@
         </div>
 
         <div
-          class="hidden"
+          class="hidden bg-gray-50 rounded-xl px-8 py-4"
           id="pacienteFormContainer"
         >
           <h2 class="font-bold text-center mb-8">AGREGAR PACIENTE</h2>
@@ -319,6 +319,8 @@
                   id="fechaAlta"
                   datepicker
                   datepicker-autohide
+                  datepicker-buttons
+                  datepicker-autoselect-today
                   datepicker-format="yyyy-mm-dd"
                   type="text"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full ps-10 p-2.5"

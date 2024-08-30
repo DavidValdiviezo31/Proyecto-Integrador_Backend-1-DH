@@ -180,6 +180,7 @@ function limpiarFormulario() {
 }
 
 function mostrarFormulario(textoBoton) {
+  limpiarFormulario()
   odontologoForm.querySelector('button').textContent = textoBoton
   closeFormButton.classList.remove('hidden')
   odontologoFormContainer.classList.remove('hidden')

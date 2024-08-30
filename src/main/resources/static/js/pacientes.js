@@ -162,7 +162,7 @@ function actualizarLista() {
 }
 
 // FORM FUNCTIONS
-function getFormData() {
+function obtenerDatosFormulario() {
   return {
     id: parseInt(pacienteForm.querySelector('#pacienteId').value),
     dni: parseInt(pacienteForm.querySelector('#dni').value),
@@ -179,7 +179,7 @@ function getFormData() {
   }
 }
 
-function setFormData({ id, dni, nombre, apellido, domicilio, fechaAlta }) {
+function insertarDatosFormulario({ id, dni, nombre, apellido, domicilio, fechaAlta }) {
   const { id: idDomicilio, calle, numero, localidad, provincia } = domicilio
 
   pacienteForm.querySelector('#pacienteId').value = id
@@ -201,6 +201,7 @@ function limpiarFormulario() {
 }
 
 function mostrarFormulario(textoBoton) {
+  limpiarFormulario()
   pacienteForm.querySelector('button[type="submit"]').textContent = textoBoton
   closeFormButton.classList.remove('hidden')
   domicilioFormContainer.classList.remove('hidden')
@@ -272,13 +273,13 @@ async function handleEditarPaciente(btn) {
   const id = btn.split('-')[1]
   const paciente = await getPacienteById(id)
   mostrarFormulario('Actualizar')
-  setFormData(paciente)
+  insertarDatosFormulario(paciente)
 }
 
 async function handleSubmitPacienteForm(e) {
   e.preventDefault()
 
-  const { id, dni, nombre, apellido, domicilio, fechaAlta } = getFormData()
+  const { id, dni, nombre, apellido, domicilio, fechaAlta } = obtenerDatosFormulario()
 
   if (id) {
     await putPaciente({ id, dni, nombre, apellido, domicilio, fechaAlta })
