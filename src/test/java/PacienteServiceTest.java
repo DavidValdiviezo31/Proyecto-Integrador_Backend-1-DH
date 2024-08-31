@@ -1,6 +1,8 @@
 import com.odontologia.project.ProjectApplication;
 
+import com.odontologia.project.models.Domicilio;
 import com.odontologia.project.models.Paciente;
+import com.odontologia.project.services.impl.DomicilioService;
 import com.odontologia.project.services.impl.PacienteService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +23,14 @@ public class PacienteServiceTest {
     @Autowired
     private PacienteService pacienteService;
 
+    @Autowired
+    private DomicilioService domicilioService;
+
     @Test
     public void testGuardarPaciente() {
-        Paciente paciente = new Paciente(null,1027887642L,"Alexa","Monsalve",null, LocalDate.parse("2023-01-01"),null);
+        Domicilio domicilio = new Domicilio(null, "Calle Z", 999, "Ciudad Z", "Provincia Z");
+        Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
+        Paciente paciente = new Paciente(null,1027887642L,"Alexa","Monsalve",domicilioGuardado, LocalDate.parse("2023-01-01"),null);
         Paciente pacienteGuardado = pacienteService.guardarPaciente(paciente);
         assertThat(pacienteGuardado).isNotNull();
         assertThat(pacienteGuardado.getId()).isNotNull();
@@ -31,7 +38,9 @@ public class PacienteServiceTest {
 
     @Test
     public void testBuscarPacientePorId() {
-        Paciente paciente = new Paciente(null,1027887642L,"Alexa","Monsalve",null, LocalDate.parse("2023-01-01"),null);
+        Domicilio domicilio = new Domicilio(null, "Calle Z", 999, "Ciudad Z", "Provincia Z");
+        Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
+        Paciente paciente = new Paciente(null,1027887642L,"Alexa","Monsalve",domicilioGuardado, LocalDate.parse("2023-01-01"),null);
         Paciente pacienteGuardado = pacienteService.guardarPaciente(paciente);
         Paciente pacienteEncontrado = pacienteService.buscarPacientePorId(pacienteGuardado.getId());
         assertThat(pacienteEncontrado).isNotNull();
@@ -45,7 +54,9 @@ public class PacienteServiceTest {
 
     @Test
     public void testActualizarPaciente() {
-        Paciente paciente = new Paciente(null, 1027887642L, "Alexa", "Monsalve", null, LocalDate.parse("2023-01-01"), null);
+        Domicilio domicilio = new Domicilio(null, "Calle Z", 999, "Ciudad Z", "Provincia Z");
+        Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
+        Paciente paciente = new Paciente(null, 1027887642L, "Alexa", "Monsalve", domicilioGuardado, LocalDate.parse("2023-01-01"), null);
         Paciente pacienteGuardado = pacienteService.guardarPaciente(paciente);
         pacienteGuardado.setNombre("Alecsandra");
         pacienteGuardado.setApellido("Piedrahita");
@@ -56,7 +67,9 @@ public class PacienteServiceTest {
 
     @Test
     public void testEliminarPacientePorId() {
-        Paciente paciente = new Paciente(null, 1027887642L, "Alecsandra", "Piedrahita", null, LocalDate.parse("2023-01-01"), null);
+        Domicilio domicilio = new Domicilio(null, "Calle Z", 999, "Ciudad Z", "Provincia Z");
+        Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
+        Paciente paciente = new Paciente(null, 1027887642L, "Alecsandra", "Piedrahita", domicilioGuardado, LocalDate.parse("2023-01-01"), null);
         Paciente pacienteGuardado = pacienteService.guardarPaciente(paciente);
         pacienteService.eliminarPacientePorId(pacienteGuardado.getId());
         Paciente pacienteEncontrado = pacienteService.buscarPacientePorId(pacienteGuardado.getId());

@@ -47,8 +47,10 @@ public class DomicilioServiceTest {
         Domicilio domicilio = new Domicilio(null,"Calle P sherman", 524, "Medellín", "Antioquia");
         Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
         domicilioGuardado.setCalle("Calle Juan23");
+        domicilioGuardado.setNumero(456);
         Domicilio domicilioActualizado = domicilioService.actualizarDomicilio(domicilioGuardado);
         assertThat(domicilioActualizado.getCalle()).isEqualTo("Calle Juan23");
+        assertThat(domicilioActualizado.getNumero()).isEqualTo(456);
     }
 
     @Test
