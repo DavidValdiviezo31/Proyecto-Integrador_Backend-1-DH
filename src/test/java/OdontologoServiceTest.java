@@ -16,49 +16,80 @@ import java.util.List;
 @Rollback
 public class OdontologoServiceTest {
 
-    @Autowired
-    private OdontologoService odontologoService;
+  @Autowired
+  private OdontologoService odontologoService;
 
-    @Test
-    public void testGuardarOdontologo() {
-        Odontologo odontologo = new Odontologo( null, 1214714065L,"Juan","Gonzalez",null);
-        Odontologo odontologoGuardado = odontologoService.guardarOdontologo(odontologo);
-        assertThat(odontologoGuardado).isNotNull();
-        assertThat(odontologoGuardado.getId()).isNotNull();
-    }
+  @Test
+  public void testGuardarOdontologo() {
+    // Arrange
+    Odontologo odontologo = new Odontologo( null, 1214714065L,"Juan","Gonzalez",null);
 
-    @Test
-    public void testBuscarOdontologoPorId() {
-        Odontologo odontologo = new Odontologo( null, 1214714065L,"Juan","Gonzalez",null);
-        Odontologo odontologoGuardado = odontologoService.guardarOdontologo(odontologo);
-        Odontologo odontologoEncontrado = odontologoService.buscarOdontologoPorId(odontologoGuardado.getId());
-        assertThat(odontologoEncontrado).isNotNull();
-    }
+    // Act
+    Odontologo odontologoGuardado = odontologoService.guardarOdontologo(odontologo);
 
-    @Test
-    public void testBuscarTodosOdontologos() {
-        List<Odontologo> odontologos = odontologoService.buscarTodosOdontologos();
-        assertThat(odontologos).isNotNull();
-    }
+    // Assert
+    assertThat(odontologoGuardado).isNotNull();
+  }
 
-    @Test
-    public void testActualizarOdontologo() {
-        Odontologo odontologo = new Odontologo( null, 1214714065L,"Juan","Gonzalez",null);
-        Odontologo odontologoGuardado = odontologoService.guardarOdontologo(odontologo);
-        odontologoGuardado.setNombre("Carlos");
-        odontologoGuardado.setApellido("Velez");
-        Odontologo odontologoActualizado = odontologoService.actualizarOdontologo(odontologoGuardado);
-        assertThat(odontologoActualizado.getNombre()).isEqualTo("Carlos");
-        assertThat(odontologoActualizado.getApellido()).isEqualTo("Velez");
-    }
+  @Test
+  public void testBuscarOdontologoPorId() {
+    // Arrange
+    Odontologo odontologo = new Odontologo( null, 1214714065L,"Juan","Gonzalez",null);
+    Odontologo odontologoGuardado = odontologoService.guardarOdontologo(odontologo);
 
-    @Test
-    public void testEliminarOdontologoPorId() {
-        Odontologo odontologo = new Odontologo( null, 1214714065L,"Carlos","Velez",null);
-        Odontologo odontologoGuardado = odontologoService.guardarOdontologo(odontologo);
-        odontologoService.eliminarOdontologoPorId(odontologoGuardado.getId());
-        Odontologo odontologoEncontrado = odontologoService.buscarOdontologoPorId(odontologoGuardado.getId());
-        assertThat(odontologoEncontrado).isNull();
-    }
+    //Act
+    Odontologo odontologoEncontrado = odontologoService.buscarOdontologoPorId(odontologoGuardado.getId());
+
+    // Assert
+    assertThat(odontologoEncontrado).isNotNull();
+  }
+
+  @Test
+  public void testBuscarTodosOdontologos() {
+    List<Odontologo> odontologos = odontologoService.buscarTodosOdontologos();
+    assertThat(odontologos).isNotNull();
+  }
+
+  @Test
+  public void testActualizarNombreOdontologo() {
+    // Arrange
+    Odontologo odontologo = new Odontologo( null, 1214714065L,"Juan","Gonzalez",null);
+    Odontologo odontologoGuardado = odontologoService.guardarOdontologo(odontologo);
+
+    // Act
+    odontologoGuardado.setNombre("Carlos");
+    Odontologo odontologoActualizado = odontologoService.actualizarOdontologo(odontologoGuardado);
+
+    // Assert
+    assertThat(odontologoActualizado.getNombre()).isEqualTo("Carlos");
+  }
+
+  @Test
+  public void testActualizarApellidoOdontologo() {
+    // Arrange
+    Odontologo odontologo = new Odontologo( null, 1214714065L,"Juan","Gonzalez",null);
+    Odontologo odontologoGuardado = odontologoService.guardarOdontologo(odontologo);
+
+    // Act
+    odontologoGuardado.setApellido("Velez");
+    Odontologo odontologoActualizado = odontologoService.actualizarOdontologo(odontologoGuardado);
+
+    // Assert
+    assertThat(odontologoActualizado.getApellido()).isEqualTo("Velez");
+  }
+
+  @Test
+  public void testEliminarOdontologoPorId() {
+    // Arrange
+    Odontologo odontologo = new Odontologo( null, 1214714065L,"Carlos","Velez",null);
+    Odontologo odontologoGuardado = odontologoService.guardarOdontologo(odontologo);
+
+    // Act
+    odontologoService.eliminarOdontologoPorId(odontologoGuardado.getId());
+    Odontologo odontologoEncontrado = odontologoService.buscarOdontologoPorId(odontologoGuardado.getId());
+
+    // Assert
+    assertThat(odontologoEncontrado).isNull();
+  }
 }
 

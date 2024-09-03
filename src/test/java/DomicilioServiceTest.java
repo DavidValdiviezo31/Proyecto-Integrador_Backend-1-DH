@@ -16,49 +16,79 @@ import java.util.List;
 @Rollback
 public class DomicilioServiceTest {
 
-    @Autowired
-    private DomicilioService domicilioService;
+  @Autowired
+  private DomicilioService domicilioService;
 
-    @Test
-    public void testGuardarDomicilio() {
-        Domicilio domicilio = new Domicilio(null,"Calle P sherman",524,"Medellín","Antioquia");
-        Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
+  @Test
+  public void testGuardarDomicilio() {
+    // Arrange
+    Domicilio domicilio = new Domicilio(null,"Calle P sherman",524,"Medellín","Antioquia");
 
-        assertThat(domicilioGuardado).isNotNull();
-        assertThat(domicilioGuardado.getId()).isNotNull();
-    }
+    // Act
+    Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
 
-    @Test
-    void testBuscarDomicilioPorId() {
-        Domicilio domicilio = new Domicilio(null,"Calle P sherman", 524, "Medellín", "Antioquia");
-        Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
-        Domicilio domicilioEncontrado = domicilioService.buscarDomicilioPorId(domicilioGuardado.getId());
-        assertThat(domicilioEncontrado).isNotNull();
-    }
+    // Assert
+    assertThat(domicilioGuardado).isNotNull();
+  }
 
-    @Test
-    void testBuscarTodosDomicilios() {
-        List<Domicilio> domicilios = domicilioService.buscarTodosDomicilios();
-        assertThat(domicilios).isNotNull();
-    }
+  @Test
+  void testBuscarDomicilioPorId() {
+    // Arrange
+    Domicilio domicilio = new Domicilio(null,"Calle P sherman", 524, "Medellín", "Antioquia");
 
-    @Test
-    void testActualizarDomicilio() {
-        Domicilio domicilio = new Domicilio(null,"Calle P sherman", 524, "Medellín", "Antioquia");
-        Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
-        domicilioGuardado.setCalle("Calle Juan23");
-        domicilioGuardado.setNumero(456);
-        Domicilio domicilioActualizado = domicilioService.actualizarDomicilio(domicilioGuardado);
-        assertThat(domicilioActualizado.getCalle()).isEqualTo("Calle Juan23");
-        assertThat(domicilioActualizado.getNumero()).isEqualTo(456);
-    }
+    // Act
+    Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
+    Domicilio domicilioEncontrado = domicilioService.buscarDomicilioPorId(domicilioGuardado.getId());
 
-    @Test
-    void testEliminarDomicilioPorId() {
-        Domicilio domicilio = new Domicilio(null,"Calle Juan23", 366, "B", "USA");
-        Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
-        domicilioService.eliminarDomicilioPorId(domicilioGuardado.getId());
-        Domicilio domicilioEncontrado = domicilioService.buscarDomicilioPorId(domicilioGuardado.getId());
-        assertThat(domicilioEncontrado).isNull();
-    }
+    // Assert
+    assertThat(domicilioEncontrado).isNotNull();
+  }
+
+  @Test
+  void testBuscarTodosDomicilios() {
+    List<Domicilio> domicilios = domicilioService.buscarTodosDomicilios();
+    assertThat(domicilios).isNotNull();
+  }
+
+  @Test
+  void testActualizarCalleDomicilio() {
+    // Arrange
+    Domicilio domicilio = new Domicilio(null,"Calle P sherman", 524, "Medellín", "Antioquia");
+    Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
+
+    // Act
+    domicilioGuardado.setCalle("Calle Juan23");
+    Domicilio domicilioActualizado = domicilioService.actualizarDomicilio(domicilioGuardado);
+
+    // Assert
+    assertThat(domicilioActualizado.getCalle()).isEqualTo("Calle Juan23");
+  }
+
+  @Test
+  void testActualizarNumeroDomicilio() {
+    // Arrange
+    Domicilio domicilio = new Domicilio(null,"Calle P sherman", 524, "Medellín", "Antioquia");
+    Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
+
+    // Act
+    domicilioGuardado.setNumero(456);
+    Domicilio domicilioActualizado = domicilioService.actualizarDomicilio(domicilioGuardado);
+
+    // Assert
+    assertThat(domicilioActualizado.getNumero()).isEqualTo(456);
+  }
+
+  @Test
+  void testEliminarDomicilioPorId() {
+    // Arrange
+    Domicilio domicilio = new Domicilio(null,"Calle Juan23", 366, "B", "USA");
+    Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
+
+    // Act
+    domicilioService.eliminarDomicilioPorId(domicilioGuardado.getId());
+    Domicilio domicilioEncontrado = domicilioService.buscarDomicilioPorId(domicilioGuardado.getId());
+
+    // Assert
+    assertThat(domicilioEncontrado).isNull();
+  }
 }

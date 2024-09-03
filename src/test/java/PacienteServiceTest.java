@@ -20,60 +20,93 @@ import java.util.List;
 @Rollback
 public class PacienteServiceTest {
 
-    @Autowired
-    private PacienteService pacienteService;
+  @Autowired
+  private PacienteService pacienteService;
 
-    @Autowired
-    private DomicilioService domicilioService;
+  @Autowired
+  private DomicilioService domicilioService;
 
-    @Test
-    public void testGuardarPaciente() {
-        Domicilio domicilio = new Domicilio(null, "Calle Z", 999, "Ciudad Z", "Provincia Z");
-        Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
-        Paciente paciente = new Paciente(null,1027887642L,"Alexa","Monsalve",domicilioGuardado, LocalDate.parse("2023-01-01"),null);
-        Paciente pacienteGuardado = pacienteService.guardarPaciente(paciente);
-        assertThat(pacienteGuardado).isNotNull();
-        assertThat(pacienteGuardado.getId()).isNotNull();
-    }
+  @Test
+  public void testGuardarPaciente() {
+    // Arrange
+    Domicilio domicilio = new Domicilio(null, "Calle Z", 999, "Ciudad Z", "Provincia Z");
+    Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
+    Paciente paciente = new Paciente(null,1027887642L,"Alexa","Monsalve",domicilioGuardado, LocalDate.parse("2023-01-01"),null);
 
-    @Test
-    public void testBuscarPacientePorId() {
-        Domicilio domicilio = new Domicilio(null, "Calle Z", 999, "Ciudad Z", "Provincia Z");
-        Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
-        Paciente paciente = new Paciente(null,1027887642L,"Alexa","Monsalve",domicilioGuardado, LocalDate.parse("2023-01-01"),null);
-        Paciente pacienteGuardado = pacienteService.guardarPaciente(paciente);
-        Paciente pacienteEncontrado = pacienteService.buscarPacientePorId(pacienteGuardado.getId());
-        assertThat(pacienteEncontrado).isNotNull();
-    }
+    // Act
+    Paciente pacienteGuardado = pacienteService.guardarPaciente(paciente);
 
-    @Test
-    public void testBuscarTodosPacientes() {
-        List<Paciente> pacientes = pacienteService.buscarTodosPacientes();
-        assertThat(pacientes).isNotNull();
-    }
+    // Assert
+    assertThat(pacienteGuardado).isNotNull();
+  }
 
-    @Test
-    public void testActualizarPaciente() {
-        Domicilio domicilio = new Domicilio(null, "Calle Z", 999, "Ciudad Z", "Provincia Z");
-        Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
-        Paciente paciente = new Paciente(null, 1027887642L, "Alexa", "Monsalve", domicilioGuardado, LocalDate.parse("2023-01-01"), null);
-        Paciente pacienteGuardado = pacienteService.guardarPaciente(paciente);
-        pacienteGuardado.setNombre("Alecsandra");
-        pacienteGuardado.setApellido("Piedrahita");
-        Paciente pacienteActualizado = pacienteService.actualizarPaciente(pacienteGuardado);
-        assertThat(pacienteActualizado.getNombre()).isEqualTo("Alecsandra");
-        assertThat(pacienteActualizado.getApellido()).isEqualTo("Piedrahita");
-    }
+  @Test
+  public void testBuscarPacientePorId() {
+    // Arrange
+    Domicilio domicilio = new Domicilio(null, "Calle Z", 999, "Ciudad Z", "Provincia Z");
+    Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
+    Paciente paciente = new Paciente(null,1027887642L,"Alexa","Monsalve",domicilioGuardado, LocalDate.parse("2023-01-01"),null);
+    Paciente pacienteGuardado = pacienteService.guardarPaciente(paciente);
 
-    @Test
-    public void testEliminarPacientePorId() {
-        Domicilio domicilio = new Domicilio(null, "Calle Z", 999, "Ciudad Z", "Provincia Z");
-        Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
-        Paciente paciente = new Paciente(null, 1027887642L, "Alecsandra", "Piedrahita", domicilioGuardado, LocalDate.parse("2023-01-01"), null);
-        Paciente pacienteGuardado = pacienteService.guardarPaciente(paciente);
-        pacienteService.eliminarPacientePorId(pacienteGuardado.getId());
-        Paciente pacienteEncontrado = pacienteService.buscarPacientePorId(pacienteGuardado.getId());
-        assertThat(pacienteEncontrado).isNull();
-    }
+    // Act
+    Paciente pacienteEncontrado = pacienteService.buscarPacientePorId(pacienteGuardado.getId());
+
+    // Assert
+    assertThat(pacienteEncontrado).isNotNull();
+  }
+
+  @Test
+  public void testBuscarTodosPacientes() {
+    List<Paciente> pacientes = pacienteService.buscarTodosPacientes();
+    assertThat(pacientes).isNotNull();
+  }
+
+  @Test
+  public void testActualizarNombrePaciente() {
+    // Arrange
+    Domicilio domicilio = new Domicilio(null, "Calle Z", 999, "Ciudad Z", "Provincia Z");
+    Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
+    Paciente paciente = new Paciente(null, 1027887642L, "Alexa", "Monsalve", domicilioGuardado, LocalDate.parse("2023-01-01"), null);
+    Paciente pacienteGuardado = pacienteService.guardarPaciente(paciente);
+
+    // Act
+    pacienteGuardado.setNombre("Alecsandra");
+    Paciente pacienteActualizado = pacienteService.actualizarPaciente(pacienteGuardado);
+
+    // Assert
+    assertThat(pacienteActualizado.getNombre()).isEqualTo("Alecsandra");
+  }
+
+  @Test
+  public void testActualizarApellidoPaciente() {
+    // Arrange
+    Domicilio domicilio = new Domicilio(null, "Calle Z", 999, "Ciudad Z", "Provincia Z");
+    Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
+    Paciente paciente = new Paciente(null, 1027887642L, "Alexa", "Monsalve", domicilioGuardado, LocalDate.parse("2023-01-01"), null);
+    Paciente pacienteGuardado = pacienteService.guardarPaciente(paciente);
+
+    // Act
+    pacienteGuardado.setApellido("Piedrahita");
+    Paciente pacienteActualizado = pacienteService.actualizarPaciente(pacienteGuardado);
+
+    // Assert
+    assertThat(pacienteActualizado.getApellido()).isEqualTo("Piedrahita");
+  }
+
+  @Test
+  public void testEliminarPacientePorId() {
+    // Arrange
+    Domicilio domicilio = new Domicilio(null, "Calle Z", 999, "Ciudad Z", "Provincia Z");
+    Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
+    Paciente paciente = new Paciente(null, 1027887642L, "Alecsandra", "Piedrahita", domicilioGuardado, LocalDate.parse("2023-01-01"), null);
+    Paciente pacienteGuardado = pacienteService.guardarPaciente(paciente);
+
+    // Act
+    pacienteService.eliminarPacientePorId(pacienteGuardado.getId());
+    Paciente pacienteEncontrado = pacienteService.buscarPacientePorId(pacienteGuardado.getId());
+
+    // Asser
+    assertThat(pacienteEncontrado).isNull();
+  }
 }
 
