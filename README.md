@@ -33,6 +33,8 @@ La aplicación debe ser desarrollada en capas:
 * **Spring Boot:** Framework para desarrollo de aplicaciones Java.
 * **H2 DATABASE:** Para almacenar información de pacientes, odontólogos, turnos y usuarios.
 * **SLF4J:** Para tener registro de lo que sucede dentro de la aplicación.
+* **JPA Repository:** Para el manejo de la base de datos.
+* **Lombok:** Para simplificar la estructura de las clases.
 
 ### **ESTRUCTURA DEL PROYECTO:**
 
