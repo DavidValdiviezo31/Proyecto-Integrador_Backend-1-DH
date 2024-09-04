@@ -1,4 +1,4 @@
-package com.odontologia.project.repository;
+package com.odontologia.project.repositories;
 
 import com.odontologia.project.models.Paciente;
 import org.springframework.data.jpa.repository.JpaRepository;

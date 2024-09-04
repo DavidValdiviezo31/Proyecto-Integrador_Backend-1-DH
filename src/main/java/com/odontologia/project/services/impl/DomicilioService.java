@@ -1,7 +1,7 @@
 package com.odontologia.project.services.impl;
 
 import com.odontologia.project.models.Domicilio;
-import com.odontologia.project.repository.IDomicilioRepository;
+import com.odontologia.project.repositories.IDomicilioRepository;
 import com.odontologia.project.services.IDomicilioService;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;

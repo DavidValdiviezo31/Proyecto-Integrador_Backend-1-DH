@@ -1,7 +1,7 @@
 package com.odontologia.project.services.impl;
 
 import com.odontologia.project.models.Turno;
-import com.odontologia.project.repository.ITurnoRepository;
+import com.odontologia.project.repositories.ITurnoRepository;
 import com.odontologia.project.services.ITurnoService;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;

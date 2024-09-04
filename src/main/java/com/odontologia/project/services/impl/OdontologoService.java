@@ -1,7 +1,7 @@
 package com.odontologia.project.services.impl;
 
 import com.odontologia.project.models.Odontologo;
-import com.odontologia.project.repository.IOdontologoRepository;
+import com.odontologia.project.repositories.IOdontologoRepository;
 import com.odontologia.project.services.IOdontologoService;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
