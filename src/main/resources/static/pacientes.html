@@ -133,98 +133,6 @@
             <path d="M6 6l12 12" />
           </svg>
         </button>
-        <div
-          class="hidden bg-gray-50 rounded-xl px-8 py-4"
-          id="domicilioFormContainer"
-        >
-          <h2 class="font-bold text-center mb-8">AGREGAR DOMICILIO</h2>
-          <form
-            class="flex flex-col gap-2 items-center w-72 items mx-auto"
-            id="domicilioForm"
-          >
-            <div class="flex flex-col gap-2 w-full">
-              <label
-                for="domicilioId"
-                class="block text-sm font-medium text-gray-900"
-                >Id</label
-              >
-              <input
-                type="text"
-                id="domicilioId"
-                class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 outline-none"
-                required
-                readonly
-              />
-            </div>
-
-            <div class="flex flex-col gap-2 w-full">
-              <label
-                for="calle"
-                class="block text-sm font-medium text-gray-900"
-                >Calle:</label
-              >
-              <input
-                type="text"
-                id="calle"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="Avenida Principal"
-                required
-              />
-            </div>
-
-            <div class="flex flex-col gap-2 w-full">
-              <label
-                for="numero"
-                class="block text-sm font-medium text-gray-900"
-                >Numero:</label
-              >
-              <input
-                type="text"
-                id="numero"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="32"
-                required
-              />
-            </div>
-
-            <div class="flex flex-col gap-2 w-full">
-              <label
-                for="localidad"
-                class="block text-sm font-medium text-gray-900"
-                >Localidad:</label
-              >
-              <input
-                type="text"
-                id="localidad"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="Quito"
-                required
-              />
-            </div>
-
-            <div class="flex flex-col gap-2 w-full">
-              <label
-                for="provincia"
-                class="block text-sm font-medium text-gray-900"
-                >Provincia:</label
-              >
-              <input
-                type="text"
-                id="provincia"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="Pichincha"
-                required
-              />
-            </div>
-
-            <button
-              type="submit"
-              class="my-4 text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-all"
-            >
-              Siguiente
-            </button>
-          </form>
-        </div>
 
         <div
           class="hidden bg-gray-50 rounded-xl px-8 py-4"
@@ -235,7 +143,7 @@
             class="flex flex-col gap-2 items-center w-72 items mx-auto"
             id="pacienteForm"
           >
-            <div class="flex flex-col gap-2 w-full">
+            <div class="flex flex-col gap-2 w-full sr-only">
               <label
                 for="pacienteId"
                 class="block text-sm font-medium text-gray-900"
@@ -327,6 +235,99 @@
                   placeholder="Seleccionar fecha"
                 />
               </div>
+            </div>
+
+            <button
+              type="submit"
+              class="my-4 text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-all"
+            >
+              Siguiente
+            </button>
+          </form>
+        </div>
+
+        <div
+          class="hidden bg-gray-50 rounded-xl px-8 py-4"
+          id="domicilioFormContainer"
+        >
+          <h2 class="font-bold text-center mb-8">AGREGAR DOMICILIO</h2>
+          <form
+            class="flex flex-col gap-2 items-center w-72 items mx-auto"
+            id="domicilioForm"
+          >
+            <div class="flex flex-col gap-2 w-full sr-only">
+              <label
+                for="domicilioId"
+                class="block text-sm font-medium text-gray-900"
+                >Id</label
+              >
+              <input
+                type="text"
+                id="domicilioId"
+                class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 outline-none"
+                required
+                readonly
+              />
+            </div>
+
+            <div class="flex flex-col gap-2 w-full">
+              <label
+                for="calle"
+                class="block text-sm font-medium text-gray-900"
+                >Calle:</label
+              >
+              <input
+                type="text"
+                id="calle"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Avenida Principal"
+                required
+              />
+            </div>
+
+            <div class="flex flex-col gap-2 w-full">
+              <label
+                for="numero"
+                class="block text-sm font-medium text-gray-900"
+                >Numero:</label
+              >
+              <input
+                type="text"
+                id="numero"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="32"
+                required
+              />
+            </div>
+
+            <div class="flex flex-col gap-2 w-full">
+              <label
+                for="localidad"
+                class="block text-sm font-medium text-gray-900"
+                >Localidad:</label
+              >
+              <input
+                type="text"
+                id="localidad"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Quito"
+                required
+              />
+            </div>
+
+            <div class="flex flex-col gap-2 w-full">
+              <label
+                for="provincia"
+                class="block text-sm font-medium text-gray-900"
+                >Provincia:</label
+              >
+              <input
+                type="text"
+                id="provincia"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Pichincha"
+                required
+              />
             </div>
 
             <div class="flex gap-6">

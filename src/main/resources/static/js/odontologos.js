@@ -1,5 +1,7 @@
 import { fetchConfig, sweetAlert } from './utils.js'
 
+// TODO: VALIDACIONES DE FORMULARIO
+
 // VARIABLES DOM
 const table = document.querySelector('#odontologoTableBody')
 const updateButton = document.querySelector('#btnActualizarLista')

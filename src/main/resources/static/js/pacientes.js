@@ -1,5 +1,7 @@
 import { fetchConfig, sweetAlert } from './utils.js'
 
+// TODO: VALIDACIONES DE FORMULARIO
+
 // VARIABLES DOM
 const btnAtras = document.querySelector('#btnAtras')
 const pacienteFormContainer = document.querySelector('#pacienteFormContainer')
@@ -202,10 +204,10 @@ function limpiarFormulario() {
 
 function mostrarFormulario(textoBoton) {
   limpiarFormulario()
-  pacienteForm.querySelector('button[type="submit"]').textContent = textoBoton
+  domicilioForm.querySelector('button[type="submit"]').textContent = textoBoton
   closeFormButton.classList.remove('hidden')
-  domicilioFormContainer.classList.remove('hidden')
-  pacienteFormContainer.classList.add('hidden')
+  domicilioFormContainer.classList.add('hidden')
+  pacienteFormContainer.classList.remove('hidden')
 }
 
 function ocultarFormulario() {
@@ -228,14 +230,24 @@ function agregarEventListeners() {
 
 function handleBtnAtras(e) {
   e.preventDefault()
-  pacienteFormContainer.classList.add('hidden')
-  domicilioFormContainer.classList.remove('hidden')
+  pacienteFormContainer.classList.remove('hidden')
+  domicilioFormContainer.classList.add('hidden')
 }
 
-function handleSubmitDomicilioForm(e) {
+async function handleSubmitDomicilioForm(e) {
   e.preventDefault()
-  domicilioFormContainer.classList.add('hidden')
-  pacienteFormContainer.classList.remove('hidden')
+
+  const { id, dni, nombre, apellido, domicilio, fechaAlta } = obtenerDatosFormulario()
+
+  if (id) {
+    await putPaciente({ id, dni, nombre, apellido, domicilio, fechaAlta })
+  } else {
+    const { id: _, ...nuevoDomicilio } = domicilio
+    await postPacientes({ dni, nombre, apellido, domicilio: nuevoDomicilio, fechaAlta })
+  }
+
+  ocultarFormulario()
+  actualizarLista()
 }
 
 function handleNuevoPaciente() {
@@ -279,17 +291,8 @@ async function handleEditarPaciente(btn) {
 async function handleSubmitPacienteForm(e) {
   e.preventDefault()
 
-  const { id, dni, nombre, apellido, domicilio, fechaAlta } = obtenerDatosFormulario()
-
-  if (id) {
-    await putPaciente({ id, dni, nombre, apellido, domicilio, fechaAlta })
-  } else {
-    const { id: _, ...nuevoDomicilio } = domicilio
-    await postPacientes({ dni, nombre, apellido, domicilio: nuevoDomicilio, fechaAlta })
-  }
-
-  ocultarFormulario()
-  actualizarLista()
+  domicilioFormContainer.classList.remove('hidden')
+  pacienteFormContainer.classList.add('hidden')
 }
 
 // MAIN FUNCTION
