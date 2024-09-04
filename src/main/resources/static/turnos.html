@@ -144,7 +144,7 @@
             <div class="px-2 py-1">
               <div class="pt-5 border-t border-gray-200 flex sm:flex-row flex-col sm:space-x-5 rtl:space-x-reverse">
                 <div>
-                  <div class="flex flex-col gap-2 w-full mb-2">
+                  <div class="flex flex-col gap-2 w-full mb-2 sr-only">
                     <label
                       for="turnoId"
                       class="block text-sm font-medium text-gray-900"
@@ -439,31 +439,14 @@
                 <label
                   for="odontologoSearch"
                   class="text-sm font-medium text-gray-900"
-                  >Buscar Odontólogo por Matrícula</label
+                  >Buscar Odontólogo</label
                 >
-                <div class="relative">
-                  <input
-                    type="search"
-                    id="odontologoSearch"
-                    class="block w-full p-4 ps-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50"
-                    placeholder="Ingrese matrícula del odontólogo"
-                    required
-                  />
-                  <button
-                    type="button"
-                    id="btnBuscarOdontologo"
-                    class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-4 py-2"
-                  >
-                    Buscar
-                  </button>
-                </div>
-                <input
-                  type="text"
-                  id="odontologoBuscado"
-                  class="bg-gray-100 mt-2 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 outline-none"
-                  required
-                  readonly
-                />
+                <select
+                  id="odontologoSearch"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                >
+                  <!-- Odontologos List will be added here. -->
+                </select>
               </div>
 
               <div>
@@ -507,12 +490,85 @@
           </form>
         </div>
       </section>
-      <section
-        id="turnos"
-        class="flex flex-wrap gap-8 justify-center"
-      >
-        <!-- Turnos will be added here -->
-      </section>
+      <article>
+        <header class="h-fit w-full mx-auto my-8">
+          <fieldset class="rounded-md border-2 py-4 shadow-sm shadow-slate-200 backdrop-blur-sm">
+            <!-- <legend className="px-1 text-lg font-bold">Filtros</legend> -->
+            <form
+              class="flex justify-evenly"
+              id="filterForm"
+            >
+              <div>
+                <label
+                  for="fechaFilter"
+                  class="block text-sm mb-2 font-medium text-gray-900"
+                  >Filtrar por fecha:</label
+                >
+                <div class="relative max-w-sm h-fit w-60">
+                  <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <svg
+                      class="w-4 h-4 text-gray-500"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
+                      />
+                    </svg>
+                  </div>
+                  <input
+                    id="fechaFilter"
+                    datepicker
+                    datepicker-autohide
+                    datepicker-buttons
+                    datepicker-autoselect-today
+                    datepicker-format="yyyy-mm-dd"
+                    type="text"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full ps-10 p-2.5"
+                    placeholder="Seleccionar fecha"
+                  />
+                </div>
+              </div>
+
+              <div class="w-60">
+                <label
+                  for="odontologoFilter"
+                  class="block text-sm font-medium text-gray-900 mb-2"
+                  >Filtrar Odontólogo:</label
+                >
+                <select
+                  id="odontologoFilter"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                >
+                  <!-- Odontologos List will be added here. -->
+                </select>
+              </div>
+
+              <button
+                type="submit"
+                class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br font-medium rounded-lg text-lg px-5 py-2 text-center"
+              >
+                Aplicar Filtros
+              </button>
+
+              <button
+                type="reset"
+                class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 font-medium rounded-lg text-lg px-5 py-2 text-center"
+              >
+                Limpiar Filtros
+              </button>
+            </form>
+          </fieldset>
+        </header>
+        <section
+          id="turnos"
+          class="flex flex-wrap gap-8 justify-center"
+        >
+          <!-- Turnos will be added here -->
+        </section>
+      </article>
     </main>
   </body>
 </html>

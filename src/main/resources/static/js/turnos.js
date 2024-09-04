@@ -1,16 +1,20 @@
 import { fetchConfig, sweetAlert } from './utils.js'
 
+// TODO: AGREGAR FUNCIONALIDAD DE FILTROS(FECHA, ODONTÓLOGOS) PARA TURNOS
+// TODO: VALIDACIONES DE FORMULARIO
+
 // VARIABLES DOM
 const divTurnos = document.querySelector('#turnos')
 const updateButton = document.querySelector('#btnActualizarLista')
 const newTurnoButton = document.querySelector('#btnAgregarTurno')
 const turnoFormContainer = document.querySelector('#turnoFormContainer')
 const turnoForm = document.querySelector('#turnoForm')
-const odontologoSearchInput = document.querySelector('#odontologoSearch')
+const filterForm = document.querySelector('#filterForm')
+const odontologoSearch = document.querySelector('#odontologoSearch')
+const odontologoFilter = document.querySelector('#odontologoFilter')
+const fechaFilter = document.querySelector('#fechaFilter')
 const pacienteSearchInput = document.querySelector('#pacienteSearch')
-const odontologoSearchBtn = document.querySelector('#btnBuscarOdontologo')
 const pacienteSearchBtn = document.querySelector('#btnBuscarPaciente')
-const odontologoInput = document.querySelector('#odontologoBuscado')
 const pacienteInput = document.querySelector('#pacienteBuscado')
 const closeFormButton = document.querySelector('#closeBtn')
 
@@ -292,32 +296,36 @@ function renderizarTurnos(turnos) {
 
 function actualizarLista() {
   getAllTurnos().then(renderizarTurnos)
+  mostrarOdontologos()
 }
 
-async function buscarOdontologo(e) {
-  const matricula = parseInt(odontologoSearchInput.value)
-
-  if (!matricula) {
-    sweetAlert({ type: 'error', text: 'Ingrese una matrícula válida' })
-    return
-  }
-
+async function mostrarOdontologos() {
   const listaOdontologos = await getAllOdontologos()
 
-  const odontologoEncontrado = listaOdontologos.find(({ matricula: mat }) => mat === matricula)
+  odontologoSearch.innerHTML = '<option selected disabled>Selecciona un Odontólogo</option>'
+  odontologoFilter.innerHTML = '<option selected disabled>Selecciona un Odontólogo</option>'
 
-  if (!odontologoEncontrado) {
-    sweetAlert({ type: 'error', text: 'Odontólogo no encontrado' })
-    return
-  }
+  listaOdontologos.forEach(({ id, nombre, apellido }) => {
+    const elementHTML = `
+      <option value="${id}">Dr. ${nombre} ${apellido}</option>
+    `
 
-  return odontologoEncontrado
+    odontologoSearch.insertAdjacentHTML('beforeend', elementHTML)
+    odontologoFilter.insertAdjacentHTML('beforeend', elementHTML)
+  })
 }
 
-async function mostrarOdontologo() {
-  const { id, nombre, apellido } = await buscarOdontologo()
-  odontologoInput.dataset.id = id
-  odontologoInput.value = `Dr. ${nombre} ${apellido}`
+function filtrarTurnos(turnos, odontologoId, fecha) {
+  odontologoId = parseInt(odontologoId) || ''
+
+  if (odontologoId && fecha)
+    return turnos.filter(({ odontologo: { id }, fecha: f }) => id === odontologoId && f === fecha)
+
+  if (odontologoId) return turnos.filter(({ odontologo: { id } }) => id === odontologoId)
+
+  if (fecha) return turnos.filter(({ fecha: f }) => f === fecha)
+
+  return turnos
 }
 
 async function buscarPaciente(e) {
@@ -351,7 +359,7 @@ function obtenerDatosFormulario() {
   const id = parseInt(turnoForm.querySelector('#turnoId').value)
   const fecha = document.querySelector('#fechaTurno').value
   const hora = document.querySelector('input[name="timetable"]:checked').value
-  const odontologoId = odontologoInput?.dataset?.id
+  const odontologoId = odontologoSearch?.value
   const pacienteId = pacienteInput?.dataset?.id
 
   return { id, fecha, hora, odontologoId, pacienteId }
@@ -361,16 +369,19 @@ function insertarDatosFormulario({ id, fecha, hora, odontologo, paciente }) {
   turnoForm.querySelector('#turnoId').value = id
   turnoForm.querySelector('#fechaTurno').value = fecha
   turnoForm.querySelector(`input[value="${hora.split(':', 2).join(':')}"]`).checked = true
-  odontologoSearchInput.value = odontologo.matricula
+  odontologoSearch.value = odontologo.id
   pacienteSearchInput.value = paciente.dni
-  odontologoInput.dataset.id = odontologo.id
-  odontologoInput.value = `Dr. ${odontologo.nombre} ${odontologo.apellido}`
   pacienteInput.dataset.id = paciente.id
   pacienteInput.value = `${paciente.nombre} ${paciente.apellido}`
 }
 
 function limpiarFormulario() {
   turnoForm.reset()
+}
+
+function limpiarFiltros() {
+  filterForm.reset()
+  actualizarLista()
 }
 
 function mostrarFormulario(textoBoton) {
@@ -398,10 +409,13 @@ function agregarEventListeners() {
 
   turnoForm.addEventListener('submit', handleSubmitFormulario)
 
-  odontologoSearchBtn.addEventListener('click', mostrarOdontologo)
   pacienteSearchBtn.addEventListener('click', mostrarPaciente)
 
   closeFormButton.addEventListener('click', ocultarFormulario)
+
+  filterForm.addEventListener('submit', handleSubmitFilterForm)
+
+  filterForm.querySelector('button[type="reset"]').addEventListener('click', limpiarFiltros)
 }
 
 async function handleClickTurnos(e) {
@@ -453,8 +467,19 @@ async function handleSubmitFormulario(e) {
   actualizarLista()
 }
 
+async function handleSubmitFilterForm(e) {
+  e.preventDefault()
+
+  const turnos = await getAllTurnos()
+
+  const filteredTurnos = filtrarTurnos(turnos, odontologoFilter.value, fechaFilter.value)
+
+  renderizarTurnos(filteredTurnos)
+}
+
 // MAIN FUNCTION
 function main() {
+  mostrarOdontologos()
   actualizarLista()
   agregarEventListeners()
 }
