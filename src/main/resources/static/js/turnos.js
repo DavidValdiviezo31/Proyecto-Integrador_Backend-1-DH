@@ -338,7 +338,7 @@ function filtrarTurnos(turnos, odontologoId, fecha) {
   return turnos
 }
 
-async function buscarPaciente(e) {
+async function buscarPaciente() {
   const dni = parseInt(pacienteSearchInput.value)
 
   if (!dni) {

@@ -49,3 +49,18 @@ export function sweetAlert({ type, title, text }) {
       break
   }
 }
+
+export function validarNumeros(cadena) {
+  const regex = /^[0-9]+$/
+  return regex.test(cadena)
+}
+
+export function validarTexto(cadena) {
+  const regex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/
+  return regex.test(cadena)
+}
+
+export function validarFecha(cadena) {
+  const regex = /^\d{4}-\d{2}-\d{2}$/
+  return regex.test(cadena)
+}
