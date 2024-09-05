@@ -19,7 +19,7 @@
     <header class="w-full my-4">
       <a
         href="./index.html"
-        class="flex px-4 py-2 bg-blue-800 absolute w-fit h-fit justify-center items-center gap-4 top-4 left-4 text-white font-medium text-lg rounded-full hover:scale-105 transition-all duration-300"
+        class="flex px-4 py-2 bg-blue-800 fixed w-fit h-fit justify-center items-center gap-4 top-4 left-4 text-white font-medium text-lg rounded-full hover:scale-105 transition-all duration-300"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -42,13 +42,13 @@
           <path d="M5 12l6 6" />
           <path d="M5 12l6 -6" />
         </svg>
-        Inicio
+        <span class="hidden md:flex"> Inicio </span>
       </a>
       <h1 class="text-center mb-4 font-bold text-4xl">Odontólogos</h1>
       <nav class="w-1/2 mx-auto h-full flex justify-center">
-        <div class="w-fit h-full flex">
+        <div class="w-fit h-fit flex">
           <button
-            class="text-white bg-blue-700 hover:bg-blue-800 font-medium text-lg px-12 py-6 h-full flex items-center gap-4 rounded-l-xl hover:scale-[1.02] transition-all duration-300"
+            class="text-white absolute top-4 right-4 bg-blue-700 hover:bg-blue-800 font-medium text-lg py-4 px-6 h-fit flex items-center gap-4 hover:scale-105 rounded-full transition-all duration-300"
             id="btnActualizarLista"
           >
             <svg
@@ -71,10 +71,11 @@
               <path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" />
               <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" />
             </svg>
-            Actualizar Lista
+            <span class="hidden md:flex"> Actualizar Lista </span>
           </button>
+
           <button
-            class="text-white bg-blue-700 hover:bg-blue-800 font-medium text-lg px-12 py-6 h-full flex items-center gap-4 rounded-r-xl hover:scale-[1.02] transition-all duration-300"
+            class="text-white fixed bottom-4 right-4 z-10 bg-blue-700 hover:bg-blue-800 font-medium text-lg py-4 px-6 h-fit flex items-center gap-4 hover:scale-105 rounded-full transition-all duration-300"
             id="btnAgregarOdontologo"
           >
             <svg
@@ -98,21 +99,21 @@
               <path d="M9 12h6" />
               <path d="M12 9v6" />
             </svg>
-            Agregar Odontólogo
+            <span class="hidden md:flex"> Agregar Odontólogo </span>
           </button>
         </div>
       </nav>
     </header>
 
     <main class="my-8 w-3/4 mx-auto">
-      <div
-        class="hidden relative bg-gray-50 rounded-xl w-fit h-fit px-8 py-4 mx-auto mb-4"
+      <section
+        class="hidden relative bg-gray-100 rounded-xl w-fit h-fit p-4 mx-auto mb-4 border-2 border-gray-300 shadow-md shadow-slate-200 backdrop-blur-sm"
         id="odontologoFormContainer"
       >
         <button
           type="button"
           id="closeBtn"
-          class="absolute hidden top-0 left-0 -translate-x-1/2 -translate-y-1/2 text-white bg-red-500 hover:bg-red-600 font-medium rounded-full text-sm p-2 text-center font-bold transition-all"
+          class="absolute hidden top-0 right-0 hover:shadow-lg hover:shadow-red-500/50 translate-x-1/2 -translate-y-1/2 text-white bg-red-500 hover:bg-red-600 font-medium rounded-full text-sm p-2 text-center font-bold transition-all"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -135,82 +136,88 @@
             <path d="M6 6l12 12" />
           </svg>
         </button>
-        <h2 class="font-bold text-center mb-8 mt-4">AGREGAR ODONTÓLOGO</h2>
-        <form
-          class="flex flex-col gap-2 items-center w-72 items mx-auto"
-          id="odontologoForm"
-        >
-          <div class="flex flex-col gap-2 w-full sr-only">
-            <label
-              for="odontologoId"
-              class="block text-sm font-medium text-gray-900"
-              >Id:</label
-            >
-            <input
-              type="text"
-              id="odontologoId"
-              class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 outline-none"
-              required
-              readonly
-            />
-          </div>
 
-          <div class="flex flex-col gap-2 w-full">
-            <label
-              for="matricula"
-              class="block text-sm font-medium text-gray-900"
-              >Matricula:</label
-            >
-            <input
-              type="text"
-              id="matricula"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              placeholder="1234567890"
-              required
-            />
-          </div>
+        <fieldset class="rounded-md border-2 pt-8 pb-4 px-6 shadow-sm shadow-slate-200 backdrop-blur-sm">
+          <legend className="px-1">
+            <h2 class="font-bold text-center italic">AGREGAR ODONTÓLOGO</h2>
+          </legend>
 
-          <div class="flex flex-col gap-2 w-full">
-            <label
-              for="nombre"
-              class="block text-sm font-medium text-gray-900"
-              >Nombre:</label
-            >
-            <input
-              type="text"
-              id="nombre"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              placeholder="John"
-              required
-            />
-          </div>
-
-          <div class="flex flex-col gap-2 w-full">
-            <label
-              for="apellido"
-              class="block text-sm font-medium text-gray-900"
-              >Apellido:</label
-            >
-            <input
-              type="text"
-              id="apellido"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              placeholder="Smith"
-              required
-            />
-          </div>
-
-          <button
-            type="submit"
-            class="my-4 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+          <form
+            class="flex flex-col gap-2 items-center w-72 items mx-auto"
+            id="odontologoForm"
           >
-            Agregar
-          </button>
-        </form>
-      </div>
+            <div class="flex flex-col gap-2 w-full sr-only">
+              <label
+                for="odontologoId"
+                class="block text-sm font-medium text-gray-900"
+                >Id:</label
+              >
+              <input
+                type="text"
+                id="odontologoId"
+                class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 outline-none"
+                required
+                readonly
+              />
+            </div>
+
+            <div class="flex flex-col gap-2 w-full">
+              <label
+                for="matricula"
+                class="block text-sm font-medium text-gray-900"
+                >Matricula:</label
+              >
+              <input
+                type="text"
+                id="matricula"
+                class="bg-gray-50 outline-none ring-2 ring-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 transition-all duration-300"
+                placeholder="1234567890"
+                required
+              />
+            </div>
+
+            <div class="flex flex-col gap-2 w-full">
+              <label
+                for="nombre"
+                class="block text-sm font-medium text-gray-900"
+                >Nombre:</label
+              >
+              <input
+                type="text"
+                id="nombre"
+                class="bg-gray-50 outline-none ring-2 ring-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 transition-all duration-300"
+                placeholder="John"
+                required
+              />
+            </div>
+
+            <div class="flex flex-col gap-2 w-full">
+              <label
+                for="apellido"
+                class="block text-sm font-medium text-gray-900"
+                >Apellido:</label
+              >
+              <input
+                type="text"
+                id="apellido"
+                class="bg-gray-50 outline-none ring-2 ring-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 transition-all duration-300"
+                placeholder="Smith"
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="my-4 text-white bg-green-600 hover:bg-green-700 hover:shadow hover:shadow-green-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-all duration-300"
+            >
+              Agregar Odontólogo
+            </button>
+          </form>
+        </fieldset>
+      </section>
 
       <!-- TABLE -->
-      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-24">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
           <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr class="text-center">

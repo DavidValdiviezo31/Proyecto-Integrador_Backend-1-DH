@@ -61,7 +61,6 @@ async function putOdontologo({ id, matricula, nombre, apellido }) {
 
     sweetAlert({ type: 'success', title: 'Odontólogo actualizado' })
 
-    odontologoForm.querySelector('button').textContent = 'Agregar'
     limpiarFormulario()
     odontologoFormContainer.classList.add('hidden')
   } catch ({ message }) {
@@ -99,7 +98,7 @@ function renderizarOdontologos(odontologos) {
         <td class="px-6 py-4">${nombre}</td>
         <td class="px-6 py-4">${apellido}</td>
         <td class="px-6 py-4 text-center">
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" id="btnEdit-${id}">
+          <button class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition-all" id="btnEdit-${id}">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -124,7 +123,7 @@ function renderizarOdontologos(odontologos) {
           </button>
         </td>
         <td class="px-6 py-4 text-center">
-          <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" id="btnDelete-${id}">
+          <button class="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded transition-all" id="btnDelete-${id}">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -199,7 +198,7 @@ function agregarEventListeners() {
   updateButton.addEventListener('click', actualizarLista)
 
   newOdontologoButton.addEventListener('click', () => {
-    mostrarFormulario('Agregar')
+    mostrarFormulario('Agregar Odontólogo')
   })
 
   table.addEventListener('click', handleClickTabla)
@@ -239,7 +238,7 @@ async function handleEliminarOdontologo(btn) {
 async function handleEditarOdontologo(btn) {
   const id = btn.split('-')[1]
   const odontologo = await getOdontologoById(id)
-  mostrarFormulario('Actualizar')
+  mostrarFormulario('Actualizar Odontólogo')
   insertarDatosFormulario(odontologo)
 }
 

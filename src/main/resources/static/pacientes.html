@@ -20,7 +20,7 @@
     <header class="w-full my-4">
       <a
         href="./index.html"
-        class="flex px-4 py-2 bg-blue-800 absolute w-fit h-fit justify-center items-center gap-4 top-4 left-4 text-white font-medium text-lg rounded-full hover:scale-105 transition-all duration-300"
+        class="flex px-4 py-2 bg-blue-800 fixed w-fit h-fit justify-center items-center gap-4 top-4 left-4 text-white font-medium text-lg rounded-full hover:scale-105 transition-all duration-300"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -43,13 +43,13 @@
           <path d="M5 12l6 6" />
           <path d="M5 12l6 -6" />
         </svg>
-        Inicio
+        <span class="hidden md:flex"> Inicio </span>
       </a>
       <h1 class="text-center mb-4 font-bold text-4xl">Pacientes</h1>
       <nav class="w-1/2 mx-auto h-full flex justify-center">
         <div class="w-fit h-full flex">
           <button
-            class="text-white bg-blue-700 hover:bg-blue-800 font-medium text-lg px-12 py-6 h-full flex items-center gap-4 rounded-l-xl hover:scale-[1.02] transition-all duration-300"
+            class="text-white absolute top-4 right-4 bg-blue-700 hover:bg-blue-800 font-medium text-lg py-4 px-6 h-fit flex items-center gap-4 rounded-full hover:scale-105 transition-all duration-300"
             id="btnActualizarLista"
           >
             <svg
@@ -72,10 +72,11 @@
               <path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" />
               <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" />
             </svg>
-            Actualizar Lista
+            <span class="hidden md:flex"> Actualizar Lista </span>
           </button>
+
           <button
-            class="text-white bg-blue-700 hover:bg-blue-800 font-medium text-lg px-12 py-6 h-full flex items-center gap-4 rounded-r-xl hover:scale-[1.02] transition-all duration-300"
+            class="text-white fixed bottom-4 right-4 z-10 bg-blue-700 hover:bg-blue-800 font-medium text-lg py-4 px-6 h-fit flex items-center gap-4 rounded-full hover:scale-105 transition-all duration-300"
             id="btnAgregarPaciente"
           >
             <svg
@@ -99,18 +100,21 @@
               <path d="M9 12h6" />
               <path d="M12 9v6" />
             </svg>
-            Agregar Paciente
+            <span class="hidden md:flex"> Agregar Paciente </span>
           </button>
         </div>
       </nav>
     </header>
 
     <main class="my-8 w-3/4 mx-auto">
-      <section class="relative w-fit h-fit mx-auto mb-4">
+      <section
+        class="relative hidden w-fit h-fit mx-auto mb-4 bg-gray-100 p-4 rounded-xl border-2 border-gray-300 shadow-md shadow-slate-200 backdrop-blur-sm"
+        id="formsContainer"
+      >
         <button
           type="button"
           id="closeBtn"
-          class="absolute hidden top-0 left-0 -translate-x-1/2 -translate-y-1/2 text-white bg-red-500 hover:bg-red-600 font-medium rounded-full text-sm p-2 text-center font-bold transition-all"
+          class="absolute hidden z-10 top-0 right-0 hover:shadow-lg hover:shadow-red-500/50 translate-x-1/2 -translate-y-1/2 text-white bg-red-500 hover:bg-red-600 font-medium rounded-full text-sm p-2 text-center font-bold transition-all"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -134,11 +138,14 @@
           </svg>
         </button>
 
-        <div
-          class="hidden bg-gray-50 rounded-xl px-8 py-4"
+        <fieldset
+          class="rounded-md border-2 pt-8 pb-4 px-6 hidden"
           id="pacienteFormContainer"
         >
-          <h2 class="font-bold text-center mb-8">AGREGAR PACIENTE</h2>
+          <legend className="px-1">
+            <h2 class="font-bold text-center italic">AGREGAR PACIENTE</h2>
+          </legend>
+
           <form
             class="flex flex-col gap-2 items-center w-72 items mx-auto"
             id="pacienteForm"
@@ -167,7 +174,7 @@
               <input
                 type="text"
                 id="dni"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                class="bg-gray-50 outline-none ring-2 ring-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 transition-all duration-300"
                 placeholder="1234567890"
                 required
               />
@@ -182,7 +189,7 @@
               <input
                 type="text"
                 id="nombre"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                class="bg-gray-50 outline-none ring-2 ring-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 transition-all duration-300"
                 placeholder="John"
                 required
               />
@@ -197,7 +204,7 @@
               <input
                 type="text"
                 id="apellido"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                class="bg-gray-50 outline-none ring-2 ring-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 transition-all duration-300"
                 placeholder="Smith"
                 required
               />
@@ -231,7 +238,7 @@
                   datepicker-autoselect-today
                   datepicker-format="yyyy-mm-dd"
                   type="text"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full ps-10 p-2.5"
+                  class="ps-10 bg-gray-50 outline-none ring-2 ring-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 transition-all duration-300"
                   placeholder="Seleccionar fecha"
                 />
               </div>
@@ -239,18 +246,20 @@
 
             <button
               type="submit"
-              class="my-4 text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-all"
+              class="my-4 text-blue-700 hover:text-white hover:shadow hover:shadow-blue-500/50 border border-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-all"
             >
               Siguiente
             </button>
           </form>
-        </div>
+        </fieldset>
 
-        <div
-          class="hidden bg-gray-50 rounded-xl px-8 py-4"
+        <fieldset
+          class="rounded-md border-2 pt-8 pb-4 px-6 hidden"
           id="domicilioFormContainer"
         >
-          <h2 class="font-bold text-center mb-8">AGREGAR DOMICILIO</h2>
+          <legend className="px-1">
+            <h2 class="font-bold text-center italic">AGREGAR DOMICILIO</h2>
+          </legend>
           <form
             class="flex flex-col gap-2 items-center w-72 items mx-auto"
             id="domicilioForm"
@@ -279,7 +288,7 @@
               <input
                 type="text"
                 id="calle"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                class="bg-gray-50 outline-none ring-2 ring-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 transition-all duration-300"
                 placeholder="Avenida Principal"
                 required
               />
@@ -294,7 +303,7 @@
               <input
                 type="text"
                 id="numero"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                class="bg-gray-50 outline-none ring-2 ring-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 transition-all duration-300"
                 placeholder="32"
                 required
               />
@@ -309,7 +318,7 @@
               <input
                 type="text"
                 id="localidad"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                class="bg-gray-50 outline-none ring-2 ring-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 transition-all duration-300"
                 placeholder="Quito"
                 required
               />
@@ -324,7 +333,7 @@
               <input
                 type="text"
                 id="provincia"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                class="bg-gray-50 outline-none ring-2 ring-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 transition-all duration-300"
                 placeholder="Pichincha"
                 required
               />
@@ -334,23 +343,23 @@
               <button
                 type="button"
                 id="btnAtras"
-                class="my-4 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                class="my-4 text-white bg-red-600 hover:bg-red-700 hover:shadow hover:shadow-red-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-all duration-300"
               >
                 Atras
               </button>
               <button
                 type="submit"
-                class="my-4 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                class="my-4 text-white bg-green-600 hover:bg-green-700 hover:shadow hover:shadow-green-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-all duration-300"
               >
-                Agregar
+                Agregar Paciente
               </button>
             </div>
           </form>
-        </div>
+        </fieldset>
       </section>
 
       <!-- TABLE -->
-      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-24">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
           <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr class="text-center">

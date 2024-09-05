@@ -1,6 +1,5 @@
 import { fetchConfig, sweetAlert } from './utils.js'
 
-// TODO: AGREGAR FUNCIONALIDAD DE FILTROS(FECHA, ODONTÓLOGOS) PARA TURNOS
 // TODO: VALIDACIONES DE FORMULARIO
 
 // VARIABLES DOM
@@ -115,20 +114,33 @@ async function getAllPacientes() {
 // UTILS FUNCTIONS
 function renderizarTurnos(turnos) {
   divTurnos.innerHTML = ''
+  odontologoFilter.innerHTML = '<option selected disabled>Selecciona un Odontólogo</option>'
+
+  const odontologos = turnos
+    .map(({ odontologo }) => odontologo)
+    .filter((value, index, self) => self.indexOf(value) === index)
+
+  odontologos.forEach(({ id, nombre, apellido }) => {
+    const elementHTML = `
+      <option value="${id}">Dr. ${nombre} ${apellido}</option>
+    `
+
+    odontologoFilter.insertAdjacentHTML('beforeend', elementHTML)
+  })
 
   turnos.forEach(({ id, hora, fecha, paciente, odontologo }) => {
     const pte = `${paciente.nombre} ${paciente.apellido}`
     const od = `${odontologo.nombre} ${odontologo.apellido}`
 
     const elementHTML = `
-      <article class="max-w-80 bg-slate-200 rounded-xl p-4 shadow shadow-gray-800">
+      <article class="w-72 bg-gradient-to-br from-teal-400 via-teal-500 to-teal-600 shadow-lg shadow-teal-500/50 rounded-xl p-4">
         <header>
-          <h3 class="font-bold text-2xl text-center mb-4">Turno #${id}</h3>
+          <h3 class="font-bold text-2xl text-center mb-4 italic">Turno #${id}</h3>
         </header>
 
         <section>
           <div class="flex gap-2 mb-4">
-            <p class="flex gap-1 text-sm items-center bg-blue-900 text-white w-fit px-2 py-1 rounded-full">
+            <p class="flex gap-1 text-base items-center bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 shadow shadow-purple-500/50 text-white w-fit px-3 py-1 rounded-full">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -155,7 +167,7 @@ function renderizarTurnos(turnos) {
               </svg>
               ${fecha}
             </p>
-            <p class="flex gap-1 text-sm items-center bg-blue-900 text-white w-fit px-2 py-1 rounded-full">
+            <p class="flex gap-1 text-base items-center bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 shadow shadow-purple-500/50 text-white w-fit px-3 py-1 rounded-full">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -180,7 +192,7 @@ function renderizarTurnos(turnos) {
             </p>
           </div>
 
-          <p class="flex gap-2 text-lg items-center italic justify-center w-fit my-2">
+          <p class="flex gap-2 text-lg items-center italic justify-center w-fit my-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -203,7 +215,7 @@ function renderizarTurnos(turnos) {
             </svg>
             <span class="font-bold">Paciente:</span> ${pte}
           </p>
-          <p class="flex gap-2 text-lg items-center italic justify-center w-fit my-2">
+          <p class="flex gap-2 text-lg items-center italic justify-center w-fit my-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -230,11 +242,11 @@ function renderizarTurnos(turnos) {
           </p>
         </section>
 
-        <footer class="flex justify-center gap-4 mt-4">
+        <footer class="flex justify-center gap-4 mt-6">
           <button
             type="button"
             id="btnEdit-${id}"
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition-all"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -261,7 +273,7 @@ function renderizarTurnos(turnos) {
           <button
             type="button"
             id="btnDelete-${id}"
-            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+            class="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded transition-all"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -303,7 +315,6 @@ async function mostrarOdontologos() {
   const listaOdontologos = await getAllOdontologos()
 
   odontologoSearch.innerHTML = '<option selected disabled>Selecciona un Odontólogo</option>'
-  odontologoFilter.innerHTML = '<option selected disabled>Selecciona un Odontólogo</option>'
 
   listaOdontologos.forEach(({ id, nombre, apellido }) => {
     const elementHTML = `
@@ -311,7 +322,6 @@ async function mostrarOdontologos() {
     `
 
     odontologoSearch.insertAdjacentHTML('beforeend', elementHTML)
-    odontologoFilter.insertAdjacentHTML('beforeend', elementHTML)
   })
 }
 
