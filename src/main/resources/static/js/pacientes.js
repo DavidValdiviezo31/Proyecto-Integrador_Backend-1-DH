@@ -6,6 +6,7 @@ import { fetchConfig, sweetAlert } from './utils.js'
 const btnAtras = document.querySelector('#btnAtras')
 const pacienteFormContainer = document.querySelector('#pacienteFormContainer')
 const domicilioFormContainer = document.querySelector('#domicilioFormContainer')
+const formsContainer = document.querySelector('#formsContainer')
 const pacienteForm = document.querySelector('#pacienteForm')
 const domicilioForm = document.querySelector('#domicilioForm')
 const table = document.querySelector('#pacienteTableBody')
@@ -102,7 +103,7 @@ function renderizarPacientes(pacientes) {
         <td class="px-6 py-4">${calle} ${numero}, ${localidad}, ${provincia}</td>
         <td class="px-6 py-4">${fechaAlta}</td>
         <td class="px-6 py-4 text-center">
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" id="btnEdit-${id}">
+          <button class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded transition-all" id="btnEdit-${id}">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -127,7 +128,7 @@ function renderizarPacientes(pacientes) {
           </button>
         </td>
         <td class="px-6 py-4 text-center">
-          <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" id="btnDelete-${id}">
+          <button class="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded transition-all" id="btnDelete-${id}">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -206,12 +207,14 @@ function mostrarFormulario(textoBoton) {
   limpiarFormulario()
   domicilioForm.querySelector('button[type="submit"]').textContent = textoBoton
   closeFormButton.classList.remove('hidden')
+  formsContainer.classList.remove('hidden')
   domicilioFormContainer.classList.add('hidden')
   pacienteFormContainer.classList.remove('hidden')
 }
 
 function ocultarFormulario() {
   limpiarFormulario()
+  formsContainer.classList.add('hidden')
   domicilioFormContainer.classList.add('hidden')
   pacienteFormContainer.classList.add('hidden')
   closeFormButton.classList.add('hidden')
@@ -251,7 +254,7 @@ async function handleSubmitDomicilioForm(e) {
 }
 
 function handleNuevoPaciente() {
-  mostrarFormulario('Agregar')
+  mostrarFormulario('Agregar Paciente')
 }
 
 async function handleClickTabla(e) {
@@ -284,7 +287,7 @@ async function handleEliminarPaciente(btn) {
 async function handleEditarPaciente(btn) {
   const id = btn.split('-')[1]
   const paciente = await getPacienteById(id)
-  mostrarFormulario('Actualizar')
+  mostrarFormulario('Actualizar Paciente')
   insertarDatosFormulario(paciente)
 }
 
