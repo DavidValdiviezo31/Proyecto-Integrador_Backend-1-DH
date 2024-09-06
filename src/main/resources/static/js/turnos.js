@@ -1,21 +1,36 @@
-import { fetchConfig, sweetAlert } from './utils.js'
+import { fetchConfig, sweetAlert, validarFecha, validarNumeros, validarTexto, validarFechaPosterior } from './utils.js'
 
 // TODO: VALIDACIONES DE FORMULARIO
 
 // VARIABLES DOM
 const divTurnos = document.querySelector('#turnos')
-const updateButton = document.querySelector('#btnActualizarLista')
 const newTurnoButton = document.querySelector('#btnAgregarTurno')
+const updateButton = document.querySelector('#btnActualizarLista')
+const closeFormButton = document.querySelector('#closeBtn')
+
 const turnoFormContainer = document.querySelector('#turnoFormContainer')
 const turnoForm = document.querySelector('#turnoForm')
-const filterForm = document.querySelector('#filterForm')
 const odontologoSearch = document.querySelector('#odontologoSearch')
-const odontologoFilter = document.querySelector('#odontologoFilter')
-const fechaFilter = document.querySelector('#fechaFilter')
 const pacienteSearchInput = document.querySelector('#pacienteSearch')
 const pacienteSearchBtn = document.querySelector('#btnBuscarPaciente')
 const pacienteInput = document.querySelector('#pacienteBuscado')
-const closeFormButton = document.querySelector('#closeBtn')
+const idInput = turnoForm.querySelector('#turnoId')
+const fechaInput = turnoForm.querySelector('#fechaTurno')
+const horaInputs = turnoForm.querySelectorAll('input[name="timetable"]')
+const listaHoras = turnoForm.querySelector('#timetable')
+const submitButton = turnoForm.querySelector('button[type="submit"]')
+
+const filterForm = document.querySelector('#filterForm')
+const odontologoFilter = document.querySelector('#odontologoFilter')
+const fechaFilter = document.querySelector('#fechaFilter')
+
+const validacionesFormulario = {
+  fecha: false,
+  hora: false,
+  odontologo: false,
+  pacienteSearch: false,
+  paciente: false
+}
 
 // CRUD METHODS
 async function postTurnos({ fecha, hora, odontologo, paciente }) {
@@ -116,9 +131,9 @@ function renderizarTurnos(turnos) {
   divTurnos.innerHTML = ''
   odontologoFilter.innerHTML = '<option selected disabled>Selecciona un Odontólogo</option>'
 
-  const odontologos = turnos
-    .map(({ odontologo }) => odontologo)
-    .filter((value, index, self) => self.indexOf(value) === index)
+  const odontologos = Array.from(new Set(turnos.map(({ odontologo }) => odontologo).map(JSON.stringify))).map(
+    JSON.parse
+  )
 
   odontologos.forEach(({ id, nombre, apellido }) => {
     const elementHTML = `
@@ -351,7 +366,7 @@ async function buscarPaciente() {
   const pacienteEncontrado = listaPacientes.find(({ dni: d }) => d === dni)
 
   if (!pacienteEncontrado) {
-    sweetAlert({ type: 'error', text: 'Paciente no encontrado' })
+    pacienteInput.value = ''
     return
   }
 
@@ -359,16 +374,17 @@ async function buscarPaciente() {
 }
 
 async function mostrarPaciente() {
-  const { id, nombre, apellido } = await buscarPaciente()
-  pacienteInput.dataset.id = id
-  pacienteInput.value = `${nombre} ${apellido}`
+  const paciente = await buscarPaciente()
+  if (!paciente) return
+  pacienteInput.dataset.id = paciente?.id
+  pacienteInput.value = `${paciente?.nombre} ${paciente?.apellido}`
 }
 
 // FORM FUNCTIONS
 function obtenerDatosFormulario() {
-  const id = parseInt(turnoForm.querySelector('#turnoId').value)
-  const fecha = document.querySelector('#fechaTurno').value
-  const hora = document.querySelector('input[name="timetable"]:checked').value
+  const id = parseInt(idInput.value)
+  const fecha = fechaInput.value
+  const hora = turnoForm.querySelector('input[name="timetable"]:checked').value
   const odontologoId = odontologoSearch?.value
   const pacienteId = pacienteInput?.dataset?.id
 
@@ -376,8 +392,8 @@ function obtenerDatosFormulario() {
 }
 
 function insertarDatosFormulario({ id, fecha, hora, odontologo, paciente }) {
-  turnoForm.querySelector('#turnoId').value = id
-  turnoForm.querySelector('#fechaTurno').value = fecha
+  idInput.value = id
+  fechaInput.value = fecha
   turnoForm.querySelector(`input[value="${hora.split(':', 2).join(':')}"]`).checked = true
   odontologoSearch.value = odontologo.id
   pacienteSearchInput.value = paciente.dni
@@ -396,7 +412,7 @@ function limpiarFiltros() {
 
 function mostrarFormulario(textoBoton) {
   limpiarFormulario()
-  turnoForm.querySelector('button[type="submit"]').textContent = textoBoton
+  submitButton.textContent = textoBoton
   closeFormButton.classList.remove('hidden')
   turnoFormContainer.classList.remove('hidden')
 }
@@ -405,6 +421,24 @@ function ocultarFormulario() {
   limpiarFormulario()
   turnoFormContainer.classList.add('hidden')
   closeFormButton.classList.add('hidden')
+
+  fechaInput.classList.remove('ring-green-500', 'ring-red-500')
+  odontologoSearch.classList.remove('ring-green-500', 'ring-red-500')
+  pacienteSearchInput.classList.remove('ring-green-500', 'ring-red-500')
+}
+
+function validarTarget({ funcionValidar, target, text }) {
+  if (!funcionValidar(target.value)) {
+    sweetAlert({ type: 'warning', text })
+    target.classList.remove('ring-green-500')
+    target.classList.add('ring-red-500')
+    return false
+  } else {
+    target.classList.remove('ring-red-500')
+    target.classList.add('ring-green-500')
+  }
+
+  return true
 }
 
 // EVENT HANDLERS
@@ -426,6 +460,79 @@ function agregarEventListeners() {
   filterForm.addEventListener('submit', handleSubmitFilterForm)
 
   filterForm.querySelector('button[type="reset"]').addEventListener('click', limpiarFiltros)
+
+  validarFormulario()
+}
+
+function validarFormulario() {
+  fechaInput.addEventListener('focusout', e => {
+    setTimeout(() => {
+      const isValidDate = validarTarget({
+        funcionValidar: validarFecha,
+        target: e.target,
+        text: 'La fecha debe ser en formato yyyy-mm-dd'
+      })
+
+      const isLaterDate = validarTarget({
+        funcionValidar: validarFechaPosterior,
+        target: e.target,
+        text: 'La fecha no puede ser anterior a la actual'
+      })
+
+      validacionesFormulario.fecha = isValidDate && isLaterDate
+      submitButton.disabled = !Object.values(validacionesFormulario).every(Boolean)
+    }, 100)
+  })
+
+  listaHoras.addEventListener('click', () => {
+    setTimeout(() => {
+      const isChecked = Array.from(horaInputs).some(hora => hora.checked)
+
+      if (!isChecked) {
+        sweetAlert({ type: 'warning', text: 'Seleccione una hora' })
+        validacionesFormulario.hora = false
+        submitButton.disabled = !Object.values(validacionesFormulario).every(Boolean)
+      }
+
+      validacionesFormulario.hora = true
+      submitButton.disabled = !Object.values(validacionesFormulario).every(Boolean)
+    }, 500)
+  })
+
+  odontologoSearch.addEventListener('change', e => {
+    const isValid = validarTarget({
+      funcionValidar: validarNumeros,
+      target: e.target,
+      text: 'Seleccione un odontólogo'
+    })
+
+    validacionesFormulario.odontologo = isValid
+    submitButton.disabled = !Object.values(validacionesFormulario).every(Boolean)
+  })
+
+  pacienteSearchInput.addEventListener('change', e => {
+    const isValid = validarTarget({
+      funcionValidar: validarNumeros,
+      target: e.target,
+      text: 'Ingrese un DNI válido'
+    })
+
+    validacionesFormulario.pacienteSearch = isValid
+    submitButton.disabled = !Object.values(validacionesFormulario).every(Boolean)
+  })
+
+  pacienteSearchBtn.addEventListener('click', () => {
+    setTimeout(() => {
+      const isValid = validarTarget({
+        funcionValidar: validarTexto,
+        target: pacienteInput,
+        text: 'No existe un paciente con ese DNI'
+      })
+
+      validacionesFormulario.paciente = isValid
+      submitButton.disabled = !Object.values(validacionesFormulario).every(Boolean)
+    }, 250)
+  })
 }
 
 async function handleClickTurnos(e) {

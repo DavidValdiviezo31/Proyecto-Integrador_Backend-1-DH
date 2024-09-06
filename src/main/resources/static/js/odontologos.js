@@ -1,14 +1,24 @@
-import { fetchConfig, sweetAlert } from './utils.js'
-
-// TODO: VALIDACIONES DE FORMULARIO
+import { fetchConfig, sweetAlert, validarTexto, validarNumeros } from './utils.js'
 
 // VARIABLES DOM
 const table = document.querySelector('#odontologoTableBody')
 const updateButton = document.querySelector('#btnActualizarLista')
+const closeFormButton = document.querySelector('#closeBtn')
 const newOdontologoButton = document.querySelector('#btnAgregarOdontologo')
+
 const odontologoFormContainer = document.querySelector('#odontologoFormContainer')
 const odontologoForm = document.querySelector('#odontologoForm')
-const closeFormButton = document.querySelector('#closeBtn')
+const idInput = odontologoForm.querySelector('#odontologoId')
+const matriculaInput = odontologoForm.querySelector('#matricula')
+const nombreInput = odontologoForm.querySelector('#nombre')
+const apellidoInput = odontologoForm.querySelector('#apellido')
+const submitButton = odontologoForm.querySelector('button')
+
+const validacionesFormulario = {
+  matricula: false,
+  nombre: false,
+  apellido: false
+}
 
 // CRUD METHODS
 async function postOdontologos({ matricula, nombre, apellido }) {
@@ -162,18 +172,18 @@ function actualizarLista() {
 // FORM FUNCTIONS
 function obtenerDatosFormulario() {
   return {
-    id: parseInt(odontologoForm.querySelector('#odontologoId').value),
-    matricula: parseInt(odontologoForm.querySelector('#matricula').value),
-    nombre: odontologoForm.querySelector('#nombre').value,
-    apellido: odontologoForm.querySelector('#apellido').value
+    id: parseInt(idInput.value),
+    matricula: parseInt(matriculaInput.value),
+    nombre: nombreInput.value,
+    apellido: apellidoInput.value
   }
 }
 
 function insertarDatosFormulario({ id, matricula, nombre, apellido }) {
-  odontologoForm.querySelector('#odontologoId').value = id
-  odontologoForm.querySelector('#matricula').value = matricula
-  odontologoForm.querySelector('#nombre').value = nombre
-  odontologoForm.querySelector('#apellido').value = apellido
+  idInput.value = id
+  matriculaInput.value = matricula
+  nombreInput.value = nombre
+  apellidoInput.value = apellido
 }
 
 function limpiarFormulario() {
@@ -182,7 +192,7 @@ function limpiarFormulario() {
 
 function mostrarFormulario(textoBoton) {
   limpiarFormulario()
-  odontologoForm.querySelector('button').textContent = textoBoton
+  submitButton.textContent = textoBoton
   closeFormButton.classList.remove('hidden')
   odontologoFormContainer.classList.remove('hidden')
 }
@@ -191,6 +201,24 @@ function ocultarFormulario() {
   limpiarFormulario()
   odontologoFormContainer.classList.add('hidden')
   closeFormButton.classList.add('hidden')
+
+  matriculaInput.classList.remove('ring-red-500', 'ring-green-500')
+  nombreInput.classList.remove('ring-red-500', 'ring-green-500')
+  apellidoInput.classList.remove('ring-red-500', 'ring-green-500')
+}
+
+function validarTarget({ funcionValidar, target, text }) {
+  if (!funcionValidar(target.value)) {
+    sweetAlert({ type: 'warning', text })
+    target.classList.remove('ring-green-500')
+    target.classList.add('ring-red-500')
+    return false
+  } else {
+    target.classList.remove('ring-red-500')
+    target.classList.add('ring-green-500')
+  }
+
+  return true
 }
 
 // EVENT HANDLERS
@@ -206,6 +234,40 @@ function agregarEventListeners() {
   odontologoForm.addEventListener('submit', handleSubmitFormulario)
 
   closeFormButton.addEventListener('click', ocultarFormulario)
+
+  validarFormulario()
+}
+
+function validarFormulario() {
+  matriculaInput.addEventListener('change', e => {
+    const isValid = validarTarget({
+      funcionValidar: validarNumeros,
+      target: e.target,
+      text: 'La matrícula no puede contener letras'
+    })
+    validacionesFormulario.matricula = isValid
+    submitButton.disabled = !Object.values(validacionesFormulario).every(Boolean)
+  })
+
+  nombreInput.addEventListener('change', e => {
+    const isValid = validarTarget({
+      funcionValidar: validarTexto,
+      target: e.target,
+      text: 'El nombre no puede contener números'
+    })
+    validacionesFormulario.nombre = isValid
+    submitButton.disabled = !Object.values(validacionesFormulario).every(Boolean)
+  })
+
+  apellidoInput.addEventListener('change', e => {
+    const isValid = validarTarget({
+      funcionValidar: validarTexto,
+      target: e.target,
+      text: 'El apellido no puede contener números'
+    })
+    validacionesFormulario.apellido = isValid
+    submitButton.disabled = !Object.values(validacionesFormulario).every(Boolean)
+  })
 }
 
 async function handleClickTabla(e) {

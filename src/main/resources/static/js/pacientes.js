@@ -1,17 +1,46 @@
-import { fetchConfig, sweetAlert } from './utils.js'
+import { fetchConfig, sweetAlert, validarNumeros, validarTexto, validarFecha } from './utils.js'
 
 // TODO: VALIDACIONES DE FORMULARIO
 
 // VARIABLES DOM
 const btnAtras = document.querySelector('#btnAtras')
-const pacienteFormContainer = document.querySelector('#pacienteFormContainer')
-const domicilioFormContainer = document.querySelector('#domicilioFormContainer')
-const formsContainer = document.querySelector('#formsContainer')
-const pacienteForm = document.querySelector('#pacienteForm')
-const domicilioForm = document.querySelector('#domicilioForm')
-const table = document.querySelector('#pacienteTableBody')
 const newPacienteButton = document.querySelector('#btnAgregarPaciente')
 const closeFormButton = document.querySelector('#closeBtn')
+
+const formsContainer = document.querySelector('#formsContainer')
+const table = document.querySelector('#pacienteTableBody')
+
+const pacienteFormContainer = document.querySelector('#pacienteFormContainer')
+const pacienteForm = document.querySelector('#pacienteForm')
+const idPacienteInput = pacienteForm.querySelector('#pacienteId')
+const dniInput = pacienteForm.querySelector('#dni')
+const nombreInput = pacienteForm.querySelector('#nombre')
+const apellidoInput = pacienteForm.querySelector('#apellido')
+const fechaInput = pacienteForm.querySelector('#fechaAlta')
+const submitPacienteButton = pacienteForm.querySelector('button[type="submit"]')
+
+const domicilioFormContainer = document.querySelector('#domicilioFormContainer')
+const domicilioForm = document.querySelector('#domicilioForm')
+const idDomicilioInput = domicilioForm.querySelector('#domicilioId')
+const calleInput = domicilioForm.querySelector('#calle')
+const numeroInput = domicilioForm.querySelector('#numero')
+const localidadInput = domicilioForm.querySelector('#localidad')
+const provinciaInput = domicilioForm.querySelector('#provincia')
+const submitDomicilioButton = domicilioForm.querySelector('button[type="submit"]')
+
+const validacionesFormularioPaciente = {
+  dni: false,
+  nombre: false,
+  apellido: false,
+  fechaAlta: false
+}
+
+const validacionesFormularioDomicilio = {
+  calle: false,
+  numero: false,
+  localidad: false,
+  provincia: false
+}
 
 // CRUD METHODS
 async function postPacientes({ dni, nombre, apellido, domicilio, fechaAlta }) {
@@ -167,17 +196,17 @@ function actualizarLista() {
 // FORM FUNCTIONS
 function obtenerDatosFormulario() {
   return {
-    id: parseInt(pacienteForm.querySelector('#pacienteId').value),
-    dni: parseInt(pacienteForm.querySelector('#dni').value),
-    nombre: pacienteForm.querySelector('#nombre').value,
-    apellido: pacienteForm.querySelector('#apellido').value,
-    fechaAlta: pacienteForm.querySelector('#fechaAlta').value,
+    id: parseInt(idPacienteInput.value),
+    dni: parseInt(dniInput.value),
+    nombre: nombreInput.value,
+    apellido: apellidoInput.value,
+    fechaAlta: fechaInput.value,
     domicilio: {
-      id: parseInt(domicilioForm.querySelector('#domicilioId').value),
-      calle: domicilioForm.querySelector('#calle').value,
-      numero: parseInt(domicilioForm.querySelector('#numero').value),
-      localidad: domicilioForm.querySelector('#localidad').value,
-      provincia: domicilioForm.querySelector('#provincia').value
+      id: parseInt(idDomicilioInput.value),
+      calle: calleInput.value,
+      numero: parseInt(numeroInput.value),
+      localidad: localidadInput.value,
+      provincia: provinciaInput.value
     }
   }
 }
@@ -185,17 +214,17 @@ function obtenerDatosFormulario() {
 function insertarDatosFormulario({ id, dni, nombre, apellido, domicilio, fechaAlta }) {
   const { id: idDomicilio, calle, numero, localidad, provincia } = domicilio
 
-  pacienteForm.querySelector('#pacienteId').value = id
-  pacienteForm.querySelector('#dni').value = dni
-  pacienteForm.querySelector('#nombre').value = nombre
-  pacienteForm.querySelector('#apellido').value = apellido
-  pacienteForm.querySelector('#fechaAlta').value = fechaAlta
+  idPacienteInput.value = id
+  dniInput.value = dni
+  nombreInput.value = nombre
+  apellidoInput.value = apellido
+  fechaInput.value = fechaAlta
 
-  domicilioForm.querySelector('#domicilioId').value = idDomicilio
-  domicilioForm.querySelector('#calle').value = calle
-  domicilioForm.querySelector('#numero').value = numero
-  domicilioForm.querySelector('#localidad').value = localidad
-  domicilioForm.querySelector('#provincia').value = provincia
+  idDomicilioInput.value = idDomicilio
+  calleInput.value = calle
+  numeroInput.value = numero
+  localidadInput.value = localidad
+  provinciaInput.value = provincia
 }
 
 function limpiarFormulario() {
@@ -205,7 +234,7 @@ function limpiarFormulario() {
 
 function mostrarFormulario(textoBoton) {
   limpiarFormulario()
-  domicilioForm.querySelector('button[type="submit"]').textContent = textoBoton
+  submitDomicilioButton.textContent = textoBoton
   closeFormButton.classList.remove('hidden')
   formsContainer.classList.remove('hidden')
   domicilioFormContainer.classList.add('hidden')
@@ -218,6 +247,29 @@ function ocultarFormulario() {
   domicilioFormContainer.classList.add('hidden')
   pacienteFormContainer.classList.add('hidden')
   closeFormButton.classList.add('hidden')
+
+  dniInput.classList.remove('ring-red-500', 'ring-green-500')
+  nombreInput.classList.remove('ring-red-500', 'ring-green-500')
+  apellidoInput.classList.remove('ring-red-500', 'ring-green-500')
+  fechaInput.classList.remove('ring-red-500', 'ring-green-500')
+  calleInput.classList.remove('ring-red-500', 'ring-green-500')
+  numeroInput.classList.remove('ring-red-500', 'ring-green-500')
+  localidadInput.classList.remove('ring-red-500', 'ring-green-500')
+  provinciaInput.classList.remove('ring-red-500', 'ring-green-500')
+}
+
+function validarTarget({ funcionValidar, target, text }) {
+  if (!funcionValidar(target.value)) {
+    sweetAlert({ type: 'warning', text })
+    target.classList.remove('ring-green-500')
+    target.classList.add('ring-red-500')
+    return false
+  } else {
+    target.classList.remove('ring-red-500')
+    target.classList.add('ring-green-500')
+  }
+
+  return true
 }
 
 // EVENT HANDLERS
@@ -229,6 +281,100 @@ function agregarEventListeners() {
   table.addEventListener('click', handleClickTabla)
   pacienteForm.addEventListener('submit', handleSubmitPacienteForm)
   closeFormButton.addEventListener('click', ocultarFormulario)
+
+  validarFormulario()
+}
+
+function validarFormulario() {
+  dniInput.addEventListener('change', e => {
+    const isValid = validarTarget({
+      funcionValidar: validarNumeros,
+      target: e.target,
+      text: 'El DNI debe ser un número'
+    })
+
+    validacionesFormularioPaciente.dni = isValid
+    submitPacienteButton.disabled = !Object.values(validacionesFormularioPaciente).every(Boolean)
+  })
+
+  nombreInput.addEventListener('change', e => {
+    const isValid = validarTarget({
+      funcionValidar: validarTexto,
+      target: e.target,
+      text: 'El nombre debe contener solo letras'
+    })
+
+    validacionesFormularioPaciente.nombre = isValid
+    submitPacienteButton.disabled = !Object.values(validacionesFormularioPaciente).every(Boolean)
+  })
+
+  apellidoInput.addEventListener('change', e => {
+    const isValid = validarTarget({
+      funcionValidar: validarTexto,
+      target: e.target,
+      text: 'El apellido debe contener solo letras'
+    })
+
+    validacionesFormularioPaciente.apellido = isValid
+    submitPacienteButton.disabled = !Object.values(validacionesFormularioPaciente).every(Boolean)
+  })
+
+  fechaInput.addEventListener('focusout', e => {
+    setTimeout(() => {
+      const isValid = validarTarget({
+        funcionValidar: validarFecha,
+        target: e.target,
+        text: 'La fecha debe ser en formato yyyy-mm-dd'
+      })
+
+      validacionesFormularioPaciente.fechaAlta = isValid
+      submitPacienteButton.disabled = !Object.values(validacionesFormularioPaciente).every(Boolean)
+    }, 500)
+  })
+
+  calleInput.addEventListener('change', e => {
+    const isValid = validarTarget({
+      funcionValidar: validarTexto,
+      target: e.target,
+      text: 'La calle debe contener solo letras'
+    })
+
+    validacionesFormularioDomicilio.calle = isValid
+    submitDomicilioButton.disabled = !Object.values(validacionesFormularioDomicilio).every(Boolean)
+  })
+
+  numeroInput.addEventListener('change', e => {
+    const isValid = validarTarget({
+      funcionValidar: validarNumeros,
+      target: e.target,
+      text: 'El número debe ser un número'
+    })
+
+    validacionesFormularioDomicilio.numero = isValid
+    submitDomicilioButton.disabled = !Object.values(validacionesFormularioDomicilio).every(Boolean)
+  })
+
+  localidadInput.addEventListener('change', e => {
+    const isValid = validarTarget({
+      funcionValidar: validarTexto,
+      target: e.target,
+      text: 'La localidad debe contener solo letras'
+    })
+
+    validacionesFormularioDomicilio.localidad = isValid
+    submitDomicilioButton.disabled = !Object.values(validacionesFormularioDomicilio).every(Boolean)
+  })
+
+  provinciaInput.addEventListener('change', e => {
+    const isValid = validarTarget({
+      funcionValidar: validarTexto,
+      target: e.target,
+      text: 'La provincia debe contener solo letras'
+    })
+
+    validacionesFormularioDomicilio.provincia = isValid
+    submitDomicilioButton.disabled = !Object.values(validacionesFormularioDomicilio).every(Boolean)
+  })
 }
 
 function handleBtnAtras(e) {
