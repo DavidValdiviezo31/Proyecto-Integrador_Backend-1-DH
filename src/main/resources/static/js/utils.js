@@ -45,6 +45,15 @@ export function sweetAlert({ type, title, text }) {
         timer: 1750
       })
       break
+    case 'warning':
+      Swal.fire({
+        icon: 'warning',
+        title: 'Oops...',
+        text,
+        showConfirmButton: false,
+        timer: 1750
+      })
+      break
     default:
       break
   }
@@ -63,4 +72,10 @@ export function validarTexto(cadena) {
 export function validarFecha(cadena) {
   const regex = /^\d{4}-\d{2}-\d{2}$/
   return regex.test(cadena)
+}
+
+export function validarFechaPosterior(cadena) {
+  const fechaActual = new Date()
+  const fecha = new Date(cadena)
+  return fecha >= fechaActual
 }
