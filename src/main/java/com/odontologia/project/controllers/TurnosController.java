@@ -1,5 +1,6 @@
 package com.odontologia.project.controllers;
 
+import com.odontologia.project.exceptions.BadRequestException;
 import com.odontologia.project.models.Turno;
 import com.odontologia.project.services.ITurnoService;
 import org.springframework.http.HttpStatus;
@@ -57,4 +58,9 @@ public class TurnosController {
         ? new ResponseEntity<>(HttpStatus.BAD_REQUEST)
         : new ResponseEntity<>(turnoEliminar, HttpStatus.OK);
   }
+  @ExceptionHandler(BadRequestException.class)
+  public ResponseEntity<String> handleBadRequestException(BadRequestException ex) {
+    return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+  }
+
 }
