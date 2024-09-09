@@ -14,10 +14,22 @@ public class GlobalException {
     public ResponseEntity<String> handleBadRequestException(BadRequestException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
+    @ExceptionHandler(InvalidInputException.class)
+    @ResponseBody
+    public ResponseEntity<String> handleInvalidInputException(InvalidInputException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
 
+    @ExceptionHandler(EntityNotFoundException.class)
+    @ResponseBody
+    public ResponseEntity<String> handleEntityNotFoundException(EntityNotFoundException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+    }
 
-
-
-
-
+    @ExceptionHandler(Exception.class)
+    @ResponseBody
+    public ResponseEntity<String> handleGeneralException(Exception e) {
+        return new ResponseEntity<>("Error interno del servidor: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }
+
