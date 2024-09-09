@@ -2,10 +2,10 @@ package com.odontologia.project.controllers;
 
 import com.odontologia.project.models.Odontologo;
 import com.odontologia.project.services.IOdontologoService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +35,7 @@ public class OdontologosController {
   }
 
   @GetMapping
-  public ResponseEntity<List<Odontologo>> buscarTodosOdontologos(){
+  public ResponseEntity<List<Odontologo>> buscarTodosOdontologos() {
     return new ResponseEntity<>(odontologoService.buscarTodosOdontologos(), HttpStatus.OK);
   }
 

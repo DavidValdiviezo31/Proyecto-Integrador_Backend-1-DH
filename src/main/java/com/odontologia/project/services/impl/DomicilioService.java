@@ -5,8 +5,8 @@ import com.odontologia.project.exceptions.InvalidInputException;
 import com.odontologia.project.models.Domicilio;
 import com.odontologia.project.repositories.IDomicilioRepository;
 import com.odontologia.project.services.IDomicilioService;
-import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
@@ -27,7 +27,7 @@ public class DomicilioService implements IDomicilioService {
   @Override
   public Domicilio buscarDomicilioPorId(Long id) {
     return iDomicilioRepository.findById(id)
-            .orElseThrow(() -> new EntityNotFoundException("No existe el domicilio con el id: " + id));
+        .orElseThrow(() -> new EntityNotFoundException("No existe el domicilio con el id: " + id));
   }
 
   @Override

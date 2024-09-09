@@ -2,10 +2,10 @@ package com.odontologia.project.controllers;
 
 import com.odontologia.project.models.Paciente;
 import com.odontologia.project.services.IPacienteService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +35,7 @@ public class PacientesController {
   }
 
   @GetMapping
-  public ResponseEntity<List<Paciente>> buscarTodosPaciente(){
+  public ResponseEntity<List<Paciente>> buscarTodosPaciente() {
     return new ResponseEntity<>(pacienteService.buscarTodosPacientes(), HttpStatus.OK);
   }
 

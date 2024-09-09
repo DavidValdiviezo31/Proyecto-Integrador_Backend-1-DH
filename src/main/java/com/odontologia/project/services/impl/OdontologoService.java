@@ -5,8 +5,8 @@ import com.odontologia.project.exceptions.InvalidInputException;
 import com.odontologia.project.models.Odontologo;
 import com.odontologia.project.repositories.IOdontologoRepository;
 import com.odontologia.project.services.IOdontologoService;
-import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
@@ -21,7 +21,7 @@ public class OdontologoService implements IOdontologoService {
     if (iOdontologoRepository.existsByMatricula(odontologo.getMatricula())) {
       throw new RuntimeException("Ya existe un odontólogo con la matrícula " + odontologo.getMatricula());
     }
-    if (odontologo == null || odontologo.getMatricula() == null) {
+    if (odontologo.getMatricula() == null) {
       throw new InvalidInputException("El odontólogo o su matrícula no pueden ser nulos.");
     }
     return iOdontologoRepository.save(odontologo);
@@ -30,7 +30,7 @@ public class OdontologoService implements IOdontologoService {
   @Override
   public Odontologo buscarOdontologoPorId(Long id) {
     return iOdontologoRepository.findById(id)
-            .orElseThrow(()->new EntityNotFoundException("No existe un odontologo con ese id: " + id));
+        .orElseThrow(() -> new EntityNotFoundException("No existe un odontologo con ese id: " + id));
   }
 
   @Override

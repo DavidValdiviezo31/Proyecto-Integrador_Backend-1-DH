@@ -1,12 +1,11 @@
 package com.odontologia.project.controllers;
 
-import com.odontologia.project.exceptions.BadRequestException;
 import com.odontologia.project.models.Turno;
 import com.odontologia.project.services.ITurnoService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.Objects;
@@ -36,7 +35,7 @@ public class TurnosController {
   }
 
   @GetMapping
-  public ResponseEntity<List<Turno>> buscarTodosTurnos(){
+  public ResponseEntity<List<Turno>> buscarTodosTurnos() {
     return new ResponseEntity<>(turnoService.buscarTodosTurnos(), HttpStatus.OK);
   }
 

@@ -5,8 +5,8 @@ import com.odontologia.project.exceptions.InvalidInputException;
 import com.odontologia.project.models.Paciente;
 import com.odontologia.project.repositories.IPacienteRepository;
 import com.odontologia.project.services.IPacienteService;
-import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
@@ -21,7 +21,7 @@ public class PacienteService implements IPacienteService {
     if (iPacienteRepository.existsByDni(paciente.getDni())) {
       throw new RuntimeException("Ya existe un Paciente con el DNI: " + paciente.getDni());
     }
-    if (paciente == null || paciente.getDni() == null) {
+    if (paciente.getDni() == null) {
       throw new InvalidInputException("El Paciente o su DNI no pueden ser nulos.");
     }
     return iPacienteRepository.save(paciente);
@@ -30,7 +30,7 @@ public class PacienteService implements IPacienteService {
   @Override
   public Paciente buscarPacientePorId(Long id) {
     return iPacienteRepository.findById(id)
-            .orElseThrow(()->new EntityNotFoundException("No existe un Paciente con ese id: " + id));
+        .orElseThrow(() -> new EntityNotFoundException("No existe un Paciente con ese id: " + id));
   }
 
   @Override

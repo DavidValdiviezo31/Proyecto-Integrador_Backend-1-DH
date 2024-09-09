@@ -10,8 +10,8 @@ import com.odontologia.project.repositories.IOdontologoRepository;
 import com.odontologia.project.repositories.IPacienteRepository;
 import com.odontologia.project.repositories.ITurnoRepository;
 import com.odontologia.project.services.ITurnoService;
-import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,10 +33,10 @@ public class TurnoService implements ITurnoService {
       throw new InvalidInputException("El turno, odontólogo o paciente no pueden ser nulos.");
     }
 
-    if (!iOdontologoRepository.findById(turno.getOdontologo().getId()).isPresent()) {
+    if (iOdontologoRepository.findById(turno.getOdontologo().getId()).isEmpty()) {
       errores.add("No existe el odontólogo.");
     }
-    if (!iPacienteRepository.findById(turno.getPaciente().getId()).isPresent()) {
+    if (iPacienteRepository.findById(turno.getPaciente().getId()).isEmpty()) {
       errores.add("No existe el paciente.");
     }
     if (!errores.isEmpty()) {
@@ -53,7 +53,7 @@ public class TurnoService implements ITurnoService {
   @Override
   public Turno buscarTurnoPorId(Long id) {
     return iTurnoRepository.findById(id)
-            .orElseThrow(() -> new EntityNotFoundException("No existe el turno con el id: " + id));
+        .orElseThrow(() -> new EntityNotFoundException("No existe el turno con el id: " + id));
   }
 
   @Override
