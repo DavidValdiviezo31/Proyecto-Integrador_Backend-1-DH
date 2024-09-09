@@ -1,5 +1,7 @@
 package com.odontologia.project.services.impl;
 
+import com.odontologia.project.exceptions.EntityNotFoundException;
+import com.odontologia.project.exceptions.InvalidInputException;
 import com.odontologia.project.models.Paciente;
 import com.odontologia.project.repositories.IPacienteRepository;
 import com.odontologia.project.services.IPacienteService;
@@ -16,12 +18,19 @@ public class PacienteService implements IPacienteService {
 
   @Override
   public Paciente guardarPaciente(Paciente paciente) {
+    if (iPacienteRepository.existsByDni(paciente.getDni())) {
+      throw new RuntimeException("Ya existe un Paciente con el DNI: " + paciente.getDni());
+    }
+    if (paciente == null || paciente.getDni() == null) {
+      throw new InvalidInputException("El Paciente o su DNI no pueden ser nulos.");
+    }
     return iPacienteRepository.save(paciente);
   }
 
   @Override
   public Paciente buscarPacientePorId(Long id) {
-    return iPacienteRepository.findById(id).orElse(null);
+    return iPacienteRepository.findById(id)
+            .orElseThrow(()->new EntityNotFoundException("No existe un Paciente con ese id: " + id));
   }
 
   @Override
@@ -31,6 +40,9 @@ public class PacienteService implements IPacienteService {
 
   @Override
   public Paciente actualizarPaciente(Paciente paciente) {
+    if (paciente == null || paciente.getId() == null) {
+      throw new InvalidInputException("El Paciente o su ID no pueden ser nulos.");
+    }
     Paciente pacienteActualizado = buscarPacientePorId(paciente.getId());
 
     pacienteActualizado.setNombre(paciente.getNombre());

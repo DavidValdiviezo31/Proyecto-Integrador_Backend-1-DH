@@ -1,5 +1,7 @@
 package com.odontologia.project.services.impl;
 
+import com.odontologia.project.exceptions.EntityNotFoundException;
+import com.odontologia.project.exceptions.InvalidInputException;
 import com.odontologia.project.models.Odontologo;
 import com.odontologia.project.repositories.IOdontologoRepository;
 import com.odontologia.project.services.IOdontologoService;
@@ -16,12 +18,19 @@ public class OdontologoService implements IOdontologoService {
 
   @Override
   public Odontologo guardarOdontologo(Odontologo odontologo) {
+    if (iOdontologoRepository.existsByMatricula(odontologo.getMatricula())) {
+      throw new RuntimeException("Ya existe un odontólogo con la matrícula " + odontologo.getMatricula());
+    }
+    if (odontologo == null || odontologo.getMatricula() == null) {
+      throw new InvalidInputException("El odontólogo o su matrícula no pueden ser nulos.");
+    }
     return iOdontologoRepository.save(odontologo);
   }
 
   @Override
   public Odontologo buscarOdontologoPorId(Long id) {
-    return iOdontologoRepository.findById(id).orElse(null);
+    return iOdontologoRepository.findById(id)
+            .orElseThrow(()->new EntityNotFoundException("No existe un odontologo con ese id: " + id));
   }
 
   @Override
@@ -31,8 +40,10 @@ public class OdontologoService implements IOdontologoService {
 
   @Override
   public Odontologo actualizarOdontologo(Odontologo odontologo) {
+    if (odontologo == null || odontologo.getId() == null) {
+      throw new InvalidInputException("El odontólogo o su ID no pueden ser nulos.");
+    }
     Odontologo odontologoActualizado = buscarOdontologoPorId(odontologo.getId());
-
     odontologoActualizado.setNombre(odontologo.getNombre());
     odontologoActualizado.setApellido(odontologo.getApellido());
     odontologoActualizado.setMatricula(odontologo.getMatricula());

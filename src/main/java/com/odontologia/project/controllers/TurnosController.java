@@ -58,9 +58,5 @@ public class TurnosController {
         ? new ResponseEntity<>(HttpStatus.BAD_REQUEST)
         : new ResponseEntity<>(turnoEliminar, HttpStatus.OK);
   }
-  @ExceptionHandler(BadRequestException.class)
-  public ResponseEntity<String> handleBadRequestException(BadRequestException ex) {
-    return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
-  }
 
 }

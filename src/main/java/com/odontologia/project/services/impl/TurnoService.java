@@ -1,6 +1,8 @@
 package com.odontologia.project.services.impl;
 
 import com.odontologia.project.exceptions.BadRequestException;
+import com.odontologia.project.exceptions.EntityNotFoundException;
+import com.odontologia.project.exceptions.InvalidInputException;
 import com.odontologia.project.models.Odontologo;
 import com.odontologia.project.models.Paciente;
 import com.odontologia.project.models.Turno;
@@ -27,6 +29,10 @@ public class TurnoService implements ITurnoService {
 
     List<String> errores = new ArrayList<>();
 
+    if (turno == null || turno.getOdontologo() == null || turno.getPaciente() == null) {
+      throw new InvalidInputException("El turno, odontólogo o paciente no pueden ser nulos.");
+    }
+
     if (!iOdontologoRepository.findById(turno.getOdontologo().getId()).isPresent()) {
       errores.add("No existe el odontólogo.");
     }
@@ -46,7 +52,8 @@ public class TurnoService implements ITurnoService {
 
   @Override
   public Turno buscarTurnoPorId(Long id) {
-    return iTurnoRepository.findById(id).orElse(null);
+    return iTurnoRepository.findById(id)
+            .orElseThrow(() -> new EntityNotFoundException("No existe el turno con el id: " + id));
   }
 
   @Override
@@ -56,6 +63,9 @@ public class TurnoService implements ITurnoService {
 
   @Override
   public Turno actualizarTurno(Turno turno) {
+    if (turno == null || turno.getId() == null) {
+      throw new InvalidInputException("El turno o su ID no pueden ser nulos.");
+    }
     Turno turnoActualizado = buscarTurnoPorId(turno.getId());
 
     turnoActualizado.setHora(turno.getHora());
