@@ -5,29 +5,38 @@ import com.odontologia.project.exceptions.InvalidInputException;
 import com.odontologia.project.models.Domicilio;
 import com.odontologia.project.repositories.IDomicilioRepository;
 import com.odontologia.project.services.IDomicilioService;
+import com.odontologia.project.services.errors.DomicilioErrorTypes;
+import com.odontologia.project.services.errors.DomicilioErrors;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
 public class DomicilioService implements IDomicilioService {
   private final IDomicilioRepository iDomicilioRepository;
 
+  private final Logger logger = LoggerFactory.getLogger(DomicilioService.class);
+
   @Override
   public Domicilio guardarDomicilio(Domicilio domicilio) {
-    if (domicilio == null || domicilio.getId() == null) {
-      throw new InvalidInputException("El domicilio o su ID no pueden ser nulos.");
-    }
+    validarNulosDomicilio(domicilio);
+
+    logger.info("Domiclio guardado exitosamente.");
     return iDomicilioRepository.save(domicilio);
   }
 
   @Override
   public Domicilio buscarDomicilioPorId(Long id) {
+    if (id == null) {
+      throw new InvalidInputException(DomicilioErrors.getErrorMessage(DomicilioErrorTypes.ID_NULL));
+    }
+
     return iDomicilioRepository.findById(id)
-        .orElseThrow(() -> new EntityNotFoundException("No existe el domicilio con el id: " + id));
+        .orElseThrow(() -> new EntityNotFoundException(DomicilioErrors.getErrorMessage(DomicilioErrorTypes.NOT_FOUND) + id));
   }
 
   @Override
@@ -37,9 +46,12 @@ public class DomicilioService implements IDomicilioService {
 
   @Override
   public Domicilio actualizarDomicilio(Domicilio domicilio) {
-    if (domicilio == null || domicilio.getId() == null) {
-      throw new InvalidInputException("El domicilio o su ID no pueden ser nulos.");
+    if (domicilio.getId() == null) {
+      throw new InvalidInputException(DomicilioErrors.getErrorMessage(DomicilioErrorTypes.ID_NULL));
     }
+
+    validarNulosDomicilio(domicilio);
+
     Domicilio domicilioActualizado = buscarDomicilioPorId(domicilio.getId());
 
     domicilioActualizado.setCalle(domicilio.getCalle());
@@ -47,6 +59,12 @@ public class DomicilioService implements IDomicilioService {
     domicilioActualizado.setLocalidad(domicilio.getLocalidad());
     domicilioActualizado.setProvincia(domicilio.getProvincia());
 
+    logger.info("Domicilio {} {}, {}, {} con id {} actualizado",
+        domicilioActualizado.getCalle(),
+        domicilioActualizado.getNumero(),
+        domicilioActualizado.getLocalidad(),
+        domicilioActualizado.getProvincia(),
+        domicilioActualizado.getId());
     return iDomicilioRepository.save(domicilioActualizado);
   }
 
@@ -54,9 +72,27 @@ public class DomicilioService implements IDomicilioService {
   public Domicilio eliminarDomicilioPorId(Long id) {
     Domicilio domicilioEliminado = buscarDomicilioPorId(id);
 
-    if (Objects.isNull(domicilioEliminado)) return null;
-
     iDomicilioRepository.deleteById(id);
+
+    logger.info("Domicilio con id {} eliminado exitosamente.", id);
     return domicilioEliminado;
+  }
+
+  private void validarNulosDomicilio(Domicilio domicilio) {
+    if (domicilio.getCalle() == null) {
+      throw new InvalidInputException(DomicilioErrors.getErrorMessage(DomicilioErrorTypes.CALLE_NULL));
+    }
+
+    if (domicilio.getNumero() == null) {
+      throw new RuntimeException(DomicilioErrors.getErrorMessage(DomicilioErrorTypes.NUMERO_NULL));
+    }
+
+    if (domicilio.getLocalidad() == null) {
+      throw new InvalidInputException(DomicilioErrors.getErrorMessage(DomicilioErrorTypes.LOCALIDAD_NULL));
+    }
+
+    if (domicilio.getProvincia() == null) {
+      throw new InvalidInputException(DomicilioErrors.getErrorMessage(DomicilioErrorTypes.PROVINCIA_NULL));
+    }
   }
 }
