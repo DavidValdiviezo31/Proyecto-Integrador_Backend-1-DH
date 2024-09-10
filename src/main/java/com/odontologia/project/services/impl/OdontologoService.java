@@ -25,7 +25,13 @@ public class OdontologoService implements IOdontologoService {
   public Odontologo guardarOdontologo(Odontologo odontologo) {
     validarOdontologo(odontologo);
 
-    logger.info("Odontólogo con matrícula {} guardado exitosamente.", odontologo.getMatricula());
+    if (iOdontologoRepository.existsByMatricula(odontologo.getMatricula()))
+      throw new RuntimeException(OdontologoErrors.getErrorMessage(OdontologoErrorTypes.MATRICULA_EXIST) + odontologo.getMatricula());
+
+    logger.info("Odontólogo {} {}, {} guardado exitosamente.",
+        odontologo.getNombre(),
+        odontologo.getApellido(),
+        odontologo.getMatricula());
     return iOdontologoRepository.save(odontologo);
   }
 
@@ -53,9 +59,7 @@ public class OdontologoService implements IOdontologoService {
     odontologoActualizado.setApellido(odontologo.getApellido());
     odontologoActualizado.setMatricula(odontologo.getMatricula());
 
-    logger.info("Odontólogo {} {} con id {} actualizado exitosamente.",
-        odontologoActualizado.getNombre(),
-        odontologoActualizado.getApellido(),
+    logger.info("Odontólogo con id {} actualizado exitosamente.",
         odontologoActualizado.getId());
     return iOdontologoRepository.save(odontologoActualizado);
   }
@@ -73,9 +77,6 @@ public class OdontologoService implements IOdontologoService {
   private void validarOdontologo(Odontologo odontologo) {
     if (odontologo.getMatricula() == null)
       throw new InvalidInputException(OdontologoErrors.getErrorMessage(OdontologoErrorTypes.MATRICULA_NULL));
-
-    if (iOdontologoRepository.existsByMatricula(odontologo.getMatricula()))
-      throw new RuntimeException(OdontologoErrors.getErrorMessage(OdontologoErrorTypes.MATRICULA_EXIST) + odontologo.getMatricula());
 
     if (odontologo.getNombre() == null)
       throw new InvalidInputException(OdontologoErrors.getErrorMessage(OdontologoErrorTypes.NOMBRE_NULL));

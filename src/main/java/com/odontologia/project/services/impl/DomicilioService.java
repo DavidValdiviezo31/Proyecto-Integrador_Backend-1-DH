@@ -25,7 +25,11 @@ public class DomicilioService implements IDomicilioService {
   public Domicilio guardarDomicilio(Domicilio domicilio) {
     validarDomicilio(domicilio);
 
-    logger.info("Domiclio guardado exitosamente.");
+    logger.info("Domiclio {} {}, {}, {} guardado exitosamente.",
+        domicilio.getCalle(),
+        domicilio.getNumero(),
+        domicilio.getLocalidad(),
+        domicilio.getProvincia());
     return iDomicilioRepository.save(domicilio);
   }
 
@@ -54,11 +58,7 @@ public class DomicilioService implements IDomicilioService {
     domicilioActualizado.setLocalidad(domicilio.getLocalidad());
     domicilioActualizado.setProvincia(domicilio.getProvincia());
 
-    logger.info("Domicilio {} {}, {}, {} con id {} actualizado exitosamente.",
-        domicilioActualizado.getCalle(),
-        domicilioActualizado.getNumero(),
-        domicilioActualizado.getLocalidad(),
-        domicilioActualizado.getProvincia(),
+    logger.info("Domicilio con id {} actualizado exitosamente.",
         domicilioActualizado.getId());
     return iDomicilioRepository.save(domicilioActualizado);
   }

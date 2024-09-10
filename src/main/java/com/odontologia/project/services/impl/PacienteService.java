@@ -25,7 +25,13 @@ public class PacienteService implements IPacienteService {
   public Paciente guardarPaciente(Paciente paciente) {
     validarPaciente(paciente);
 
-    logger.info("Paciente con DNI {} guardado exitosamente", paciente.getDni());
+    if (iPacienteRepository.existsByDni(paciente.getDni()))
+      throw new RuntimeException(PacienteErrors.getErrorMessage(PacienteErrorTypes.DNI_EXIST) + paciente.getDni());
+
+    logger.info("Paciente {} {}, {} guardado exitosamente.",
+        paciente.getNombre(),
+        paciente.getApellido(),
+        paciente.getDni());
     return iPacienteRepository.save(paciente);
   }
 
@@ -55,9 +61,7 @@ public class PacienteService implements IPacienteService {
     pacienteActualizado.setDomicilio(paciente.getDomicilio());
     pacienteActualizado.setFechaAlta(paciente.getFechaAlta());
 
-    logger.info("Paciente {} {} con id {} actualizado exitosamente.",
-        pacienteActualizado.getNombre(),
-        pacienteActualizado.getDni(),
+    logger.info("Paciente con id {} actualizado exitosamente.",
         pacienteActualizado.getId());
     return iPacienteRepository.save(pacienteActualizado);
   }
@@ -75,9 +79,6 @@ public class PacienteService implements IPacienteService {
   private void validarPaciente(Paciente paciente) {
     if (paciente.getDni() == null)
       throw new InvalidInputException(PacienteErrors.getErrorMessage(PacienteErrorTypes.DNI_NULL));
-
-    if (iPacienteRepository.existsByDni(paciente.getDni()))
-      throw new RuntimeException(PacienteErrors.getErrorMessage(PacienteErrorTypes.DNI_EXIST) + paciente.getDni());
 
     if (paciente.getNombre() == null)
       throw new InvalidInputException(PacienteErrors.getErrorMessage(PacienteErrorTypes.NOMBRE_NULL));

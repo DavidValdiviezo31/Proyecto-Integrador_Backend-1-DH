@@ -40,8 +40,8 @@ public class TurnoService implements ITurnoService {
     turno.setPaciente(paciente);
 
     logger.info("Turno para paciente {} con odontólogo {} guardado exitosamente.",
-        paciente.getDni(),
-        odontologo.getMatricula());
+        paciente.getId(),
+        odontologo.getId());
     return iTurnoRepository.save(turno);
   }
 
@@ -70,7 +70,7 @@ public class TurnoService implements ITurnoService {
     turnoActualizado.setOdontologo(turno.getOdontologo());
     turnoActualizado.setPaciente(turno.getPaciente());
 
-    logger.info("Turno #{} actualizado exitosamente.",
+    logger.info("Turno con id {} actualizado exitosamente.",
         turnoActualizado.getId());
     return iTurnoRepository.save(turnoActualizado);
   }
