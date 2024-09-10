@@ -366,6 +366,7 @@ async function buscarPaciente() {
   const pacienteEncontrado = listaPacientes.find(({ dni: d }) => d === dni)
 
   if (!pacienteEncontrado) {
+    sweetAlert({ type: 'error', text: 'No existe un paciente con ese DNI' })
     pacienteInput.value = ''
     return
   }
@@ -399,6 +400,13 @@ function insertarDatosFormulario({ id, fecha, hora, odontologo, paciente }) {
   pacienteSearchInput.value = paciente.dni
   pacienteInput.dataset.id = paciente.id
   pacienteInput.value = `${paciente.nombre} ${paciente.apellido}`
+  submitButton.disabled = false
+
+  Object.keys(validacionesFormulario).forEach(key => (validacionesFormulario[key] = true))
+
+  fechaInput.classList.add('ring-green-500')
+  odontologoSearch.classList.add('ring-green-500')
+  pacienteSearchInput.classList.add('ring-green-500')
 }
 
 function limpiarFormulario() {
@@ -429,11 +437,13 @@ function ocultarFormulario() {
 
 function validarTarget({ funcionValidar, target, text }) {
   if (!funcionValidar(target.value)) {
-    sweetAlert({ type: 'warning', text })
+    target.setCustomValidity(text)
+    target.reportValidity()
     target.classList.remove('ring-green-500')
     target.classList.add('ring-red-500')
     return false
   } else {
+    target.setCustomValidity('')
     target.classList.remove('ring-red-500')
     target.classList.add('ring-green-500')
   }

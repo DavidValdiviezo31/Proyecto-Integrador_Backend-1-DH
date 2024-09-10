@@ -8,11 +8,13 @@ const newOdontologoButton = document.querySelector('#btnAgregarOdontologo')
 
 const odontologoFormContainer = document.querySelector('#odontologoFormContainer')
 const odontologoForm = document.querySelector('#odontologoForm')
-const idInput = odontologoForm.querySelector('#odontologoId')
-const matriculaInput = odontologoForm.querySelector('#matricula')
-const nombreInput = odontologoForm.querySelector('#nombre')
-const apellidoInput = odontologoForm.querySelector('#apellido')
-const submitButton = odontologoForm.querySelector('button')
+const odontologoFormInputs = {
+  id: odontologoForm.querySelector('#odontologoId'),
+  matricula: odontologoForm.querySelector('#matricula'),
+  nombre: odontologoForm.querySelector('#nombre'),
+  apellido: odontologoForm.querySelector('#apellido'),
+  submit: odontologoForm.querySelector('button')
+}
 
 const validacionesFormulario = {
   matricula: false,
@@ -172,18 +174,25 @@ function actualizarLista() {
 // FORM FUNCTIONS
 function obtenerDatosFormulario() {
   return {
-    id: parseInt(idInput.value),
-    matricula: parseInt(matriculaInput.value),
-    nombre: nombreInput.value,
-    apellido: apellidoInput.value
+    id: parseInt(odontologoFormInputs.id.value),
+    matricula: parseInt(odontologoFormInputs.matricula.value),
+    nombre: odontologoFormInputs.nombre.value,
+    apellido: odontologoFormInputs.apellido.value
   }
 }
 
 function insertarDatosFormulario({ id, matricula, nombre, apellido }) {
-  idInput.value = id
-  matriculaInput.value = matricula
-  nombreInput.value = nombre
-  apellidoInput.value = apellido
+  odontologoFormInputs.id.value = id
+  odontologoFormInputs.matricula.value = matricula
+  odontologoFormInputs.nombre.value = nombre
+  odontologoFormInputs.apellido.value = apellido
+  odontologoFormInputs.submit.disabled = false
+
+  Object.keys(validacionesFormulario).forEach(key => (validacionesFormulario[key] = true))
+
+  odontologoFormInputs.matricula.classList.add('ring-green-500')
+  odontologoFormInputs.nombre.classList.add('ring-green-500')
+  odontologoFormInputs.apellido.classList.add('ring-green-500')
 }
 
 function limpiarFormulario() {
@@ -192,7 +201,7 @@ function limpiarFormulario() {
 
 function mostrarFormulario(textoBoton) {
   limpiarFormulario()
-  submitButton.textContent = textoBoton
+  odontologoFormInputs.submit.textContent = textoBoton
   closeFormButton.classList.remove('hidden')
   odontologoFormContainer.classList.remove('hidden')
 }
@@ -202,18 +211,20 @@ function ocultarFormulario() {
   odontologoFormContainer.classList.add('hidden')
   closeFormButton.classList.add('hidden')
 
-  matriculaInput.classList.remove('ring-red-500', 'ring-green-500')
-  nombreInput.classList.remove('ring-red-500', 'ring-green-500')
-  apellidoInput.classList.remove('ring-red-500', 'ring-green-500')
+  odontologoFormInputs.matricula.classList.remove('ring-red-500', 'ring-green-500')
+  odontologoFormInputs.nombre.classList.remove('ring-red-500', 'ring-green-500')
+  odontologoFormInputs.apellido.classList.remove('ring-red-500', 'ring-green-500')
 }
 
 function validarTarget({ funcionValidar, target, text }) {
   if (!funcionValidar(target.value)) {
-    sweetAlert({ type: 'warning', text })
+    target.setCustomValidity(text)
+    target.reportValidity()
     target.classList.remove('ring-green-500')
     target.classList.add('ring-red-500')
     return false
   } else {
+    target.setCustomValidity('')
     target.classList.remove('ring-red-500')
     target.classList.add('ring-green-500')
   }
@@ -239,34 +250,36 @@ function agregarEventListeners() {
 }
 
 function validarFormulario() {
-  matriculaInput.addEventListener('change', e => {
+  const { matricula, nombre, apellido } = odontologoFormInputs
+
+  matricula.addEventListener('change', e => {
     const isValid = validarTarget({
       funcionValidar: validarNumeros,
       target: e.target,
       text: 'La matrícula no puede contener letras'
     })
     validacionesFormulario.matricula = isValid
-    submitButton.disabled = !Object.values(validacionesFormulario).every(Boolean)
+    odontologoFormInputs.submit.disabled = !Object.values(validacionesFormulario).every(Boolean)
   })
 
-  nombreInput.addEventListener('change', e => {
+  nombre.addEventListener('change', e => {
     const isValid = validarTarget({
       funcionValidar: validarTexto,
       target: e.target,
       text: 'El nombre no puede contener números'
     })
     validacionesFormulario.nombre = isValid
-    submitButton.disabled = !Object.values(validacionesFormulario).every(Boolean)
+    odontologoFormInputs.submit.disabled = !Object.values(validacionesFormulario).every(Boolean)
   })
 
-  apellidoInput.addEventListener('change', e => {
+  apellido.addEventListener('change', e => {
     const isValid = validarTarget({
       funcionValidar: validarTexto,
       target: e.target,
       text: 'El apellido no puede contener números'
     })
     validacionesFormulario.apellido = isValid
-    submitButton.disabled = !Object.values(validacionesFormulario).every(Boolean)
+    odontologoFormInputs.submit.disabled = !Object.values(validacionesFormulario).every(Boolean)
   })
 }
 

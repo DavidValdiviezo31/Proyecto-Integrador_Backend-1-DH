@@ -12,22 +12,14 @@ const table = document.querySelector('#pacienteTableBody')
 
 const pacienteFormContainer = document.querySelector('#pacienteFormContainer')
 const pacienteForm = document.querySelector('#pacienteForm')
-const idPacienteInput = pacienteForm.querySelector('#pacienteId')
-const dniInput = pacienteForm.querySelector('#dni')
-const nombreInput = pacienteForm.querySelector('#nombre')
-const apellidoInput = pacienteForm.querySelector('#apellido')
-const fechaInput = pacienteForm.querySelector('#fechaAlta')
-const submitPacienteButton = pacienteForm.querySelector('button[type="submit"]')
-
-const domicilioFormContainer = document.querySelector('#domicilioFormContainer')
-const domicilioForm = document.querySelector('#domicilioForm')
-const idDomicilioInput = domicilioForm.querySelector('#domicilioId')
-const calleInput = domicilioForm.querySelector('#calle')
-const numeroInput = domicilioForm.querySelector('#numero')
-const localidadInput = domicilioForm.querySelector('#localidad')
-const provinciaInput = domicilioForm.querySelector('#provincia')
-const submitDomicilioButton = domicilioForm.querySelector('button[type="submit"]')
-
+const pacienteFormInputs = {
+  id: pacienteForm.querySelector('#pacienteId'),
+  dni: pacienteForm.querySelector('#dni'),
+  nombre: pacienteForm.querySelector('#nombre'),
+  apellido: pacienteForm.querySelector('#apellido'),
+  fechaAlta: pacienteForm.querySelector('#fechaAlta'),
+  submit: pacienteForm.querySelector('button[type="submit"]')
+}
 const validacionesFormularioPaciente = {
   dni: false,
   nombre: false,
@@ -35,6 +27,16 @@ const validacionesFormularioPaciente = {
   fechaAlta: false
 }
 
+const domicilioFormContainer = document.querySelector('#domicilioFormContainer')
+const domicilioForm = document.querySelector('#domicilioForm')
+const domicilioFormInputs = {
+  id: domicilioForm.querySelector('#domicilioId'),
+  calle: domicilioForm.querySelector('#calle'),
+  numero: domicilioForm.querySelector('#numero'),
+  localidad: domicilioForm.querySelector('#localidad'),
+  provincia: domicilioForm.querySelector('#provincia'),
+  submit: domicilioForm.querySelector('button[type="submit"]')
+}
 const validacionesFormularioDomicilio = {
   calle: false,
   numero: false,
@@ -196,17 +198,17 @@ function actualizarLista() {
 // FORM FUNCTIONS
 function obtenerDatosFormulario() {
   return {
-    id: parseInt(idPacienteInput.value),
-    dni: parseInt(dniInput.value),
-    nombre: nombreInput.value,
-    apellido: apellidoInput.value,
-    fechaAlta: fechaInput.value,
+    id: parseInt(pacienteFormInputs.id?.value),
+    dni: parseInt(pacienteFormInputs.dni?.value),
+    nombre: pacienteFormInputs.nombre?.value,
+    apellido: pacienteFormInputs.apellido?.value,
+    fechaAlta: pacienteFormInputs.fechaAlta?.value,
     domicilio: {
-      id: parseInt(idDomicilioInput.value),
-      calle: calleInput.value,
-      numero: parseInt(numeroInput.value),
-      localidad: localidadInput.value,
-      provincia: provinciaInput.value
+      id: parseInt(domicilioFormInputs.id.value),
+      calle: domicilioFormInputs.calle.value,
+      numero: parseInt(domicilioFormInputs.numero.value),
+      localidad: domicilioFormInputs.localidad.value,
+      provincia: domicilioFormInputs.provincia.value
     }
   }
 }
@@ -214,17 +216,32 @@ function obtenerDatosFormulario() {
 function insertarDatosFormulario({ id, dni, nombre, apellido, domicilio, fechaAlta }) {
   const { id: idDomicilio, calle, numero, localidad, provincia } = domicilio
 
-  idPacienteInput.value = id
-  dniInput.value = dni
-  nombreInput.value = nombre
-  apellidoInput.value = apellido
-  fechaInput.value = fechaAlta
+  pacienteFormInputs.id.value = id
+  pacienteFormInputs.dni.value = dni
+  pacienteFormInputs.nombre.value = nombre
+  pacienteFormInputs.apellido.value = apellido
+  pacienteFormInputs.fechaAlta.value = fechaAlta
+  pacienteFormInputs.submit.disabled = false
 
-  idDomicilioInput.value = idDomicilio
-  calleInput.value = calle
-  numeroInput.value = numero
-  localidadInput.value = localidad
-  provinciaInput.value = provincia
+  Object.keys(validacionesFormularioPaciente).forEach(key => (validacionesFormularioPaciente[key] = true))
+
+  pacienteFormInputs.dni.classList.add('ring-green-500')
+  pacienteFormInputs.nombre.classList.add('ring-green-500')
+  pacienteFormInputs.apellido.classList.add('ring-green-500')
+  pacienteFormInputs.fechaAlta.classList.add('ring-green-500')
+
+  domicilioFormInputs.id.value = idDomicilio
+  domicilioFormInputs.calle.value = calle
+  domicilioFormInputs.numero.value = numero
+  domicilioFormInputs.localidad.value = localidad
+  domicilioFormInputs.provincia.value = provincia
+
+  Object.keys(validacionesFormularioDomicilio).forEach(key => (validacionesFormularioDomicilio[key] = true))
+
+  domicilioFormInputs.calle.classList.add('ring-green-500')
+  domicilioFormInputs.numero.classList.add('ring-green-500')
+  domicilioFormInputs.localidad.classList.add('ring-green-500')
+  domicilioFormInputs.provincia.classList.add('ring-green-500')
 }
 
 function limpiarFormulario() {
@@ -234,7 +251,7 @@ function limpiarFormulario() {
 
 function mostrarFormulario(textoBoton) {
   limpiarFormulario()
-  submitDomicilioButton.textContent = textoBoton
+  domicilioFormInputs.submit.textContent = textoBoton
   closeFormButton.classList.remove('hidden')
   formsContainer.classList.remove('hidden')
   domicilioFormContainer.classList.add('hidden')
@@ -248,23 +265,25 @@ function ocultarFormulario() {
   pacienteFormContainer.classList.add('hidden')
   closeFormButton.classList.add('hidden')
 
-  dniInput.classList.remove('ring-red-500', 'ring-green-500')
-  nombreInput.classList.remove('ring-red-500', 'ring-green-500')
-  apellidoInput.classList.remove('ring-red-500', 'ring-green-500')
-  fechaInput.classList.remove('ring-red-500', 'ring-green-500')
-  calleInput.classList.remove('ring-red-500', 'ring-green-500')
-  numeroInput.classList.remove('ring-red-500', 'ring-green-500')
-  localidadInput.classList.remove('ring-red-500', 'ring-green-500')
-  provinciaInput.classList.remove('ring-red-500', 'ring-green-500')
+  pacienteFormInputs.dni.classList.remove('ring-red-500', 'ring-green-500')
+  pacienteFormInputs.nombre.classList.remove('ring-red-500', 'ring-green-500')
+  pacienteFormInputs.apellido.classList.remove('ring-red-500', 'ring-green-500')
+  pacienteFormInputs.fechaAlta.classList.remove('ring-red-500', 'ring-green-500')
+  domicilioFormInputs.calle.classList.remove('ring-red-500', 'ring-green-500')
+  domicilioFormInputs.numero.classList.remove('ring-red-500', 'ring-green-500')
+  domicilioFormInputs.localidad.classList.remove('ring-red-500', 'ring-green-500')
+  domicilioFormInputs.provincia.classList.remove('ring-red-500', 'ring-green-500')
 }
 
 function validarTarget({ funcionValidar, target, text }) {
   if (!funcionValidar(target.value)) {
-    sweetAlert({ type: 'warning', text })
+    target.setCustomValidity(text)
+    target.reportValidity()
     target.classList.remove('ring-green-500')
     target.classList.add('ring-red-500')
     return false
   } else {
+    target.setCustomValidity('')
     target.classList.remove('ring-red-500')
     target.classList.add('ring-green-500')
   }
@@ -286,7 +305,7 @@ function agregarEventListeners() {
 }
 
 function validarFormulario() {
-  dniInput.addEventListener('change', e => {
+  pacienteFormInputs.dni.addEventListener('change', e => {
     const isValid = validarTarget({
       funcionValidar: validarNumeros,
       target: e.target,
@@ -294,10 +313,10 @@ function validarFormulario() {
     })
 
     validacionesFormularioPaciente.dni = isValid
-    submitPacienteButton.disabled = !Object.values(validacionesFormularioPaciente).every(Boolean)
+    pacienteFormInputs.submit.disabled = !Object.values(validacionesFormularioPaciente).every(Boolean)
   })
 
-  nombreInput.addEventListener('change', e => {
+  pacienteFormInputs.nombre.addEventListener('change', e => {
     const isValid = validarTarget({
       funcionValidar: validarTexto,
       target: e.target,
@@ -305,10 +324,10 @@ function validarFormulario() {
     })
 
     validacionesFormularioPaciente.nombre = isValid
-    submitPacienteButton.disabled = !Object.values(validacionesFormularioPaciente).every(Boolean)
+    pacienteFormInputs.submit.disabled = !Object.values(validacionesFormularioPaciente).every(Boolean)
   })
 
-  apellidoInput.addEventListener('change', e => {
+  pacienteFormInputs.apellido.addEventListener('change', e => {
     const isValid = validarTarget({
       funcionValidar: validarTexto,
       target: e.target,
@@ -316,10 +335,10 @@ function validarFormulario() {
     })
 
     validacionesFormularioPaciente.apellido = isValid
-    submitPacienteButton.disabled = !Object.values(validacionesFormularioPaciente).every(Boolean)
+    pacienteFormInputs.submit.disabled = !Object.values(validacionesFormularioPaciente).every(Boolean)
   })
 
-  fechaInput.addEventListener('focusout', e => {
+  pacienteFormInputs.fechaAlta.addEventListener('focusout', e => {
     setTimeout(() => {
       const isValid = validarTarget({
         funcionValidar: validarFecha,
@@ -328,11 +347,11 @@ function validarFormulario() {
       })
 
       validacionesFormularioPaciente.fechaAlta = isValid
-      submitPacienteButton.disabled = !Object.values(validacionesFormularioPaciente).every(Boolean)
+      pacienteFormInputs.submit.disabled = !Object.values(validacionesFormularioPaciente).every(Boolean)
     }, 500)
   })
 
-  calleInput.addEventListener('change', e => {
+  domicilioFormInputs.calle.addEventListener('change', e => {
     const isValid = validarTarget({
       funcionValidar: validarTexto,
       target: e.target,
@@ -340,10 +359,10 @@ function validarFormulario() {
     })
 
     validacionesFormularioDomicilio.calle = isValid
-    submitDomicilioButton.disabled = !Object.values(validacionesFormularioDomicilio).every(Boolean)
+    domicilioFormInputs.submit.disabled = !Object.values(validacionesFormularioDomicilio).every(Boolean)
   })
 
-  numeroInput.addEventListener('change', e => {
+  domicilioFormInputs.numero.addEventListener('change', e => {
     const isValid = validarTarget({
       funcionValidar: validarNumeros,
       target: e.target,
@@ -351,10 +370,10 @@ function validarFormulario() {
     })
 
     validacionesFormularioDomicilio.numero = isValid
-    submitDomicilioButton.disabled = !Object.values(validacionesFormularioDomicilio).every(Boolean)
+    domicilioFormInputs.submit.disabled = !Object.values(validacionesFormularioDomicilio).every(Boolean)
   })
 
-  localidadInput.addEventListener('change', e => {
+  domicilioFormInputs.localidad.addEventListener('change', e => {
     const isValid = validarTarget({
       funcionValidar: validarTexto,
       target: e.target,
@@ -362,10 +381,10 @@ function validarFormulario() {
     })
 
     validacionesFormularioDomicilio.localidad = isValid
-    submitDomicilioButton.disabled = !Object.values(validacionesFormularioDomicilio).every(Boolean)
+    domicilioFormInputs.submit.disabled = !Object.values(validacionesFormularioDomicilio).every(Boolean)
   })
 
-  provinciaInput.addEventListener('change', e => {
+  domicilioFormInputs.provincia.addEventListener('change', e => {
     const isValid = validarTarget({
       funcionValidar: validarTexto,
       target: e.target,
@@ -373,7 +392,7 @@ function validarFormulario() {
     })
 
     validacionesFormularioDomicilio.provincia = isValid
-    submitDomicilioButton.disabled = !Object.values(validacionesFormularioDomicilio).every(Boolean)
+    domicilioFormInputs.submit.disabled = !Object.values(validacionesFormularioDomicilio).every(Boolean)
   })
 }
 
