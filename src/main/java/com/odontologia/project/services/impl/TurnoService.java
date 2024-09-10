@@ -6,14 +6,17 @@ import com.odontologia.project.exceptions.InvalidInputException;
 import com.odontologia.project.models.Odontologo;
 import com.odontologia.project.models.Paciente;
 import com.odontologia.project.models.Turno;
-import com.odontologia.project.repositories.IOdontologoRepository;
-import com.odontologia.project.repositories.IPacienteRepository;
 import com.odontologia.project.repositories.ITurnoRepository;
+import com.odontologia.project.services.IOdontologoService;
+import com.odontologia.project.services.IPacienteService;
 import com.odontologia.project.services.ITurnoService;
+import com.odontologia.project.services.errors.TurnoErrorTypes;
+import com.odontologia.project.services.errors.TurnoErrors;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -21,39 +24,35 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class TurnoService implements ITurnoService {
   private final ITurnoRepository iTurnoRepository;
-  private final IPacienteRepository iPacienteRepository;
-  private final IOdontologoRepository iOdontologoRepository;
+  private final IPacienteService iPacienteService;
+  private final IOdontologoService iOdontologoService;
+
+  private final Logger logger = LoggerFactory.getLogger(TurnoService.class);
 
   @Override
   public Turno guardarTurno(Turno turno) {
+    validarTurno(turno);
 
-    List<String> errores = new ArrayList<>();
-
-    if (turno == null || turno.getOdontologo() == null || turno.getPaciente() == null) {
-      throw new InvalidInputException("El turno, odontólogo o paciente no pueden ser nulos.");
-    }
-
-    if (iOdontologoRepository.findById(turno.getOdontologo().getId()).isEmpty()) {
-      errores.add("No existe el odontólogo.");
-    }
-    if (iPacienteRepository.findById(turno.getPaciente().getId()).isEmpty()) {
-      errores.add("No existe el paciente.");
-    }
-    if (!errores.isEmpty()) {
-      throw new BadRequestException(String.join(" ", errores));
-    }
-    Odontologo odontologo = iOdontologoRepository.findById(turno.getOdontologo().getId()).get();
-    Paciente paciente = iPacienteRepository.findById(turno.getPaciente().getId()).get();
+    Odontologo odontologo = iOdontologoService.buscarOdontologoPorId(turno.getOdontologo().getId());
+    Paciente paciente = iPacienteService.buscarPacientePorId(turno.getPaciente().getId());
 
     turno.setOdontologo(odontologo);
     turno.setPaciente(paciente);
+
+    logger.info("Turno para paciente {} con odontólogo {} guardado exitosamente.",
+        paciente.getDni(),
+        odontologo.getMatricula());
     return iTurnoRepository.save(turno);
   }
 
   @Override
   public Turno buscarTurnoPorId(Long id) {
+    if (id == null)
+      throw new InvalidInputException(TurnoErrors.getErrorMessage(TurnoErrorTypes.ID_NULL));
+
     return iTurnoRepository.findById(id)
-        .orElseThrow(() -> new EntityNotFoundException("No existe el turno con el id: " + id));
+        .orElseThrow(() ->
+            new EntityNotFoundException(TurnoErrors.getErrorMessage(TurnoErrorTypes.NOT_FOUND) + id));
   }
 
   @Override
@@ -63,16 +62,16 @@ public class TurnoService implements ITurnoService {
 
   @Override
   public Turno actualizarTurno(Turno turno) {
-    if (turno == null || turno.getId() == null) {
-      throw new InvalidInputException("El turno o su ID no pueden ser nulos.");
-    }
-    Turno turnoActualizado = buscarTurnoPorId(turno.getId());
+    validarTurno(turno);
 
+    Turno turnoActualizado = buscarTurnoPorId(turno.getId());
     turnoActualizado.setHora(turno.getHora());
     turnoActualizado.setFecha(turno.getFecha());
     turnoActualizado.setOdontologo(turno.getOdontologo());
     turnoActualizado.setPaciente(turno.getPaciente());
 
+    logger.info("Turno #{} actualizado exitosamente.",
+        turnoActualizado.getId());
     return iTurnoRepository.save(turnoActualizado);
   }
 
@@ -80,9 +79,23 @@ public class TurnoService implements ITurnoService {
   public Turno eliminarTurnoPorId(Long id) {
     Turno turnoEliminado = buscarTurnoPorId(id);
 
-    if (Objects.isNull(turnoEliminado)) return null;
-
     iTurnoRepository.deleteById(id);
+
+    logger.info("Turno con id {} eliminado exitosamente.", id);
     return turnoEliminado;
+  }
+
+  private void validarTurno(Turno turno) {
+    if (turno.getFecha() == null)
+      throw new InvalidInputException(TurnoErrors.getErrorMessage(TurnoErrorTypes.FECHA_NULL));
+
+    if (turno.getHora() == null)
+      throw new InvalidInputException(TurnoErrors.getErrorMessage(TurnoErrorTypes.HORA_NULL));
+
+    if (Objects.isNull(turno.getOdontologo()))
+      throw new BadRequestException(TurnoErrors.getErrorMessage(TurnoErrorTypes.ODONTOLOGO_NULL));
+
+    if (Objects.isNull(turno.getPaciente()))
+      throw new BadRequestException(TurnoErrors.getErrorMessage(TurnoErrorTypes.PACIENTE_NULL));
   }
 }
