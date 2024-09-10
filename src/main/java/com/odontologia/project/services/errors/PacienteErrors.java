@@ -11,12 +11,12 @@ public class PacienteErrors {
   private static final Logger logger = LoggerFactory.getLogger(PacienteErrors.class);
 
   static {
-    ErrorMessages.put(PacienteErrorTypes.ID_NULL, "La ID del Paciente no puede ser nula.");
-    ErrorMessages.put(PacienteErrorTypes.DNI_NULL, "El DNI del Paciente no puede ser nulo.");
+    ErrorMessages.put(PacienteErrorTypes.ID_NULL, "La ID del Paciente no puede ser null.");
+    ErrorMessages.put(PacienteErrorTypes.DNI_NULL, "El DNI del Paciente no puede ser null.");
     ErrorMessages.put(PacienteErrorTypes.DNI_EXIST, "El DNI ingresado ya existe en el sistema.");
-    ErrorMessages.put(PacienteErrorTypes.NOMBRE_NULL, "El NOMBRE del Paciente no puede ser nulo.");
-    ErrorMessages.put(PacienteErrorTypes.APELLIDO_NULL, "El APELLIDO del Paciente no puede ser nulo.");
-    ErrorMessages.put(PacienteErrorTypes.FECHA_ALTA_NULL, "La FECHA ALTA del Paciente no puede ser nula. ");
+    ErrorMessages.put(PacienteErrorTypes.NOMBRE_NULL, "El NOMBRE del Paciente no puede ser null.");
+    ErrorMessages.put(PacienteErrorTypes.APELLIDO_NULL, "El APELLIDO del Paciente no puede ser null.");
+    ErrorMessages.put(PacienteErrorTypes.FECHA_ALTA_NULL, "La FECHA ALTA del Paciente no puede ser null. ");
     ErrorMessages.put(PacienteErrorTypes.NOT_FOUND, "El Paciente buscado no existe. ");
   }
 

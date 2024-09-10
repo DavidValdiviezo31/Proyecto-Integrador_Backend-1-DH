@@ -12,12 +12,12 @@ public class DomicilioErrors {
   private static final Logger logger = LoggerFactory.getLogger(DomicilioErrors.class);
 
   static {
-    ErrorMessages.put(DomicilioErrorTypes.ID_NULL, "La ID del Domicilio no puede ser nula.");
-    ErrorMessages.put(DomicilioErrorTypes.CALLE_NULL, "La CALLE del Domicilio no puede ser nula.");
-    ErrorMessages.put(DomicilioErrorTypes.NUMERO_NULL, "El NÚMERO del Domicilio no puede ser nulo.");
-    ErrorMessages.put(DomicilioErrorTypes.LOCALIDAD_NULL, "La LOCALIDAD del Domicilio no puede ser nula.");
-    ErrorMessages.put(DomicilioErrorTypes.PROVINCIA_NULL, "La PROVINCIA del Domicilio no puede ser nula.");
-    ErrorMessages.put(DomicilioErrorTypes.NOT_FOUND, "El Domicilio buscado no existe: ");
+    ErrorMessages.put(DomicilioErrorTypes.ID_NULL, "La ID del Domicilio no puede ser null.");
+    ErrorMessages.put(DomicilioErrorTypes.CALLE_NULL, "La CALLE del Domicilio no puede ser null.");
+    ErrorMessages.put(DomicilioErrorTypes.NUMERO_NULL, "El NÚMERO del Domicilio no puede ser null.");
+    ErrorMessages.put(DomicilioErrorTypes.LOCALIDAD_NULL, "La LOCALIDAD del Domicilio no puede ser null.");
+    ErrorMessages.put(DomicilioErrorTypes.PROVINCIA_NULL, "La PROVINCIA del Domicilio no puede ser null.");
+    ErrorMessages.put(DomicilioErrorTypes.NOT_FOUND, "El Domicilio buscado no existe. ");
   }
 
   public static String getErrorMessage(DomicilioErrorTypes type) {

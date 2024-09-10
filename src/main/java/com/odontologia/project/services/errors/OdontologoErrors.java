@@ -12,12 +12,12 @@ public class OdontologoErrors {
   private static final Logger logger = LoggerFactory.getLogger(OdontologoErrors.class);
 
   static {
-    ErrorMessages.put(OdontologoErrorTypes.ID_NULL, "La ID del Odontólogo no puede ser nula.");
-    ErrorMessages.put(OdontologoErrorTypes.MATRICULA_NULL, "La MATRÍCULA del Odontólogo no puede ser nula.");
+    ErrorMessages.put(OdontologoErrorTypes.ID_NULL, "La ID del Odontólogo no puede ser null.");
+    ErrorMessages.put(OdontologoErrorTypes.MATRICULA_NULL, "La MATRÍCULA del Odontólogo no puede ser null.");
     ErrorMessages.put(OdontologoErrorTypes.MATRICULA_EXIST, "La MATRÍCULA ingresada ya existe en el sistema.");
-    ErrorMessages.put(OdontologoErrorTypes.NOMBRE_NULL, "El NOMBRE del Odontólogo no puede ser nulo.");
-    ErrorMessages.put(OdontologoErrorTypes.APELLIDO_NULL, "El APELLIDO del Odontólogo no puede ser nulo.");
-    ErrorMessages.put(OdontologoErrorTypes.NOT_FOUND, "El Odontólogo buscado no existe: ");
+    ErrorMessages.put(OdontologoErrorTypes.NOMBRE_NULL, "El NOMBRE del Odontólogo no puede ser null.");
+    ErrorMessages.put(OdontologoErrorTypes.APELLIDO_NULL, "El APELLIDO del Odontólogo no puede ser null.");
+    ErrorMessages.put(OdontologoErrorTypes.NOT_FOUND, "El Odontólogo buscado no existe. ");
   }
 
   public static String getErrorMessage(OdontologoErrorTypes type) {

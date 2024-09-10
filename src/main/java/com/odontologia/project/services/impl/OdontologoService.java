@@ -23,21 +23,20 @@ public class OdontologoService implements IOdontologoService {
 
   @Override
   public Odontologo guardarOdontologo(Odontologo odontologo) {
-    validarNulosOdontologo(odontologo);
+    validarOdontologo(odontologo);
 
-    logger.info("Odontólogo con matrícula {} guardado", odontologo.getMatricula());
-
+    logger.info("Odontólogo con matrícula {} guardado exitosamente.", odontologo.getMatricula());
     return iOdontologoRepository.save(odontologo);
   }
 
   @Override
   public Odontologo buscarOdontologoPorId(Long id) {
-    if (id == null) {
+    if (id == null)
       throw new InvalidInputException(OdontologoErrors.getErrorMessage(OdontologoErrorTypes.ID_NULL));
-    }
 
     return iOdontologoRepository.findById(id)
-        .orElseThrow(() -> new EntityNotFoundException(OdontologoErrors.getErrorMessage(OdontologoErrorTypes.NOT_FOUND) + id));
+        .orElseThrow(() ->
+            new EntityNotFoundException(OdontologoErrors.getErrorMessage(OdontologoErrorTypes.NOT_FOUND) + id));
   }
 
   @Override
@@ -47,18 +46,14 @@ public class OdontologoService implements IOdontologoService {
 
   @Override
   public Odontologo actualizarOdontologo(Odontologo odontologo) {
-    if (odontologo.getId() == null) {
-      throw new InvalidInputException(OdontologoErrors.getErrorMessage(OdontologoErrorTypes.ID_NULL));
-    }
-
-    validarNulosOdontologo(odontologo);
+    validarOdontologo(odontologo);
 
     Odontologo odontologoActualizado = buscarOdontologoPorId(odontologo.getId());
     odontologoActualizado.setNombre(odontologo.getNombre());
     odontologoActualizado.setApellido(odontologo.getApellido());
     odontologoActualizado.setMatricula(odontologo.getMatricula());
 
-    logger.info("Odontólogo {} {} con id {} actualizado",
+    logger.info("Odontólogo {} {} con id {} actualizado exitosamente.",
         odontologoActualizado.getNombre(),
         odontologoActualizado.getApellido(),
         odontologoActualizado.getId());
@@ -71,25 +66,21 @@ public class OdontologoService implements IOdontologoService {
 
     iOdontologoRepository.deleteById(id);
 
-    logger.info("Odontologo con id {} eliminado exitosamente.", id);
+    logger.info("Odontólogo con id {} eliminado exitosamente.", id);
     return odontologoEliminado;
   }
 
-  private void validarNulosOdontologo(Odontologo odontologo) {
-    if (odontologo.getMatricula() == null) {
+  private void validarOdontologo(Odontologo odontologo) {
+    if (odontologo.getMatricula() == null)
       throw new InvalidInputException(OdontologoErrors.getErrorMessage(OdontologoErrorTypes.MATRICULA_NULL));
-    }
 
-    if (iOdontologoRepository.existsByMatricula(odontologo.getMatricula())) {
+    if (iOdontologoRepository.existsByMatricula(odontologo.getMatricula()))
       throw new RuntimeException(OdontologoErrors.getErrorMessage(OdontologoErrorTypes.MATRICULA_EXIST) + odontologo.getMatricula());
-    }
 
-    if (odontologo.getNombre() == null) {
+    if (odontologo.getNombre() == null)
       throw new InvalidInputException(OdontologoErrors.getErrorMessage(OdontologoErrorTypes.NOMBRE_NULL));
-    }
 
-    if (odontologo.getApellido() == null) {
+    if (odontologo.getApellido() == null)
       throw new InvalidInputException(OdontologoErrors.getErrorMessage(OdontologoErrorTypes.APELLIDO_NULL));
-    }
   }
 }

@@ -31,12 +31,12 @@ public class PacienteService implements IPacienteService {
 
   @Override
   public Paciente buscarPacientePorId(Long id) {
-    if (id == null) {
+    if (id == null)
       throw new InvalidInputException(PacienteErrors.getErrorMessage(PacienteErrorTypes.ID_NULL));
-    }
 
     return iPacienteRepository.findById(id)
-        .orElseThrow(() -> new EntityNotFoundException(PacienteErrors.getErrorMessage(PacienteErrorTypes.NOT_FOUND) + id));
+        .orElseThrow(() ->
+            new EntityNotFoundException(PacienteErrors.getErrorMessage(PacienteErrorTypes.NOT_FOUND) + id));
   }
 
   @Override
@@ -73,24 +73,19 @@ public class PacienteService implements IPacienteService {
   }
 
   private void validarPaciente(Paciente paciente) {
-    if (paciente.getDni() == null) {
+    if (paciente.getDni() == null)
       throw new InvalidInputException(PacienteErrors.getErrorMessage(PacienteErrorTypes.DNI_NULL));
-    }
 
-    if (iPacienteRepository.existsByDni(paciente.getDni())) {
+    if (iPacienteRepository.existsByDni(paciente.getDni()))
       throw new RuntimeException(PacienteErrors.getErrorMessage(PacienteErrorTypes.DNI_EXIST) + paciente.getDni());
-    }
 
-    if (paciente.getNombre() == null) {
+    if (paciente.getNombre() == null)
       throw new InvalidInputException(PacienteErrors.getErrorMessage(PacienteErrorTypes.NOMBRE_NULL));
-    }
 
-    if (paciente.getApellido() == null) {
+    if (paciente.getApellido() == null)
       throw new InvalidInputException(PacienteErrors.getErrorMessage(PacienteErrorTypes.APELLIDO_NULL));
-    }
 
-    if (paciente.getFechaAlta() == null) {
+    if (paciente.getFechaAlta() == null)
       throw new InvalidInputException(PacienteErrors.getErrorMessage(PacienteErrorTypes.FECHA_ALTA_NULL));
-    }
   }
 }

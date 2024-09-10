@@ -23,7 +23,7 @@ public class DomicilioService implements IDomicilioService {
 
   @Override
   public Domicilio guardarDomicilio(Domicilio domicilio) {
-    validarNulosDomicilio(domicilio);
+    validarDomicilio(domicilio);
 
     logger.info("Domiclio guardado exitosamente.");
     return iDomicilioRepository.save(domicilio);
@@ -31,12 +31,12 @@ public class DomicilioService implements IDomicilioService {
 
   @Override
   public Domicilio buscarDomicilioPorId(Long id) {
-    if (id == null) {
+    if (id == null)
       throw new InvalidInputException(DomicilioErrors.getErrorMessage(DomicilioErrorTypes.ID_NULL));
-    }
 
     return iDomicilioRepository.findById(id)
-        .orElseThrow(() -> new EntityNotFoundException(DomicilioErrors.getErrorMessage(DomicilioErrorTypes.NOT_FOUND) + id));
+        .orElseThrow(() ->
+            new EntityNotFoundException(DomicilioErrors.getErrorMessage(DomicilioErrorTypes.NOT_FOUND) + id));
   }
 
   @Override
@@ -46,20 +46,15 @@ public class DomicilioService implements IDomicilioService {
 
   @Override
   public Domicilio actualizarDomicilio(Domicilio domicilio) {
-    if (domicilio.getId() == null) {
-      throw new InvalidInputException(DomicilioErrors.getErrorMessage(DomicilioErrorTypes.ID_NULL));
-    }
-
-    validarNulosDomicilio(domicilio);
+    validarDomicilio(domicilio);
 
     Domicilio domicilioActualizado = buscarDomicilioPorId(domicilio.getId());
-
     domicilioActualizado.setCalle(domicilio.getCalle());
     domicilioActualizado.setNumero(domicilio.getNumero());
     domicilioActualizado.setLocalidad(domicilio.getLocalidad());
     domicilioActualizado.setProvincia(domicilio.getProvincia());
 
-    logger.info("Domicilio {} {}, {}, {} con id {} actualizado",
+    logger.info("Domicilio {} {}, {}, {} con id {} actualizado exitosamente.",
         domicilioActualizado.getCalle(),
         domicilioActualizado.getNumero(),
         domicilioActualizado.getLocalidad(),
@@ -78,21 +73,17 @@ public class DomicilioService implements IDomicilioService {
     return domicilioEliminado;
   }
 
-  private void validarNulosDomicilio(Domicilio domicilio) {
-    if (domicilio.getCalle() == null) {
+  private void validarDomicilio(Domicilio domicilio) {
+    if (domicilio.getCalle() == null)
       throw new InvalidInputException(DomicilioErrors.getErrorMessage(DomicilioErrorTypes.CALLE_NULL));
-    }
 
-    if (domicilio.getNumero() == null) {
+    if (domicilio.getNumero() == null)
       throw new RuntimeException(DomicilioErrors.getErrorMessage(DomicilioErrorTypes.NUMERO_NULL));
-    }
 
-    if (domicilio.getLocalidad() == null) {
+    if (domicilio.getLocalidad() == null)
       throw new InvalidInputException(DomicilioErrors.getErrorMessage(DomicilioErrorTypes.LOCALIDAD_NULL));
-    }
 
-    if (domicilio.getProvincia() == null) {
+    if (domicilio.getProvincia() == null)
       throw new InvalidInputException(DomicilioErrors.getErrorMessage(DomicilioErrorTypes.PROVINCIA_NULL));
-    }
   }
 }
