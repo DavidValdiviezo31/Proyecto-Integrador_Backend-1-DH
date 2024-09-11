@@ -1,5 +1,4 @@
 import com.odontologia.project.ProjectApplication;
-
 import com.odontologia.project.exceptions.BadRequestException;
 import com.odontologia.project.exceptions.EntityNotFoundException;
 import com.odontologia.project.exceptions.InvalidInputException;
@@ -17,13 +16,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 
 @SpringBootTest(classes = ProjectApplication.class)
 @Transactional
@@ -45,7 +43,7 @@ public class TurnoServiceTest {
   @Test
   public void testGuardarTurno() {
     // Arrange
-    Turno turno = new Turno(null,LocalDate.parse("2024-06-24"), LocalTime.parse("10:00"),null,null);
+    Turno turno = new Turno(null, LocalDate.parse("2024-06-24"), LocalTime.parse("10:00"), null, null);
 
     // Act
     Throwable thrown = catchThrowable(() -> turnoService.guardarTurno(turno));
@@ -53,6 +51,7 @@ public class TurnoServiceTest {
     // Assert
     assertThat(thrown).isInstanceOf(BadRequestException.class);
   }
+
   @Test
   public void testGuardarTurnoConFechaNula() {
     // Arrange
@@ -66,6 +65,7 @@ public class TurnoServiceTest {
     // Assert
     assertThat(thrown).isInstanceOf(InvalidInputException.class);
   }
+
   @Test
   public void testGuardarTurnoConHoraNula() {
     // Arrange
@@ -93,10 +93,11 @@ public class TurnoServiceTest {
     Turno turnoGuardado = turnoService.guardarTurno(turno);
 
     // Act
-    Throwable thrown = catchThrowable(() -> turnoService.buscarTurnoPorId(turnoGuardado.getId()+1));
+    Throwable thrown = catchThrowable(() -> turnoService.buscarTurnoPorId(turnoGuardado.getId() + 1));
     // Assert
     assertThat(thrown).isInstanceOf(EntityNotFoundException.class);
   }
+
   @Test
   public void testGuardarTurnoConPacienteNull() {
     // Arrange
@@ -112,6 +113,7 @@ public class TurnoServiceTest {
     // Assert
     assertThat(thrown).isInstanceOf(BadRequestException.class);
   }
+
   @Test
   public void testBuscarTurnoPorIdConIdNulo() {
     // Act
@@ -216,7 +218,7 @@ public class TurnoServiceTest {
     Paciente paciente = new Paciente(null, 1234678L, "Lucía", "Reyes", domicilioGuardado, LocalDate.parse("2024-08-01"), null);
     Paciente pacienteGuardado = pacienteService.guardarPaciente(paciente);
 
-    Odontologo odontologo = new Odontologo(null, 98765L, "Raúl", "Pérez",null);
+    Odontologo odontologo = new Odontologo(null, 98765L, "Raúl", "Pérez", null);
     Odontologo odontologoGuardado = odontologoService.guardarOdontologo(odontologo);
 
     // Act
