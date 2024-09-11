@@ -1,7 +1,5 @@
 import { fetchConfig, sweetAlert, validarNumeros, validarTexto, validarFecha } from './utils.js'
 
-// TODO: VALIDACIONES DE FORMULARIO
-
 // VARIABLES DOM
 const btnAtras = document.querySelector('#btnAtras')
 const newPacienteButton = document.querySelector('#btnAgregarPaciente')

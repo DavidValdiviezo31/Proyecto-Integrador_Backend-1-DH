@@ -1,6 +1,4 @@
-import { fetchConfig, sweetAlert, validarFecha, validarNumeros, validarTexto, validarFechaPosterior } from './utils.js'
-
-// TODO: VALIDACIONES DE FORMULARIO
+import { fetchConfig, sweetAlert, validarNumeros, validarTexto, validarFecha, validarFechaPosterior } from './utils.js'
 
 // VARIABLES DOM
 const divTurnos = document.querySelector('#turnos')

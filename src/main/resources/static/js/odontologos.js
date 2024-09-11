@@ -1,4 +1,4 @@
-import { fetchConfig, sweetAlert, validarTexto, validarNumeros } from './utils.js'
+import { fetchConfig, sweetAlert, validarNumeros, validarTexto } from './utils.js'
 
 // VARIABLES DOM
 const table = document.querySelector('#odontologoTableBody')
