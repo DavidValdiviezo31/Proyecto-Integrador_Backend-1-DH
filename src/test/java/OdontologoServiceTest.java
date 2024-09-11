@@ -1,4 +1,6 @@
 import com.odontologia.project.ProjectApplication;
+import com.odontologia.project.exceptions.EntityNotFoundException;
+import com.odontologia.project.exceptions.InvalidInputException;
 import com.odontologia.project.models.Odontologo;
 import com.odontologia.project.services.impl.OdontologoService;
 import org.junit.jupiter.api.Test;
@@ -7,9 +9,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 @SpringBootTest(classes = ProjectApplication.class)
 @Transactional
@@ -22,7 +25,7 @@ public class OdontologoServiceTest {
   @Test
   public void testGuardarOdontologo() {
     // Arrange
-    Odontologo odontologo = new Odontologo( null, 1214714065L,"Juan","Gonzalez",null);
+    Odontologo odontologo = new Odontologo(null, 1214714065L, "Juan", "Gonzalez", null);
 
     // Act
     Odontologo odontologoGuardado = odontologoService.guardarOdontologo(odontologo);
@@ -32,9 +35,23 @@ public class OdontologoServiceTest {
   }
 
   @Test
+  public void testGuardarOdontologoMatriculaExistente() {
+    // Arrange
+    Odontologo odontologo = new Odontologo(null, 1214714065L, "Juan", "Gonzalez", null);
+    Odontologo odontologo2 = new Odontologo(null, 1214714065L, "Juan", "Gonzalez", null);
+
+    // Act
+    Odontologo odontologoGuardado = odontologoService.guardarOdontologo(odontologo);
+    Throwable thrown = catchThrowable(() -> odontologoService.guardarOdontologo(odontologo2));
+
+    // Assert
+    assertThat(thrown).isInstanceOf(RuntimeException.class);
+  }
+
+  @Test
   public void testBuscarOdontologoPorId() {
     // Arrange
-    Odontologo odontologo = new Odontologo( null, 1214714065L,"Juan","Gonzalez",null);
+    Odontologo odontologo = new Odontologo(null, 1214714065L, "Juan", "Gonzalez", null);
     Odontologo odontologoGuardado = odontologoService.guardarOdontologo(odontologo);
 
     //Act
@@ -42,6 +59,18 @@ public class OdontologoServiceTest {
 
     // Assert
     assertThat(odontologoEncontrado).isNotNull();
+  }
+
+  @Test
+  public void testBuscarOdontologoPorNull() {
+    // Arrange
+    Long id = null;
+
+    //Act
+    Throwable thrown = catchThrowable(() -> odontologoService.buscarOdontologoPorId(id));
+
+    // Assert
+    assertThat(thrown).isInstanceOf(InvalidInputException.class);
   }
 
   @Test
@@ -53,7 +82,7 @@ public class OdontologoServiceTest {
   @Test
   public void testActualizarNombreOdontologo() {
     // Arrange
-    Odontologo odontologo = new Odontologo( null, 1214714065L,"Juan","Gonzalez",null);
+    Odontologo odontologo = new Odontologo(null, 1214714065L, "Juan", "Gonzalez", null);
     Odontologo odontologoGuardado = odontologoService.guardarOdontologo(odontologo);
 
     // Act
@@ -67,7 +96,7 @@ public class OdontologoServiceTest {
   @Test
   public void testActualizarApellidoOdontologo() {
     // Arrange
-    Odontologo odontologo = new Odontologo( null, 1214714065L,"Juan","Gonzalez",null);
+    Odontologo odontologo = new Odontologo(null, 1214714065L, "Juan", "Gonzalez", null);
     Odontologo odontologoGuardado = odontologoService.guardarOdontologo(odontologo);
 
     // Act
@@ -81,15 +110,15 @@ public class OdontologoServiceTest {
   @Test
   public void testEliminarOdontologoPorId() {
     // Arrange
-    Odontologo odontologo = new Odontologo( null, 1214714065L,"Carlos","Velez",null);
+    Odontologo odontologo = new Odontologo(null, 1214714065L, "Carlos", "Velez", null);
     Odontologo odontologoGuardado = odontologoService.guardarOdontologo(odontologo);
 
     // Act
     odontologoService.eliminarOdontologoPorId(odontologoGuardado.getId());
-    Odontologo odontologoEncontrado = odontologoService.buscarOdontologoPorId(odontologoGuardado.getId());
+    Throwable thrown = catchThrowable(() -> odontologoService.buscarOdontologoPorId(odontologoGuardado.getId()));
 
     // Assert
-    assertThat(odontologoEncontrado).isNull();
+    assertThat(thrown).isInstanceOf(EntityNotFoundException.class);
   }
 }
 

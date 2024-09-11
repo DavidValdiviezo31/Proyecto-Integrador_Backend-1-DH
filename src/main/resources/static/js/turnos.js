@@ -146,7 +146,7 @@ function renderizarTurnos(turnos) {
     const od = `${odontologo.nombre} ${odontologo.apellido}`
 
     const elementHTML = `
-      <article class="w-72 bg-gradient-to-br from-teal-400 via-teal-500 to-teal-600 shadow-lg shadow-teal-500/50 rounded-xl p-4">
+      <article class="w-72 bg-gradient-to-br from-sky-200 via-sky-300 to-sky-400 shadow-md shadow-sky-500/40 rounded-xl p-4">
         <header>
           <h3 class="font-bold text-2xl text-center mb-4 italic">Turno #${id}</h3>
         </header>

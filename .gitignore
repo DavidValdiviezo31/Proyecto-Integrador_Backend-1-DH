@@ -21,6 +21,7 @@ logs/
 *.ipr
 *.log
 *.gz
+/htmlReport/
 
 ### NetBeans ###
 /nbproject/private/
