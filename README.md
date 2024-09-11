@@ -34,28 +34,30 @@ La aplicación debe ser desarrollada en capas:
 - `Capa de presentación`: Son las pantallas web que tendremos que desarrollar utilizando el framework de **Spring Boot MVC** con los controladores y alguna de estas dos opciones: _HTML + JavaScript_ para la vista.
 
 ## ⚙️ ⚙️ ⚙️ **TECNOLOGÍAS UTILIZADAS:**
+<img src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png" width="50"/>
+<img src="https://user-images.githubusercontent.com/25181517/183891303-41f257f8-6b3d-487c-aa56-c497b880d0fb.png" width="50"/>
+<img src="https://img.icons8.com/?size=100&id=Wy3XKG1CjyKf&format=png&color=000000" width="50"/>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwMhZNOjQ__7nOmJMdm5V3VFwWK7qZedVi2OLbEApCxJIouRG0j1EhxsTVxSrhBBQcmCc&usqp=CAU" width="60"/>
+<img src="https://miro.medium.com/v2/resize:fit:1000/1*GSDvpexzKzUneGgTVjVJQw.png" width="60"/>
+<img src="https://user-images.githubusercontent.com/25181517/190229463-87fa862f-ccf0-48da-8023-940d287df610.png" width="50"/>
+<img src="https://user-images.githubusercontent.com/25181517/117447155-6a868a00-af3d-11eb-9cfe-245df15c9f3f.png" width="50"/>
+<img src="https://user-images.githubusercontent.com/25181517/192158954-f88b5814-d510-4564-b285-dff7d6400dad.png" width="50"/>
+<img src="https://user-images.githubusercontent.com/25181517/117207242-07d5a700-adf4-11eb-975e-be04e62b984b.png" width="50"/>
+<img src="https://user-images.githubusercontent.com/25181517/117207242-07d5a700-adf4-11eb-975e-be04e62b984b.png" width="50"/>
+<img src="https://user-images.githubusercontent.com/25181517/117207493-49665200-adf4-11eb-808e-a9c0fcc2a0a0.png" width="50"/>
+<img src="https://user-images.githubusercontent.com/25181517/117533873-484d4480-afef-11eb-9fad-67c8605e3592.png" width="50"/>
 
-<img src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png" width="50"/>**Java:** Lenguaje de programación principal.
-
-<img src="https://user-images.githubusercontent.com/25181517/183891303-41f257f8-6b3d-487c-aa56-c497b880d0fb.png" width="50"/> **Spring Boot:** Framework que facilita el desarrollo de aplicaciones Java, proporcionando una configuración simplificada y rápida, además de integrar diversas herramientas y bibliotecas.
-
-<img src="https://img.icons8.com/?size=100&id=Wy3XKG1CjyKf&format=png&color=000000" width="50"/> **H2 DATABASE:** Base de datos en memoria utilizada para almacenar la información de pacientes, odontólogos, y turnos , ideal para pruebas y entornos de desarrollo.
-
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwMhZNOjQ__7nOmJMdm5V3VFwWK7qZedVi2OLbEApCxJIouRG0j1EhxsTVxSrhBBQcmCc&usqp=CAU" width="60"/>  **SLF4J:** Para tener registro de lo que sucede dentro de la aplicación.
-
-<img src="https://miro.medium.com/v2/resize:fit:1000/1*GSDvpexzKzUneGgTVjVJQw.png" width="60"/> **JPA Repository:** Módulo de Spring Data que simplifica la implementación de repositorios basados en JPA (Java Persistence API), facilitando el manejo de la base de datos.
-
-<img src="https://user-images.githubusercontent.com/25181517/190229463-87fa862f-ccf0-48da-8023-940d287df610.png" width="50"/> **Lombok:** Biblioteca que reduce la cantidad de código repetitivo en las clases, como getters, setters, constructores, y más, mediante anotaciones sencillas.
-
-<img src="https://user-images.githubusercontent.com/25181517/117447155-6a868a00-af3d-11eb-9cfe-245df15c9f3f.png" width="50"/>  **JavaScript:** Lenguaje utilizado para añadir interactividad en las páginas web y manipular dinámicamente los elementos del DOM.
-
-<img src="https://user-images.githubusercontent.com/25181517/192158954-f88b5814-d510-4564-b285-dff7d6400dad.png" width="50"/> **HTML:** Para estructurar y presentar el contenido en la interfaz de usuario.
-
-<img src="https://user-images.githubusercontent.com/25181517/117207242-07d5a700-adf4-11eb-975e-be04e62b984b.png" width="50"/> **Maven:** Herramienta usada en la construcción del proyecto Java para facilitar la gestion de las dependencias, la compilación del código, y la integración con otras herramientas.
-
-<img src="https://user-images.githubusercontent.com/25181517/117207493-49665200-adf4-11eb-808e-a9c0fcc2a0a0.png" width="50"/> **Hibernate:** Framework de mapeo objeto-relacional (ORM) que facilita la interacción entre la aplicación Java y la base de datos, permitiendo trabajar con objetos en lugar de con consultas SQL.
-
-<img src="https://user-images.githubusercontent.com/25181517/117533873-484d4480-afef-11eb-9fad-67c8605e3592.png" width="50"/> **Spring Boot Test y JUnit:** Utilizadas en el proyecto para las pruebas unitarias de cada clase
+- `Java:` Lenguaje de programación principal.
+- `Spring Boot:` Framework que facilita el desarrollo de aplicaciones Java, proporcionando una configuración simplificada y rápida, además de integrar diversas herramientas y bibliotecas.
+- `H2 DATABASE:` Base de datos en memoria utilizada para almacenar la información de pacientes, odontólogos, y turnos , ideal para pruebas y entornos de desarrollo.
+- `SLF4J:` Para tener registro de lo que sucede dentro de la aplicación.
+- `JPA Repository:` Módulo de Spring Data que simplifica la implementación de repositorios basados en JPA (Java Persistence API), facilitando el manejo de la base de datos.
+- `Lombok:` Biblioteca que reduce la cantidad de código repetitivo en las clases, como getters, setters, constructores, y más, mediante anotaciones sencillas.
+- `JavaScript:` Lenguaje utilizado para añadir interactividad en las páginas web y manipular dinámicamente los elementos del DOM.
+- `HTML:` Para estructurar y presentar el contenido en la interfaz de usuario.
+- `Maven:` Herramienta usada en la construcción del proyecto Java para facilitar la gestion de las dependencias, la compilación del código, y la integración con otras herramientas.
+- `Hibernate:` Framework de mapeo objeto-relacional (ORM) que facilita la interacción entre la aplicación Java y la base de datos, permitiendo trabajar con objetos en lugar de con consultas SQL.
+- `Spring Boot Test y JUnit:` Utilizadas en el proyecto para las pruebas unitarias de cada clase
 
 
 
@@ -161,7 +163,7 @@ mvn test
 
 ## 💻 Requisitos del Sistema
 
-- **Java 17** o superior
+- **Java 22** o superior
 - **Maven 3.8.1** o superior
 - **Spring Boot 2.7.x** 
 
