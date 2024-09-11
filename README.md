@@ -34,18 +34,20 @@ La aplicación debe ser desarrollada en capas:
 - `Capa de presentación`: Son las pantallas web que tendremos que desarrollar utilizando el framework de **Spring Boot MVC** con los controladores y alguna de estas dos opciones: _HTML + JavaScript_ para la vista.
 
 ## ⚙️ ⚙️ ⚙️ **TECNOLOGÍAS UTILIZADAS:**
-<img src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png" width="50"/>
-<img src="https://user-images.githubusercontent.com/25181517/183891303-41f257f8-6b3d-487c-aa56-c497b880d0fb.png" width="50"/>
-<img src="https://img.icons8.com/?size=100&id=Wy3XKG1CjyKf&format=png&color=000000" width="50"/>
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwMhZNOjQ__7nOmJMdm5V3VFwWK7qZedVi2OLbEApCxJIouRG0j1EhxsTVxSrhBBQcmCc&usqp=CAU" width="60"/>
-<img src="https://miro.medium.com/v2/resize:fit:1000/1*GSDvpexzKzUneGgTVjVJQw.png" width="60"/>
-<img src="https://user-images.githubusercontent.com/25181517/190229463-87fa862f-ccf0-48da-8023-940d287df610.png" width="50"/>
-<img src="https://user-images.githubusercontent.com/25181517/117447155-6a868a00-af3d-11eb-9cfe-245df15c9f3f.png" width="50"/>
-<img src="https://user-images.githubusercontent.com/25181517/192158954-f88b5814-d510-4564-b285-dff7d6400dad.png" width="50"/>
-<img src="https://user-images.githubusercontent.com/25181517/117207242-07d5a700-adf4-11eb-975e-be04e62b984b.png" width="50"/>
-<img src="https://user-images.githubusercontent.com/25181517/117207242-07d5a700-adf4-11eb-975e-be04e62b984b.png" width="50"/>
-<img src="https://user-images.githubusercontent.com/25181517/117207493-49665200-adf4-11eb-808e-a9c0fcc2a0a0.png" width="50"/>
-<img src="https://user-images.githubusercontent.com/25181517/117533873-484d4480-afef-11eb-9fad-67c8605e3592.png" width="50"/>
+<div style="display: flex; gap: 10px; align-items: center;">
+    <img src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png" width="50"/>
+    <img src="https://user-images.githubusercontent.com/25181517/183891303-41f257f8-6b3d-487c-aa56-c497b880d0fb.png" width="50"/>
+    <img src="https://img.icons8.com/?size=100&id=Wy3XKG1CjyKf&format=png&color=000000" width="50"/>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwMhZNOjQ__7nOmJMdm5V3VFwWK7qZedVi2OLbEApCxJIouRG0j1EhxsTVxSrhBBQcmCc&usqp=CAU" width="60"/>
+    <img src="https://miro.medium.com/v2/resize:fit:1000/1*GSDvpexzKzUneGgTVjVJQw.png" width="60"/>
+    <img src="https://user-images.githubusercontent.com/25181517/190229463-87fa862f-ccf0-48da-8023-940d287df610.png" width="50"/>
+    <img src="https://user-images.githubusercontent.com/25181517/117447155-6a868a00-af3d-11eb-9cfe-245df15c9f3f.png" width="50"/>
+    <img src="https://user-images.githubusercontent.com/25181517/192158954-f88b5814-d510-4564-b285-dff7d6400dad.png" width="50"/>
+    <img src="https://user-images.githubusercontent.com/25181517/117207242-07d5a700-adf4-11eb-975e-be04e62b984b.png" width="50"/>
+    <img src="https://user-images.githubusercontent.com/25181517/117207242-07d5a700-adf4-11eb-975e-be04e62b984b.png" width="50"/>
+    <img src="https://user-images.githubusercontent.com/25181517/117207493-49665200-adf4-11eb-808e-a9c0fcc2a0a0.png" width="50"/>
+    <img src="https://user-images.githubusercontent.com/25181517/117533873-484d4480-afef-11eb-9fad-67c8605e3592.png" width="50"/>
+</div>
 
 - `Java:` Lenguaje de programación principal.
 - `Spring Boot:` Framework que facilita el desarrollo de aplicaciones Java, proporcionando una configuración simplificada y rápida, además de integrar diversas herramientas y bibliotecas.
@@ -111,55 +113,57 @@ mvn test
 
 ## 💿💿 **Demo del proyecto**
 
+
 <h4 align="center">Pantalla Principal</h4>
 
-![Pantalla Principal](src/main/resources/media/pantallaprincipal.png)
+<img src="src/main/resources/media/pantallaprincipal.png" width="100%" alt="Pantalla Principal"/>
 
 <h4 align="center">Modulo Odontólogos</h4>
 
 - `Agregar Odontólogo nuevo:`
 
-![Agregar Odontologo](src/main/resources/media/agregarOdontologo.gif)
+<img src="src/main/resources/media/agregarOdontologo.gif" width="100%" alt="Agregar Odontologo"/>
 
 - `Editar un Odontólogo de la lista:`
 
-![Editar Odontologo](src/main/resources/media/editarOdontologo.gif)
+<img src="src/main/resources/media/editarOdontologo.gif" width="100%" alt="Editar Odontologo"/>
 
 - `Eliminar un Odontólogo de la lista:`
 
-![Eliminar Odontologo](src/main/resources/media/eliminarOdontologo.gif)
+<img src="src/main/resources/media/eliminarOdontologo.gif" width="100%" alt="Eliminar Odontologo"/>
 
 <h4 align="center">Modulo Pacientes</h4>
 
 - `Agregar Paciente nuevo:`
 
-![Agregar Paciente](src/main/resources/media/agregarpaciente.gif)
+<img src="src/main/resources/media/agregarpaciente.gif" width="100%" alt="Agregar Paciente"/>
 
 - `Editar un Paciente de la lista:`
 
-![Editar Paciente](src/main/resources/media/editarPaciente.gif)
+<img src="src/main/resources/media/editarPaciente.gif" width="100%" alt="Editar Paciente"/>
 
 - `Eliminar un Paciente de la lista:`
 
-![Eliminar Paciente](src/main/resources/media/eliminarPaciente.gif)
+<img src="src/main/resources/media/eliminarPaciente.gif" width="100%" alt="Eliminar Paciente"/>
 
 <h4 align="center">Modulo Turnos</h4>
 
 - `Agregar Turno nuevo:`
 
-![Agregar turno](src/main/resources/media/agregarTurno.gif)
+<img src="src/main/resources/media/agregarTurno.gif" width="100%" alt="Agregar Turno"/>
 
 - `Editar un Turno de la lista:`
 
-![Editar Turno](src/main/resources/media/editarTurno.gif)
+<img src="src/main/resources/media/editarTurno.gif" width="100%" alt="Editar Turno"/>
 
 - `Filtrar Turnos por fecha o por odontologo:`
 
-![Filtrar Turno](src/main/resources/media/filtrarTurno.gif)
+<img src="src/main/resources/media/filtrarTurno.gif" width="100%" alt="Filtrar Turno"/>
 
 - `Eliminar un Turno de la lista:`
 
-![Eliminar Turno](src/main/resources/media/eliminarTurno.gif)
+<img src="src/main/resources/media/eliminarTurno.gif" width="100%" alt="Eliminar Turno"/>
+
 
 ## 💻 Requisitos del Sistema
 
