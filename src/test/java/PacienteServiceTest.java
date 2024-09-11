@@ -1,5 +1,6 @@
 import com.odontologia.project.ProjectApplication;
 import com.odontologia.project.exceptions.EntityNotFoundException;
+import com.odontologia.project.exceptions.InvalidInputException;
 import com.odontologia.project.models.Domicilio;
 import com.odontologia.project.models.Paciente;
 import com.odontologia.project.services.impl.DomicilioService;
@@ -42,6 +43,77 @@ public class PacienteServiceTest {
   }
 
   @Test
+  public void testGuardarPacienteDniExistente() {
+    // Arrange
+    Domicilio domicilio = new Domicilio(null, "Calle Z", 999, "Ciudad Z", "Provincia Z");
+    Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
+    Paciente paciente = new Paciente(null, 1027887642L, "Alexa", "Monsalve", domicilioGuardado, LocalDate.parse("2023-01-01"), null);
+
+    // Act
+    pacienteService.guardarPaciente(paciente);
+    Throwable thrown = catchThrowable(() -> pacienteService.guardarPaciente(paciente));
+
+    // Assert
+    assertThat(thrown).isInstanceOf(RuntimeException.class);
+  }
+
+  @Test
+  public void testGuardarPacienteDniNull() {
+    // Arrange
+    Domicilio domicilio = new Domicilio(null, "Calle Z", 999, "Ciudad Z", "Provincia Z");
+    Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
+    Paciente paciente = new Paciente(null, null, "Alexa", "Monsalve", domicilioGuardado, LocalDate.parse("2023-01-01"), null);
+
+    // Act
+    Throwable thrown = catchThrowable(() -> pacienteService.guardarPaciente(paciente));
+
+    // Assert
+    assertThat(thrown).isInstanceOf(InvalidInputException.class);
+  }
+
+  @Test
+  public void testGuardarPacienteNombreNull() {
+    // Arrange
+    Domicilio domicilio = new Domicilio(null, "Calle Z", 999, "Ciudad Z", "Provincia Z");
+    Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
+    Paciente paciente = new Paciente(null, 1027887642L, null, "Monsalve", domicilioGuardado, LocalDate.parse("2023-01-01"), null);
+
+    // Act
+    Throwable thrown = catchThrowable(() -> pacienteService.guardarPaciente(paciente));
+
+    // Assert
+    assertThat(thrown).isInstanceOf(InvalidInputException.class);
+  }
+
+  @Test
+  public void testGuardarPacienteApellidoNull() {
+    // Arrange
+    Domicilio domicilio = new Domicilio(null, "Calle Z", 999, "Ciudad Z", "Provincia Z");
+    Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
+    Paciente paciente = new Paciente(null, 1027887642L, "Alexa", null, domicilioGuardado, LocalDate.parse("2023-01-01"), null);
+
+    // Act
+    Throwable thrown = catchThrowable(() -> pacienteService.guardarPaciente(paciente));
+
+    // Assert
+    assertThat(thrown).isInstanceOf(InvalidInputException.class);
+  }
+
+  @Test
+  public void testGuardarPacienteFechaAltaNull() {
+    // Arrange
+    Domicilio domicilio = new Domicilio(null, "Calle Z", 999, "Ciudad Z", "Provincia Z");
+    Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
+    Paciente paciente = new Paciente(null, 1027887642L, "Alexa", "Monsalve", domicilioGuardado, null, null);
+
+    // Act
+    Throwable thrown = catchThrowable(() -> pacienteService.guardarPaciente(paciente));
+
+    // Assert
+    assertThat(thrown).isInstanceOf(InvalidInputException.class);
+  }
+
+  @Test
   public void testBuscarPacientePorId() {
     // Arrange
     Domicilio domicilio = new Domicilio(null, "Calle Z", 999, "Ciudad Z", "Provincia Z");
@@ -54,6 +126,18 @@ public class PacienteServiceTest {
 
     // Assert
     assertThat(pacienteEncontrado).isNotNull();
+  }
+
+  @Test
+  public void testBuscarPacientePorIdNull() {
+    // Arrange
+    Long id = null;
+
+    // Act
+    Throwable thrown = catchThrowable(() -> pacienteService.buscarPacientePorId(id));
+
+    // Assert
+    assertThat(thrown).isInstanceOf(InvalidInputException.class);
   }
 
   @Test
