@@ -1,5 +1,6 @@
 import com.odontologia.project.ProjectApplication;
 
+import com.odontologia.project.exceptions.EntityNotFoundException;
 import com.odontologia.project.models.Domicilio;
 import com.odontologia.project.models.Paciente;
 import com.odontologia.project.services.impl.DomicilioService;
@@ -7,10 +8,12 @@ import com.odontologia.project.services.impl.PacienteService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -103,10 +106,10 @@ public class PacienteServiceTest {
 
     // Act
     pacienteService.eliminarPacientePorId(pacienteGuardado.getId());
-    Paciente pacienteEncontrado = pacienteService.buscarPacientePorId(pacienteGuardado.getId());
+    Throwable thrown = catchThrowable(() -> pacienteService.buscarPacientePorId(pacienteGuardado.getId()));
 
     // Asser
-    assertThat(pacienteEncontrado).isNull();
+    assertThat(thrown).isInstanceOf(EntityNotFoundException.class);
   }
 }
 

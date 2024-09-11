@@ -1,13 +1,16 @@
 import com.odontologia.project.ProjectApplication;
+import com.odontologia.project.exceptions.EntityNotFoundException;
 import com.odontologia.project.models.Domicilio;
 import com.odontologia.project.services.impl.DomicilioService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 import java.util.List;
 
@@ -86,9 +89,9 @@ public class DomicilioServiceTest {
 
     // Act
     domicilioService.eliminarDomicilioPorId(domicilioGuardado.getId());
-    Domicilio domicilioEncontrado = domicilioService.buscarDomicilioPorId(domicilioGuardado.getId());
+    Throwable thrown = catchThrowable(() -> domicilioService.buscarDomicilioPorId(domicilioGuardado.getId()));
 
     // Assert
-    assertThat(domicilioEncontrado).isNull();
+    assertThat(thrown).isInstanceOf(EntityNotFoundException.class);
   }
 }
