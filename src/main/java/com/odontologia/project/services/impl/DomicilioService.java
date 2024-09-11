@@ -78,7 +78,7 @@ public class DomicilioService implements IDomicilioService {
       throw new InvalidInputException(DomicilioErrors.getErrorMessage(DomicilioErrorTypes.CALLE_NULL));
 
     if (domicilio.getNumero() == null)
-      throw new RuntimeException(DomicilioErrors.getErrorMessage(DomicilioErrorTypes.NUMERO_NULL));
+      throw new InvalidInputException(DomicilioErrors.getErrorMessage(DomicilioErrorTypes.NUMERO_NULL));
 
     if (domicilio.getLocalidad() == null)
       throw new InvalidInputException(DomicilioErrors.getErrorMessage(DomicilioErrorTypes.LOCALIDAD_NULL));

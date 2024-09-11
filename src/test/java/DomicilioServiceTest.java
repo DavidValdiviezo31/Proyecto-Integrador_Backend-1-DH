@@ -1,5 +1,6 @@
 import com.odontologia.project.ProjectApplication;
 import com.odontologia.project.exceptions.EntityNotFoundException;
+import com.odontologia.project.exceptions.InvalidInputException;
 import com.odontologia.project.models.Domicilio;
 import com.odontologia.project.services.impl.DomicilioService;
 import org.junit.jupiter.api.Test;
@@ -34,6 +35,54 @@ public class DomicilioServiceTest {
   }
 
   @Test
+  public void testGuardarDomicilioCalleNull() {
+    // Arrange
+    Domicilio domicilio = new Domicilio(null, null, 524, "Medellín", "Antioquia");
+
+    // Act
+    Throwable thrown = catchThrowable(() -> domicilioService.guardarDomicilio(domicilio));
+
+    // Assert
+    assertThat(thrown).isInstanceOf(InvalidInputException.class);
+  }
+
+  @Test
+  public void testGuardarDomicilioNumeroNull() {
+    // Arrange
+    Domicilio domicilio = new Domicilio(null, "Calle P sherman", null, "Medellín", "Antioquia");
+
+    // Act
+    Throwable thrown = catchThrowable(() -> domicilioService.guardarDomicilio(domicilio));
+
+    // Assert
+    assertThat(thrown).isInstanceOf(InvalidInputException.class);
+  }
+
+  @Test
+  public void testGuardarDomicilioLocalidadNull() {
+    // Arrange
+    Domicilio domicilio = new Domicilio(null, "Calle P sherman", 524, null, "Antioquia");
+
+    // Act
+    Throwable thrown = catchThrowable(() -> domicilioService.guardarDomicilio(domicilio));
+
+    // Assert
+    assertThat(thrown).isInstanceOf(InvalidInputException.class);
+  }
+
+  @Test
+  public void testGuardarDomicilioProvinciaNull() {
+    // Arrange
+    Domicilio domicilio = new Domicilio(null, "Calle P sherman", 524, "Medellín", null);
+
+    // Act
+    Throwable thrown = catchThrowable(() -> domicilioService.guardarDomicilio(domicilio));
+
+    // Assert
+    assertThat(thrown).isInstanceOf(InvalidInputException.class);
+  }
+
+  @Test
   void testBuscarDomicilioPorId() {
     // Arrange
     Domicilio domicilio = new Domicilio(null, "Calle P sherman", 524, "Medellín", "Antioquia");
@@ -44,6 +93,18 @@ public class DomicilioServiceTest {
 
     // Assert
     assertThat(domicilioEncontrado).isNotNull();
+  }
+
+  @Test
+  void testBuscarDomicilioPorIdNull() {
+    // Arrange
+    Long id = null;
+
+    // Act
+    Throwable thrown = catchThrowable(() -> domicilioService.buscarDomicilioPorId(id));
+
+    // Assert
+    assertThat(thrown).isInstanceOf(InvalidInputException.class);
   }
 
   @Test
