@@ -38,14 +38,49 @@ public class OdontologoServiceTest {
   public void testGuardarOdontologoMatriculaExistente() {
     // Arrange
     Odontologo odontologo = new Odontologo(null, 1214714065L, "Juan", "Gonzalez", null);
-    Odontologo odontologo2 = new Odontologo(null, 1214714065L, "Juan", "Gonzalez", null);
 
     // Act
-    Odontologo odontologoGuardado = odontologoService.guardarOdontologo(odontologo);
-    Throwable thrown = catchThrowable(() -> odontologoService.guardarOdontologo(odontologo2));
+    odontologoService.guardarOdontologo(odontologo);
+    Throwable thrown = catchThrowable(() -> odontologoService.guardarOdontologo(odontologo));
 
     // Assert
     assertThat(thrown).isInstanceOf(RuntimeException.class);
+  }
+
+  @Test
+  public void testGuardarOdontologoMatriculaNull() {
+    // Arrange
+    Odontologo odontologo = new Odontologo(null, null, "Juan", "Gonzalez", null);
+
+    // Act
+    Throwable thrown = catchThrowable(() -> odontologoService.guardarOdontologo(odontologo));
+
+    // Assert
+    assertThat(thrown).isInstanceOf(InvalidInputException.class);
+  }
+
+  @Test
+  public void testGuardarOdontologoNombreNull() {
+    // Arrange
+    Odontologo odontologo = new Odontologo(null, 1214714065L, null, "Gonzalez", null);
+
+    // Act
+    Throwable thrown = catchThrowable(() -> odontologoService.guardarOdontologo(odontologo));
+
+    // Assert
+    assertThat(thrown).isInstanceOf(InvalidInputException.class);
+  }
+
+  @Test
+  public void testGuardarOdontologoApellidoNull() {
+    // Arrange
+    Odontologo odontologo = new Odontologo(null, 1214714065L, "Juan", null, null);
+
+    // Act
+    Throwable thrown = catchThrowable(() -> odontologoService.guardarOdontologo(odontologo));
+
+    // Assert
+    assertThat(thrown).isInstanceOf(InvalidInputException.class);
   }
 
   @Test
@@ -62,7 +97,7 @@ public class OdontologoServiceTest {
   }
 
   @Test
-  public void testBuscarOdontologoPorNull() {
+  public void testBuscarOdontologoPorIdNull() {
     // Arrange
     Long id = null;
 
