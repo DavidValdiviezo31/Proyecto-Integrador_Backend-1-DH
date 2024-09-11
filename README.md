@@ -34,7 +34,7 @@ La aplicación debe ser desarrollada en capas:
 - `Capa de presentación`: Son las pantallas web que tendremos que desarrollar utilizando el framework de **Spring Boot MVC** con los controladores y alguna de estas dos opciones: _HTML + JavaScript_ para la vista.
 
 ## ⚙️ ⚙️ ⚙️ **TECNOLOGÍAS UTILIZADAS:**
-<div style="display: flex; gap: 10px; align-items: center;">
+<div style="display: flex; gap: 20px; align-items: center;">
     <img src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png" width="50"/>
     <img src="https://user-images.githubusercontent.com/25181517/183891303-41f257f8-6b3d-487c-aa56-c497b880d0fb.png" width="50"/>
     <img src="https://img.icons8.com/?size=100&id=Wy3XKG1CjyKf&format=png&color=000000" width="50"/>
@@ -43,7 +43,6 @@ La aplicación debe ser desarrollada en capas:
     <img src="https://user-images.githubusercontent.com/25181517/190229463-87fa862f-ccf0-48da-8023-940d287df610.png" width="50"/>
     <img src="https://user-images.githubusercontent.com/25181517/117447155-6a868a00-af3d-11eb-9cfe-245df15c9f3f.png" width="50"/>
     <img src="https://user-images.githubusercontent.com/25181517/192158954-f88b5814-d510-4564-b285-dff7d6400dad.png" width="50"/>
-    <img src="https://user-images.githubusercontent.com/25181517/117207242-07d5a700-adf4-11eb-975e-be04e62b984b.png" width="50"/>
     <img src="https://user-images.githubusercontent.com/25181517/117207242-07d5a700-adf4-11eb-975e-be04e62b984b.png" width="50"/>
     <img src="https://user-images.githubusercontent.com/25181517/117207493-49665200-adf4-11eb-808e-a9c0fcc2a0a0.png" width="50"/>
     <img src="https://user-images.githubusercontent.com/25181517/117533873-484d4480-afef-11eb-9fad-67c8605e3592.png" width="50"/>
