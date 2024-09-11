@@ -1,5 +1,4 @@
 import com.odontologia.project.ProjectApplication;
-
 import com.odontologia.project.exceptions.EntityNotFoundException;
 import com.odontologia.project.models.Domicilio;
 import com.odontologia.project.models.Paciente;
@@ -8,15 +7,14 @@ import com.odontologia.project.services.impl.PacienteService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.catchThrowable;
-
 import java.time.LocalDate;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 @SpringBootTest(classes = ProjectApplication.class)
 @Transactional
@@ -34,7 +32,7 @@ public class PacienteServiceTest {
     // Arrange
     Domicilio domicilio = new Domicilio(null, "Calle Z", 999, "Ciudad Z", "Provincia Z");
     Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
-    Paciente paciente = new Paciente(null,1027887642L,"Alexa","Monsalve",domicilioGuardado, LocalDate.parse("2023-01-01"),null);
+    Paciente paciente = new Paciente(null, 1027887642L, "Alexa", "Monsalve", domicilioGuardado, LocalDate.parse("2023-01-01"), null);
 
     // Act
     Paciente pacienteGuardado = pacienteService.guardarPaciente(paciente);
@@ -48,7 +46,7 @@ public class PacienteServiceTest {
     // Arrange
     Domicilio domicilio = new Domicilio(null, "Calle Z", 999, "Ciudad Z", "Provincia Z");
     Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
-    Paciente paciente = new Paciente(null,1027887642L,"Alexa","Monsalve",domicilioGuardado, LocalDate.parse("2023-01-01"),null);
+    Paciente paciente = new Paciente(null, 1027887642L, "Alexa", "Monsalve", domicilioGuardado, LocalDate.parse("2023-01-01"), null);
     Paciente pacienteGuardado = pacienteService.guardarPaciente(paciente);
 
     // Act
@@ -108,7 +106,7 @@ public class PacienteServiceTest {
     pacienteService.eliminarPacientePorId(pacienteGuardado.getId());
     Throwable thrown = catchThrowable(() -> pacienteService.buscarPacientePorId(pacienteGuardado.getId()));
 
-    // Asser
+    // Assert
     assertThat(thrown).isInstanceOf(EntityNotFoundException.class);
   }
 }

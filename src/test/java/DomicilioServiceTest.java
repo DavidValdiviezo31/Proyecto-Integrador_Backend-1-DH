@@ -5,14 +5,13 @@ import com.odontologia.project.services.impl.DomicilioService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
-
-import java.util.List;
 
 @SpringBootTest(classes = ProjectApplication.class)
 @Transactional
@@ -25,7 +24,7 @@ public class DomicilioServiceTest {
   @Test
   public void testGuardarDomicilio() {
     // Arrange
-    Domicilio domicilio = new Domicilio(null,"Calle P sherman",524,"Medellín","Antioquia");
+    Domicilio domicilio = new Domicilio(null, "Calle P sherman", 524, "Medellín", "Antioquia");
 
     // Act
     Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
@@ -37,7 +36,7 @@ public class DomicilioServiceTest {
   @Test
   void testBuscarDomicilioPorId() {
     // Arrange
-    Domicilio domicilio = new Domicilio(null,"Calle P sherman", 524, "Medellín", "Antioquia");
+    Domicilio domicilio = new Domicilio(null, "Calle P sherman", 524, "Medellín", "Antioquia");
 
     // Act
     Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
@@ -56,7 +55,7 @@ public class DomicilioServiceTest {
   @Test
   void testActualizarCalleDomicilio() {
     // Arrange
-    Domicilio domicilio = new Domicilio(null,"Calle P sherman", 524, "Medellín", "Antioquia");
+    Domicilio domicilio = new Domicilio(null, "Calle P sherman", 524, "Medellín", "Antioquia");
     Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
 
     // Act
@@ -70,7 +69,7 @@ public class DomicilioServiceTest {
   @Test
   void testActualizarNumeroDomicilio() {
     // Arrange
-    Domicilio domicilio = new Domicilio(null,"Calle P sherman", 524, "Medellín", "Antioquia");
+    Domicilio domicilio = new Domicilio(null, "Calle P sherman", 524, "Medellín", "Antioquia");
     Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
 
     // Act
@@ -84,7 +83,7 @@ public class DomicilioServiceTest {
   @Test
   void testEliminarDomicilioPorId() {
     // Arrange
-    Domicilio domicilio = new Domicilio(null,"Calle Juan23", 366, "B", "USA");
+    Domicilio domicilio = new Domicilio(null, "Calle Juan23", 366, "B", "USA");
     Domicilio domicilioGuardado = domicilioService.guardarDomicilio(domicilio);
 
     // Act

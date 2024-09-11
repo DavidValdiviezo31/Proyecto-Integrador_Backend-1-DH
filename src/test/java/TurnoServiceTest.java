@@ -150,7 +150,4 @@ public class TurnoServiceTest {
     assertThat(turnoGuardado.getPaciente().getDomicilio().getCalle()).isEqualTo("Calle Z");
     assertThat(turnoGuardado.getOdontologo().getNombre()).isEqualTo("Raúl");
   }
-
-
-
 }
