@@ -88,7 +88,7 @@ La estructura del proyecto sigue las convenciones estándar de Maven y Spring Bo
 paquetes:
 
 <div style="text-align: center;">
-    <img src="src/main/resources/media/Imagen 1.png" alt="Project Structure" />
+    <img src="src/main/resources/media/projectStructure.jpg" alt="Project Structure" />
 </div>
 
 ### **Descripción de los Paquetes**
