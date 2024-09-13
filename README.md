@@ -96,13 +96,18 @@ paquetes:
 - `Controllers:` Contiene los controladores REST que manejan las peticiones HTTP y gestionan la lógica de negocio
   relacionada con odontólogos, pacientes y turnos.
 
+- `Exceptions:` Maneja las excepciones personalizadas para las entidades y sus metodos.
+
+- `Models:` Incluye las entidades del sistema como Odontologo, Paciente, Turno y Domicilio y sus respectivos atributos.
+
 - `Repositories:` Incluye las interfaces que extienden de JpaRepository, responsables de la comunicación con la base de
   datos.
 
 - `Services:` Contiene la lógica de negocio de la aplicación, con la implementación de los servicios para manejar las
-  operaciones CRUD de las entidades.
+  operaciones CRUD de las entidades. 
+  También se incluye el subpaquete errors que gestiona los diferentes tipos de erroes y sus mensajes especificos para las entidades.
 
-- `Static:` Este directorio almacena recursos estáticos como archivos JavaScript y HTML, que forman las vistas de la
+- `Resources:` Este directorio almacena recursos estáticos como archivos JavaScript y HTML, que forman las vistas de la
   aplicación.
 
 - `Test:` Incluye pruebas unitarias para los servicios utilizando JUnit y spring boot test.
